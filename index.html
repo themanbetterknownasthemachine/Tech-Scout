@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tech Scout — Pistor BI & ML</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; background: #000; color: #f5f5f7; }
+    body { font-family: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: transparent; } ::-webkit-scrollbar-thumb { background: #3a3a3c; border-radius: 3px; }
+    input, button, textarea { font-family: inherit; }
+    a { text-decoration: none; }
+    button { cursor: pointer; }
+  </style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect, useCallback, useRef } = React;
+
+// ── Seed Data ──────────────────────────────────────────────────────────────────
+const SEED = [
+  { id:"seed-1", title:"Claude Sonnet 4 — Extended Thinking & Agentic Tool Use", source:"https://www.anthropic.com/research", type:"Blog", summary:"Anthropic veröffentlicht Claude Sonnet 4 mit verbessertem Extended Thinking und robustem Tool Use. Besonders relevant für mehrstufige Agentic Workflows und komplexe Reasoning-Aufgaben.", relevance:"Hoch", poc:true, pocNote:"Direkt anwendbar für Tech Scout Agent und Forecast-Monitoring", category:"Emerging Tech", tags:["LLM","Agents","Claude","Reasoning"], codeUrl:null, date:"2026-03-10", source_org:"Anthropic" },
+  { id:"seed-2", title:"TimesFM 2.0 — Foundation Model for Time Series Forecasting", source:"https://github.com/google-research/timesfm", type:"Paper", summary:"Google Research veröffentlicht TimesFM 2.0 mit deutlich verbesserter Zero-Shot Forecasting Performance. Direkte Benchmarks gegen NHITS, PatchTST und iTransformer zeigen überlegene Ergebnisse.", relevance:"Hoch", poc:true, pocNote:"PoC für Rüstmengen-Forecast als Alternative zu NeuralForecast", category:"Operative Effizienz", tags:["Time Series","Forecasting","Zero-Shot","Foundation Model"], codeUrl:"https://github.com/google-research/timesfm", date:"2026-03-08", source_org:"Google Research" },
+  { id:"seed-3", title:"dbt + Snowflake Cortex — Native ML in dbt Models", source:"https://www.getdbt.com/blog", type:"Blog", summary:"dbt Labs zeigt neuen Workflow für Snowflake Cortex ML direkt in dbt Models. Sentiment Analysis und Anomaly Detection ohne separate Python-Umgebung — direkt per SQL-ähnlicher Syntax.", relevance:"Mittel", poc:false, pocNote:"", category:"Data Engineering", tags:["dbt","Snowflake","Cortex","MLOps","Native ML"], codeUrl:null, date:"2026-03-05", source_org:"dbt Labs" }
+];
+
+const CATS  = ["Alle","Operative Effizienz","Data Engineering","Business Intelligence","Emerging Tech"];
+const RELS  = ["Alle","Hoch","Mittel","Niedrig"];
+const TYPES = ["Alle","Paper","Blog","Tool","Video","Code"];
+const REL_C = { Hoch:"#30d158", Mittel:"#ff9f0a", Niedrig:"#636366" };
+const TYP_C = { Paper:"#2997ff", Blog:"#ff9f0a", Tool:"#30d158", Video:"#bf5af2", Code:"#5ac8fa" };
+const POC_STAGES = ["Idee","In Prüfung","Aktiv","Done"];
+const STORE_KEY  = "ts-findings-v1";
+const POC_KEY    = "ts-poc-v1";
+const GITHUB_URL = "https://raw.githubusercontent.com/themanbetterknownasthemachine/Tech-Scout/main/tech_scout_findings.json";
+
+// ── Markdown Export ────────────────────────────────────────────────────────────
+function toMarkdown(findings) {
+  const today = new Date().toLocaleDateString("de-CH");
+  let md = `# 🔭 Tech Scout Report\n_${today} · ${findings.length} Findings_\n\n---\n\n`;
+  const g = {Hoch:[],Mittel:[],Niedrig:[]};
+  findings.forEach(f => (g[f.relevance]||g.Niedrig).push(f));
+  const icons = {Hoch:"🟢",Mittel:"🟡",Niedrig:"⚫"};
+  for (const [rel, items] of Object.entries(g)) {
+    if (!items.length) continue;
+    md += `## ${icons[rel]} ${rel}\n\n`;
+    items.forEach(f => {
+      md += `### ${f.title}\n**Quelle:** [${f.source_org||"Link"}](${f.source})  \n`;
+      md += `**Typ:** ${f.type} · **Kategorie:** ${f.category} · **Datum:** ${f.date}  \n`;
+      if (f.tags?.length) md += `**Tags:** ${f.tags.join(", ")}  \n`;
+      md += `\n${f.summary}\n\n`;
+      if (f.poc) md += `> 📌 **PoC:** ${f.pocNote||"Potenzial vorhanden"}\n\n`;
+      if (f.codeUrl) md += `💻 [Code](${f.codeUrl})\n\n`;
+      md += `---\n\n`;
+    });
+  }
+  return md;
+}
+
+function dlFile(content, name, mime) {
+  const a = Object.assign(document.createElement("a"), {
+    href: URL.createObjectURL(new Blob([content], {type:mime})), download: name
+  });
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(a.href);
+}
+
+// ── App ────────────────────────────────────────────────────────────────────────
+function App() {
+  const [findings,   setFindings]   = useState([]);
+  const [loading,    setLoading]    = useState(true);
+  const [pocStatus,  setPocStatus]  = useState({});
+  const [filterCat,  setFilterCat]  = useState("Alle");
+  const [filterRel,  setFilterRel]  = useState("Alle");
+  const [filterType, setFilterType] = useState("Alle");
+  const [filterPoC,  setFilterPoC]  = useState(false);
+  const [search,     setSearch]     = useState("");
+  const [selected,   setSelected]   = useState(null);
+  const [tab,        setTab]        = useState("feed");
+  const [toast,      setToast]      = useState(null);
+  const [sideOpen,   setSideOpen]   = useState(true);
+  const importRef = useRef();
+
+  const [syncMsg, setSyncMsg] = useState("");
+
+  useEffect(() => {
+    // PoC Status aus LocalStorage
+    try { setPocStatus(JSON.parse(localStorage.getItem(POC_KEY))||{}); } catch {}
+
+    // Findings: GitHub (primär) + LocalStorage (manuell hinzugefügte)
+    async function loadFindings() {
+      let githubFindings = [];
+      let localFindings  = [];
+
+      // 1. Von GitHub laden
+      try {
+        setSyncMsg("🔄 Lade von GitHub…");
+        const res = await fetch(GITHUB_URL + "?t=" + Date.now()); // cache-bust
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data) && data.length) {
+            githubFindings = data;
+            setSyncMsg("✓ GitHub sync — " + new Date().toLocaleTimeString("de-CH"));
+          }
+        }
+      } catch(e) {
+        setSyncMsg("⚠ GitHub nicht erreichbar");
+      }
+
+      // 2. Lokale Findings (manuell importiert) aus LocalStorage
+      try {
+        const local = JSON.parse(localStorage.getItem(STORE_KEY));
+        if (Array.isArray(local)) localFindings = local;
+      } catch {}
+
+      // 3. Mergen — GitHub ist führend, lokale Extras dazu
+      if (githubFindings.length) {
+        const githubIds = new Set(githubFindings.map(f=>f.id));
+        const localOnly = localFindings.filter(f=>!githubIds.has(f.id));
+        const merged = [...githubFindings, ...localOnly];
+        setFindings(merged);
+        localStorage.setItem(STORE_KEY, JSON.stringify(merged));
+      } else if (localFindings.length) {
+        setFindings(localFindings);
+      } else {
+        setFindings(SEED);
+      }
+
+      setLoading(false);
+    }
+
+    loadFindings();
+  }, []);
+
+  const persist = useCallback(d => { try { localStorage.setItem(STORE_KEY, JSON.stringify(d)); } catch {} }, []);
+
+  function flash(msg, color="#30d158") { setToast({msg,color}); setTimeout(()=>setToast(null), 3500); }
+
+  function handleImport(e) {
+    const file = e.target.files?.[0]; if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      try {
+        const arr = JSON.parse(ev.target.result);
+        const ids = new Set(findings.map(f=>f.id));
+        const added = (Array.isArray(arr)?arr:[]).filter(f=>f.id&&!ids.has(f.id));
+        const merged = [...added, ...findings];
+        setFindings(merged); persist(merged);
+        flash(`✓ ${added.length} neue Findings importiert`);
+      } catch(err) { flash(`Import-Fehler: ${err.message}`, "#ff453a"); }
+    };
+    reader.readAsText(file);
+    e.target.value = "";
+  }
+
+  function setPoc(id, stage) {
+    const u = {...pocStatus, [id]:stage}; setPocStatus(u);
+    try { localStorage.setItem(POC_KEY, JSON.stringify(u)); } catch {}
+  }
+
+  function delFinding(id) {
+    const u = findings.filter(f=>f.id!==id); setFindings(u); persist(u);
+    if (selected?.id===id) setSelected(null); flash("Gelöscht","#ff453a");
+  }
+
+  function clearAll() {
+    if (!confirm("Alle Findings löschen?")) return;
+    setFindings(SEED); persist(SEED); setSelected(null);
+    flash("Zurückgesetzt auf Seed-Daten");
+  }
+
+  const filtered = findings.filter(f => {
+    if (filterCat!=="Alle" && f.category!==filterCat) return false;
+    if (filterRel!=="Alle" && f.relevance!==filterRel) return false;
+    if (filterType!=="Alle" && f.type!==filterType) return false;
+    if (filterPoC && !f.poc) return false;
+    if (search) { const q=search.toLowerCase(); return f.title?.toLowerCase().includes(q)||f.summary?.toLowerCase().includes(q)||f.tags?.some(t=>t.toLowerCase().includes(q))||f.source_org?.toLowerCase().includes(q); }
+    return true;
+  });
+
+  const pocItems = findings.filter(f=>f.poc);
+  const byStage  = POC_STAGES.reduce((a,s)=>{ a[s]=pocItems.filter(f=>(pocStatus[f.id]||"Idee")===s); return a; }, {});
+  const today    = new Date().toISOString().split("T")[0];
+
+  if (loading) return (
+    <div style={{display:"flex",alignItems:"center",justifyContent:"center",height:"100vh",flexDirection:"column",gap:16}}>
+      <div style={{width:24,height:24,borderRadius:"50%",border:"2px solid rgba(41,151,255,0.2)",borderTopColor:"#2997ff",animation:"spin 0.8s linear infinite"}}/>
+      <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
+      <span style={{color:"#636366",fontSize:13}}>Lade Tech Scout…</span>
+    </div>
+  );
+
+  return (
+    <div style={{display:"flex",minHeight:"100vh",background:"#000"}}>
+      {/* Toast */}
+      {toast && (
+        <div style={{position:"fixed",top:20,right:20,zIndex:9999,background:"#1c1c1e",border:`1px solid ${toast.color}`,borderRadius:12,padding:"10px 16px",boxShadow:"0 8px 32px rgba(0,0,0,0.6)",display:"flex",alignItems:"center",gap:8}}>
+          <span style={{color:toast.color,fontSize:13,fontWeight:600}}>{toast.msg}</span>
+        </div>
+      )}
+
+      {/* Sidebar */}
+      <aside style={{width:sideOpen?240:0,minWidth:sideOpen?240:0,overflow:"hidden",background:"#0a0a0a",borderRight:"1px solid rgba(255,255,255,0.07)",display:"flex",flexDirection:"column",transition:"all 0.25s ease",position:"sticky",top:0,height:"100vh"}}>
+        <div style={{padding:"20px 14px",display:"flex",flexDirection:"column",gap:20,overflowY:"auto",flex:1}}>
+
+          {/* Logo */}
+          <div style={{display:"flex",alignItems:"center",gap:10}}>
+            <span style={{fontSize:24}}>🔭</span>
+            <div>
+              <div style={{fontSize:15,fontWeight:700,letterSpacing:"-0.01em",whiteSpace:"nowrap"}}>Tech Scout</div>
+              <div style={{fontSize:10,color:"#636366",whiteSpace:"nowrap"}}>Pistor BI & ML</div>
+            </div>
+          </div>
+
+          {/* Import / Export */}
+          <div style={{display:"flex",flexDirection:"column",gap:6}}>
+            <div style={S.secLbl}>Import / Export</div>
+            <input ref={importRef} type="file" accept=".json" style={{display:"none"}} onChange={handleImport}/>
+            <button style={S.btnGhost} onClick={()=>importRef.current?.click()}>📥 JSON importieren</button>
+            <button style={S.btnGhost} onClick={()=>{dlFile(toMarkdown(filtered),`tech-scout-${today}.md`,"text/markdown");flash("Markdown exportiert");}}>📄 Markdown exportieren</button>
+            <button style={S.btnGhost} onClick={()=>{dlFile(JSON.stringify(findings,null,2),`tech-scout-${today}.json`,"application/json");flash("JSON exportiert");}}>📦 JSON exportieren</button>
+          </div>
+
+          {/* Stats */}
+          <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:6}}>
+            {[{n:findings.length,l:"Total",c:"#f5f5f7"},{n:findings.filter(f=>f.relevance==="Hoch").length,l:"Hoch",c:"#30d158"},{n:pocItems.length,l:"PoC",c:"#2997ff"}].map(s=>(
+              <div key={s.l} style={{background:"#1c1c1e",border:"1px solid rgba(255,255,255,0.07)",borderRadius:10,padding:"10px 6px",textAlign:"center"}}>
+                <div style={{fontSize:20,fontWeight:700,color:s.c,letterSpacing:"-0.02em"}}>{s.n}</div>
+                <div style={{fontSize:10,color:"#636366",marginTop:2}}>{s.l}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Kategorie */}
+          <div style={{display:"flex",flexDirection:"column",gap:5}}>
+            <div style={S.secLbl}>Kategorie</div>
+            {CATS.map(c=>(
+              <button key={c} style={filterCat===c?S.fOn:S.fOff} onClick={()=>setFilterCat(c)}>{c}</button>
+            ))}
+          </div>
+
+          {/* Relevanz */}
+          <div style={{display:"flex",flexDirection:"column",gap:5}}>
+            <div style={S.secLbl}>Relevanz</div>
+            <div style={{display:"flex",gap:5,flexWrap:"wrap"}}>
+              {RELS.map(r=><button key={r} style={filterRel===r?S.fOn:S.fOff} onClick={()=>setFilterRel(r)}>{r}</button>)}
+            </div>
+          </div>
+
+          {/* Typ */}
+          <div style={{display:"flex",flexDirection:"column",gap:5}}>
+            <div style={S.secLbl}>Typ</div>
+            <div style={{display:"flex",gap:5,flexWrap:"wrap"}}>
+              {TYPES.map(t=><button key={t} style={filterType===t?S.fOn:S.fOff} onClick={()=>setFilterType(t)}>{t}</button>)}
+            </div>
+          </div>
+
+          <button style={filterPoC?S.fOn:S.fOff} onClick={()=>setFilterPoC(p=>!p)}>📌 Nur PoC</button>
+
+          {/* Reset */}
+          <button style={{...S.btnGhost,color:"#ff453a",borderColor:"rgba(255,69,58,0.2)",marginTop:"auto"}} onClick={clearAll}>🗑 Reset</button>
+        </div>
+      </aside>
+
+      {/* Main */}
+      <main style={{flex:1,display:"flex",flexDirection:"column",minWidth:0}}>
+
+        {/* Topbar */}
+        <div style={{padding:"16px 24px",borderBottom:"1px solid rgba(255,255,255,0.07)",display:"flex",alignItems:"center",gap:12,position:"sticky",top:0,background:"rgba(0,0,0,0.85)",backdropFilter:"blur(16px)",zIndex:50}}>
+          <button style={{background:"transparent",border:"none",color:"#636366",fontSize:18,padding:4,lineHeight:1}} onClick={()=>setSideOpen(o=>!o)}>{sideOpen?"◀":"▶"}</button>
+          <div style={{display:"flex",background:"#1c1c1e",border:"1px solid rgba(255,255,255,0.08)",borderRadius:10,padding:3,gap:2}}>
+            <button style={tab==="feed"?S.tabOn:S.tab} onClick={()=>setTab("feed")}>Feed</button>
+            <button style={tab==="poc"?S.tabOn:S.tab} onClick={()=>setTab("poc")}>
+              PoC Tracker <span style={{background:"rgba(255,255,255,0.1)",borderRadius:10,padding:"1px 6px",fontSize:10,color:"#a1a1a6",marginLeft:4}}>{pocItems.length}</span>
+            </button>
+          </div>
+          <input style={{flex:1,background:"#1c1c1e",border:"1px solid rgba(255,255,255,0.1)",borderRadius:10,padding:"8px 14px",color:"#f5f5f7",fontSize:13,outline:"none"}} placeholder="Suchen…" value={search} onChange={e=>setSearch(e.target.value)}/>
+          <span style={{background:"#1c1c1e",border:"1px solid rgba(255,255,255,0.07)",borderRadius:20,padding:"4px 12px",fontSize:12,color:"#636366",whiteSpace:"nowrap"}}>{filtered.length}</span>
+          {syncMsg && <span style={{fontSize:11,color:"#636366",whiteSpace:"nowrap"}}>{syncMsg}</span>}
+        </div>
+
+        {/* Feed */}
+        {tab==="feed" && (
+          <div style={{padding:"24px",display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))",gap:14,alignContent:"start"}}>
+            {filtered.length===0 && <div style={{color:"#636366",fontSize:14,padding:8,gridColumn:"1/-1"}}>Keine Findings für diese Filter.</div>}
+            {filtered.map(f=>(
+              <div key={f.id} style={S.card} onClick={()=>setSelected(f)}
+                onMouseEnter={e=>e.currentTarget.style.borderColor="rgba(255,255,255,0.15)"}
+                onMouseLeave={e=>e.currentTarget.style.borderColor="rgba(255,255,255,0.08)"}>
+                <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:8}}>
+                  <span style={{...S.pill,background:(TYP_C[f.type]||"#636366")+"22",color:TYP_C[f.type]||"#636366"}}>{f.type}</span>
+                  <span style={{fontSize:11,fontWeight:600,color:REL_C[f.relevance]||"#636366"}}>● {f.relevance}</span>
+                </div>
+                <div style={{fontSize:14,fontWeight:600,lineHeight:1.35,letterSpacing:"-0.01em",marginBottom:8}}>{f.title}</div>
+                <div style={{fontSize:12,color:"#a1a1a6",lineHeight:1.55,marginBottom:10,flex:1}}>{f.summary}</div>
+                <div style={{display:"flex",flexWrap:"wrap",gap:4,marginBottom:10}}>
+                  {f.tags?.slice(0,4).map(t=><span key={t} style={S.tag}>{t}</span>)}
+                </div>
+                <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",paddingTop:8,borderTop:"1px solid rgba(255,255,255,0.05)"}}>
+                  <span style={{fontSize:11,color:"#636366"}}>{f.date}{f.source_org?` · ${f.source_org}`:""}</span>
+                  <div style={{display:"flex",gap:6}}>
+                    {f.poc && <span style={{fontSize:11,color:"#ff9f0a",fontWeight:600}}>📌</span>}
+                    {f.codeUrl && <span style={{fontSize:11,color:"#5ac8fa"}}>{"</>"}</span>}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* PoC Tracker */}
+        {tab==="poc" && (
+          <div style={{padding:"24px",display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:14,alignContent:"start"}}>
+            {POC_STAGES.map(stage=>(
+              <div key={stage} style={{background:"#0d0d0d",border:"1px solid rgba(255,255,255,0.06)",borderRadius:14,padding:14}}>
+                <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:12}}>
+                  <span style={{fontSize:11,fontWeight:700,letterSpacing:"0.06em",textTransform:"uppercase",color:"#a1a1a6"}}>{stage}</span>
+                  <span style={{background:"rgba(255,255,255,0.08)",borderRadius:10,padding:"1px 8px",fontSize:11,color:"#636366"}}>{byStage[stage].length}</span>
+                </div>
+                {byStage[stage].length===0 && <div style={{fontSize:12,color:"#3a3a3c",textAlign:"center",padding:"16px 0"}}>–</div>}
+                {byStage[stage].map(f=>(
+                  <div key={f.id} style={{background:"#1c1c1e",border:"1px solid rgba(255,255,255,0.07)",borderRadius:10,padding:12,cursor:"pointer",marginBottom:8}} onClick={()=>setSelected(f)}>
+                    <span style={{...S.pill,background:(TYP_C[f.type]||"#636366")+"22",color:TYP_C[f.type]||"#636366",fontSize:10}}>{f.type}</span>
+                    <div style={{fontSize:13,fontWeight:600,marginTop:6,lineHeight:1.3}}>{f.title}</div>
+                    <div style={{fontSize:11,color:"#636366",marginTop:3}}>{f.source_org}</div>
+                    {f.pocNote && <div style={{fontSize:11,color:"#a1a1a6",marginTop:6,lineHeight:1.4,borderLeft:"2px solid rgba(255,159,10,0.3)",paddingLeft:7}}>{f.pocNote}</div>}
+                    <div style={{display:"flex",gap:4,marginTop:10,flexWrap:"wrap"}}>
+                      {POC_STAGES.filter(s=>s!==stage).map(s=>(
+                        <button key={s} style={{background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.08)",borderRadius:5,padding:"3px 8px",color:"#636366",fontSize:10}} onClick={e=>{e.stopPropagation();setPoc(f.id,s);}}>→ {s}</button>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        )}
+      </main>
+
+      {/* Detail Modal */}
+      {selected && (
+        <div style={{position:"fixed",inset:0,background:"rgba(0,0,0,0.75)",zIndex:200,display:"flex",alignItems:"center",justifyContent:"center",padding:"40px"}} onClick={()=>setSelected(null)}>
+          <div style={{width:"100%",maxWidth:720,maxHeight:"90vh",background:"#1c1c1e",borderRadius:20,overflowY:"auto",padding:"36px 40px",position:"relative",border:"1px solid rgba(255,255,255,0.1)",boxShadow:"0 24px 80px rgba(0,0,0,0.6)"}} onClick={e=>e.stopPropagation()}>
+            <button style={{position:"absolute",top:16,right:16,background:"rgba(255,255,255,0.06)",border:"none",borderRadius:"50%",width:32,height:32,color:"#a1a1a6",fontSize:15,display:"flex",alignItems:"center",justifyContent:"center"}} onClick={()=>setSelected(null)}>✕</button>
+            <div style={{display:"flex",gap:7,marginBottom:14,flexWrap:"wrap"}}>
+              <span style={{...S.pill,background:(TYP_C[selected.type]||"#636366")+"22",color:TYP_C[selected.type]||"#636366"}}>{selected.type}</span>
+              <span style={{fontSize:12,fontWeight:600,color:REL_C[selected.relevance]||"#636366"}}>● {selected.relevance}</span>
+              <span style={S.tag}>{selected.category}</span>
+            </div>
+            <div style={{fontSize:24,fontWeight:700,lineHeight:1.2,letterSpacing:"-0.02em",marginBottom:8}}>{selected.title}</div>
+            <div style={{fontSize:13,color:"#636366",marginBottom:20}}>{selected.source_org}{selected.source_org&&selected.date?" · ":""}{selected.date}</div>
+            <div style={{fontSize:15,color:"#a1a1a6",lineHeight:1.7,marginBottom:20}}>{selected.summary}</div>
+
+            {selected.poc && (
+              <div style={{background:"rgba(255,159,10,0.07)",border:"1px solid rgba(255,159,10,0.18)",borderRadius:12,padding:18,marginBottom:18}}>
+                <div style={{fontSize:13,fontWeight:700,color:"#ff9f0a",marginBottom:8}}>📌 PoC-Potenzial</div>
+                <div style={{fontSize:14,color:"#a1a1a6",lineHeight:1.55,marginBottom:14}}>{selected.pocNote||"Potenzial vorhanden"}</div>
+                <div style={{display:"flex",gap:8,flexWrap:"wrap"}}>
+                  {POC_STAGES.map(s=>(
+                    <button key={s} style={(pocStatus[selected.id]||"Idee")===s
+                      ? {background:"rgba(255,159,10,0.2)",border:"1px solid rgba(255,159,10,0.4)",borderRadius:8,padding:"6px 14px",color:"#ff9f0a",fontSize:12,fontWeight:700}
+                      : {background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:8,padding:"6px 14px",color:"#a1a1a6",fontSize:12}}
+                      onClick={()=>setPoc(selected.id,s)}>{s}</button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div style={{display:"flex",flexWrap:"wrap",gap:5,marginBottom:24}}>
+              {selected.tags?.map(t=><span key={t} style={S.tag}>{t}</span>)}
+            </div>
+
+            <div style={{display:"flex",gap:10,flexWrap:"wrap",paddingTop:16,borderTop:"1px solid rgba(255,255,255,0.08)"}}>
+              <a href={selected.source} target="_blank" rel="noreferrer" style={{display:"inline-flex",alignItems:"center",gap:6,background:"rgba(41,151,255,0.1)",border:"1px solid rgba(41,151,255,0.25)",borderRadius:10,padding:"10px 18px",color:"#2997ff",fontSize:13,fontWeight:500}}>🔗 Quelle öffnen</a>
+              {selected.codeUrl && <a href={selected.codeUrl} target="_blank" rel="noreferrer" style={{display:"inline-flex",alignItems:"center",gap:6,background:"rgba(90,200,250,0.1)",border:"1px solid rgba(90,200,250,0.25)",borderRadius:10,padding:"10px 18px",color:"#5ac8fa",fontSize:13,fontWeight:500}}>{"</>"} Code</a>}
+              <button style={{background:"rgba(255,69,58,0.08)",border:"1px solid rgba(255,69,58,0.2)",borderRadius:10,padding:"10px 14px",color:"#ff453a",fontSize:13,marginLeft:"auto"}} onClick={()=>delFinding(selected.id)}>🗑</button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ── Styles ─────────────────────────────────────────────────────────────────────
+const S = {
+  secLbl: {fontSize:10,fontWeight:600,letterSpacing:"0.09em",textTransform:"uppercase",color:"#636366"},
+  btnGhost: {background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.08)",borderRadius:8,padding:"8px 12px",color:"#a1a1a6",fontSize:12,fontWeight:500,textAlign:"left",width:"100%"},
+  fOff: {background:"transparent",border:"1px solid rgba(255,255,255,0.08)",borderRadius:7,padding:"5px 9px",color:"#a1a1a6",fontSize:11,textAlign:"left"},
+  fOn:  {background:"rgba(41,151,255,0.15)",border:"1px solid rgba(41,151,255,0.35)",borderRadius:7,padding:"5px 9px",color:"#2997ff",fontSize:11,fontWeight:700,textAlign:"left"},
+  tab:  {background:"transparent",border:"none",borderRadius:8,padding:"6px 13px",color:"#636366",fontSize:12,display:"flex",alignItems:"center"},
+  tabOn:{background:"#2c2c2e",border:"none",borderRadius:8,padding:"6px 13px",color:"#f5f5f7",fontSize:12,fontWeight:600,display:"flex",alignItems:"center"},
+  card: {background:"#1c1c1e",border:"1px solid rgba(255,255,255,0.08)",borderRadius:14,padding:"16px",cursor:"pointer",display:"flex",flexDirection:"column",transition:"border-color 0.15s ease"},
+  pill: {fontSize:10.5,fontWeight:700,letterSpacing:"0.04em",textTransform:"uppercase",borderRadius:5,padding:"2px 7px"},
+  tag:  {background:"rgba(255,255,255,0.06)",border:"1px solid rgba(255,255,255,0.07)",borderRadius:5,padding:"2px 7px",fontSize:10.5,color:"#a1a1a6"},
+};
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>

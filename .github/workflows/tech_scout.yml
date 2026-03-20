@@ -1,0 +1,67 @@
+name: 🔭 Tech Scout Weekly
+
+on:
+  schedule:
+    - cron: "0 7 * * 1"   # Jeden Montag 07:00 UTC = 08:00 Schweizer Zeit
+  workflow_dispatch:        # Manuell triggerbar via GitHub UI
+    inputs:
+      focus:
+        description: "Fokus-Thema (optional)"
+        required: false
+        default: ""
+      limit:
+        description: "Anzahl Findings"
+        required: false
+        default: "5"
+
+jobs:
+  scout:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🐍 Python Setup
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 📦 Dependencies installieren
+        run: pip install anthropic
+
+      - name: 🔭 Tech Scout ausführen
+        run: |
+          python tech_scout_agent.py \
+            --limit ${{ github.event.inputs.limit || '5' }} \
+            --focus "${{ github.event.inputs.focus || '' }}" \
+            --output tech_scout_findings.json
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: 🔍 Output prüfen
+        run: |
+          if [ -f tech_scout_findings.json ]; then
+            echo "✓ findings.json erstellt"
+            echo "  Einträge: $(python -c 'import json; d=json.load(open("tech_scout_findings.json")); print(len(d))')"
+          else
+            echo "❌ findings.json fehlt — Agent hat nicht gespeichert"
+            exit 1
+          fi
+
+      - name: 📊 Findings als Artifact speichern
+        uses: actions/upload-artifact@v4
+        with:
+          name: tech-scout-${{ github.run_id }}
+          path: tech_scout_findings.json
+          retention-days: 90
+
+      - name: 💾 Findings ins Repo committen
+        run: |
+          git config user.name  "Tech Scout Bot"
+          git config user.email "bot@pistor.ch"
+          git add tech_scout_findings.json
+          git diff --staged --quiet && echo "Keine Änderungen" || git commit -m "🔭 Tech Scout $(date '+%Y-%m-%d')"
+          git push

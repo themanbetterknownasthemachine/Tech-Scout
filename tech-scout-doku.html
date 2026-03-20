@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tech Scout — Workflow Dokumentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg:        #000000;
+      --bg-1:      #0a0a0a;
+      --bg-2:      #1c1c1e;
+      --bg-3:      #2c2c2e;
+      --border:    rgba(255,255,255,0.08);
+      --border-hi: rgba(255,255,255,0.15);
+      --text:      #f5f5f7;
+      --text-2:    #a1a1a6;
+      --text-3:    #636366;
+      --blue:      #2997ff;
+      --green:     #30d158;
+      --orange:    #ff9f0a;
+      --purple:    #bf5af2;
+      --red:       #ff453a;
+      --teal:      #5ac8fa;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #3a3a3c; border-radius: 3px; }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(0,0,0,0.72);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--border);
+      height: 52px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
+    .nav-logo-icon { font-size: 20px; }
+    .nav-logo-text { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      font-size: 13px; color: var(--text-2); text-decoration: none;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-badge {
+      background: rgba(41,151,255,0.15);
+      border: 1px solid rgba(41,151,255,0.3);
+      color: var(--blue);
+      font-size: 11px; font-weight: 600;
+      padding: 3px 10px; border-radius: 20px;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 160px 48px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 600px;
+      background: radial-gradient(ellipse at center top, rgba(41,151,255,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--blue);
+      margin-bottom: 20px;
+    }
+    .hero-title {
+      font-size: clamp(48px, 6vw, 80px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 24px;
+    }
+    .hero-title span { color: var(--blue); }
+    .hero-subtitle {
+      font-size: 19px; font-weight: 400;
+      color: var(--text-2); max-width: 600px;
+      margin: 0 auto 48px;
+      line-height: 1.55;
+    }
+    .hero-tags {
+      display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+    }
+    .hero-tag {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 12px; color: var(--text-2);
+    }
+
+    /* ── Section ── */
+    section {
+      padding: 80px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--blue);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 700; letter-spacing: -0.03em;
+      line-height: 1.1; margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 17px; color: var(--text-2);
+      max-width: 560px; line-height: 1.6;
+      margin-bottom: 48px;
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    /* ── Architecture ── */
+    .arch-flow {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      background: var(--bg-1);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+      overflow-x: auto;
+      margin-bottom: 48px;
+    }
+    .arch-node {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 10px;
+      min-width: 120px;
+    }
+    .arch-icon {
+      width: 56px; height: 56px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      border: 1px solid var(--border);
+    }
+    .arch-label {
+      font-size: 12px; font-weight: 600;
+      color: var(--text); text-align: center;
+      line-height: 1.3;
+    }
+    .arch-sub {
+      font-size: 10px; color: var(--text-3);
+      text-align: center;
+    }
+    .arch-arrow {
+      font-size: 18px; color: var(--text-3);
+      padding: 0 8px; flex-shrink: 0;
+    }
+
+    /* ── Steps ── */
+    .steps { display: flex; flex-direction: column; gap: 2px; }
+    .step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 24px;
+      padding: 32px;
+      background: var(--bg-1);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      transition: border-color 0.2s, background 0.2s;
+      cursor: default;
+    }
+    .step:hover {
+      border-color: var(--border-hi);
+      background: #111;
+    }
+    .step:first-child { border-radius: 16px 16px 4px 4px; }
+    .step:last-child  { border-radius: 4px 4px 16px 16px; }
+    .step:only-child  { border-radius: 16px; }
+    .step + .step { margin-top: 2px; }
+    .step-num {
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 700;
+      flex-shrink: 0;
+    }
+    .step-body h3 {
+      font-size: 17px; font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+    .step-body p {
+      font-size: 14px; color: var(--text-2);
+      line-height: 1.6; margin-bottom: 12px;
+    }
+    .step-code {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-family: "SF Mono", "Menlo", monospace;
+      font-size: 12px;
+      color: var(--teal);
+      line-height: 1.7;
+      overflow-x: auto;
+    }
+    .step-code .comment { color: var(--text-3); }
+    .step-code .keyword { color: var(--purple); }
+    .step-code .string  { color: var(--green); }
+    .step-tags {
+      display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px;
+    }
+    .step-tag {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 2px 8px;
+      font-size: 11px; color: var(--text-3);
+    }
+
+    /* ── File Grid ── */
+    .file-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px;
+    }
+    .file-card {
+      background: var(--bg-1);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      transition: border-color 0.2s, transform 0.2s;
+      text-decoration: none;
+      display: block;
+      color: inherit;
+    }
+    .file-card:hover {
+      border-color: var(--border-hi);
+      transform: translateY(-2px);
+    }
+    .file-card-icon { font-size: 28px; margin-bottom: 14px; }
+    .file-card-name {
+      font-family: "SF Mono", "Menlo", monospace;
+      font-size: 13px; font-weight: 600;
+      color: var(--teal); margin-bottom: 8px;
+    }
+    .file-card-desc {
+      font-size: 13px; color: var(--text-2);
+      line-height: 1.55;
+    }
+    .file-card-badge {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 3px 8px; border-radius: 5px;
+    }
+
+    /* ── Workflow Timeline ── */
+    .timeline { position: relative; padding-left: 32px; }
+    .timeline::before {
+      content: "";
+      position: absolute; left: 10px; top: 0; bottom: 0;
+      width: 1px; background: var(--border);
+    }
+    .tl-item {
+      position: relative;
+      padding: 0 0 32px 24px;
+    }
+    .tl-item::before {
+      content: "";
+      position: absolute; left: -28px; top: 6px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      border: 2px solid var(--blue);
+      background: var(--bg);
+    }
+    .tl-time {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 6px;
+    }
+    .tl-title {
+      font-size: 16px; font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .tl-desc {
+      font-size: 13px; color: var(--text-2);
+      line-height: 1.6;
+    }
+
+    /* ── Concept Cards ── */
+    .concept-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 14px;
+    }
+    .concept-card {
+      background: var(--bg-1);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+    }
+    .concept-card h3 {
+      font-size: 18px; font-weight: 700;
+      letter-spacing: -0.01em; margin-bottom: 8px;
+    }
+    .concept-card p {
+      font-size: 14px; color: var(--text-2);
+      line-height: 1.65;
+    }
+    .concept-card .vs {
+      display: inline-block;
+      margin: 12px 0 4px;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-3);
+    }
+
+    /* ── Setup Checklist ── */
+    .checklist { display: flex; flex-direction: column; gap: 10px; }
+    .check-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: var(--bg-1);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+    }
+    .check-box {
+      width: 22px; height: 22px; flex-shrink: 0;
+      border-radius: 6px;
+      border: 1.5px solid var(--border-hi);
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 1px;
+      font-size: 12px; color: var(--green);
+    }
+    .check-text h4 { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
+    .check-text p  { font-size: 13px; color: var(--text-2); line-height: 1.5; }
+    .check-text code {
+      font-family: "SF Mono","Menlo",monospace;
+      font-size: 12px; color: var(--teal);
+      background: var(--bg-3);
+      padding: 1px 5px; border-radius: 4px;
+    }
+
+    /* ── Cost Box ── */
+    .cost-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .cost-card {
+      background: var(--bg-1);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      text-align: center;
+    }
+    .cost-card .amount {
+      font-size: 32px; font-weight: 700;
+      letter-spacing: -0.03em; color: var(--green);
+      margin-bottom: 4px;
+    }
+    .cost-card .label {
+      font-size: 12px; color: var(--text-2);
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 48px;
+      text-align: center;
+    }
+    footer .footer-logo { font-size: 28px; margin-bottom: 12px; }
+    footer p { font-size: 13px; color: var(--text-3); line-height: 1.6; }
+    footer a { color: var(--blue); text-decoration: none; }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.6s ease-out forwards; }
+    .fade-up-1 { animation-delay: 0.1s; opacity: 0; }
+    .fade-up-2 { animation-delay: 0.2s; opacity: 0; }
+    .fade-up-3 { animation-delay: 0.3s; opacity: 0; }
+    .fade-up-4 { animation-delay: 0.4s; opacity: 0; }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .hero { padding: 120px 20px 60px; }
+      section { padding: 60px 20px; }
+      .arch-flow { flex-direction: column; }
+      .arch-arrow { transform: rotate(90deg); }
+    }
+
+    /* ── Scroll Reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Card Glow on Hover ── */
+    .file-card:hover {
+      border-color: rgba(41,151,255,0.3) !important;
+      box-shadow: 0 0 0 1px rgba(41,151,255,0.08), 0 8px 24px rgba(0,0,0,0.3);
+    }
+    .concept-card {
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .concept-card:hover {
+      border-color: var(--border-hi);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+    .step {
+      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+    }
+    .step:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+    .cost-card {
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .cost-card:hover {
+      border-color: var(--border-hi);
+      transform: translateY(-2px);
+    }
+
+    /* ── Stagger delay für Grid-Cards ── */
+    .file-grid .file-card:nth-child(1) { transition-delay: 0.05s; }
+    .file-grid .file-card:nth-child(2) { transition-delay: 0.10s; }
+    .file-grid .file-card:nth-child(3) { transition-delay: 0.15s; }
+    .file-grid .file-card:nth-child(4) { transition-delay: 0.20s; }
+    .file-grid .file-card:nth-child(5) { transition-delay: 0.25s; }
+    .file-grid .file-card:nth-child(6) { transition-delay: 0.30s; }
+    .concept-grid .concept-card:nth-child(1) { transition-delay: 0.05s; }
+    .concept-grid .concept-card:nth-child(2) { transition-delay: 0.10s; }
+    .concept-grid .concept-card:nth-child(3) { transition-delay: 0.15s; }
+    .cost-grid .cost-card:nth-child(1) { transition-delay: 0.05s; }
+    .cost-grid .cost-card:nth-child(2) { transition-delay: 0.10s; }
+    .cost-grid .cost-card:nth-child(3) { transition-delay: 0.15s; }
+    .cost-grid .cost-card:nth-child(4) { transition-delay: 0.20s; }
+    .cost-grid .cost-card:nth-child(5) { transition-delay: 0.25s; }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-logo">
+    <span class="nav-logo-icon">🔭</span>
+    <span class="nav-logo-text">Tech Scout</span>
+  </div>
+  <div class="nav-links">
+    <a href="#konzept">Konzept</a>
+    <a href="#architektur">Architektur</a>
+    <a href="#setup">Setup</a>
+    <a href="#workflow">Workflow</a>
+    <a href="#dateien">Dateien</a>
+    <a href="#actions">GitHub Actions</a>
+  </div>
+  <span class="nav-badge">Pistor BI & ML</span>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-eyebrow fade-up fade-up-1">Automatisiertes Tech Scouting</div>
+  <h1 class="hero-title fade-up fade-up-2">
+    Von der Idee zum<br/><span>wöchentlichen Briefing</span>
+  </h1>
+  <p class="hero-subtitle fade-up fade-up-3">
+    Ein vollautomatischer Agent scoutet jede Woche die neuesten Trends aus ML, 
+    Deep Learning, Data Science und Analytics und präsentiert sie in einer 
+    modernen Web-App.
+  </p>
+  <div class="hero-tags fade-up fade-up-4">
+    <span class="hero-tag">🐍 Python Agent</span>
+    <span class="hero-tag">⚡ Anthropic API</span>
+    <span class="hero-tag">🔄 GitHub Actions</span>
+    <span class="hero-tag">🌐 GitHub Pages</span>
+    <span class="hero-tag">🔭 Web Search</span>
+    <span class="hero-tag">📊 Tech Scout Skill</span>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- Konzept -->
+<section id="konzept">
+  <div class="section-eyebrow">Grundlagen</div>
+  <h2 class="section-title">Skill vs. Agent</h2>
+  <p class="section-sub">
+    Zwei Komponenten bilden das Fundament des Systems.
+    Beide erfüllen eine klar definierte, unterschiedliche Rolle.
+  </p>
+  <div class="concept-grid">
+    <div class="concept-card">
+      <h3>📋 Skill</h3>
+      <p>Das <strong style="color:var(--text)">Gehirn</strong> des Systems. Eine Markdown-Datei (<code style="font-family:monospace;color:var(--teal);font-size:12px">SKILL.md</code>) mit vollständigem Wissen: alle Quellen, Qualitätskriterien, Red Flags, Thought Leaders und den 9-Schritt-Workflow.</p>
+      <div class="vs">→</div>
+      <p style="color:var(--text-3);font-size:12px">Tut selbst nichts — muss von jemandem ausgeführt werden.</p>
+    </div>
+    <div class="concept-card">
+      <h3>🤖 Agent</h3>
+      <p>Der <strong style="color:var(--text)">Ausführer</strong>. Ein Python-Script das den Skill liest, ihn als System-Prompt an die Anthropic API übergibt, Web Search ausführt und die Ergebnisse als JSON speichert.</p>
+      <div class="vs">→</div>
+      <p style="color:var(--text-3);font-size:12px">Code der handelt — liest den Skill und wendet ihn an.</p>
+    </div>
+    <div class="concept-card">
+      <h3>🔄 Agentic Loop</h3>
+      <p>Web Search ist kein einfacher API-Call. Der Agent führt einen <strong style="color:var(--text)">Loop</strong> aus: API antwortet mit <code style="font-family:monospace;color:var(--teal);font-size:12px">tool_use</code> → Agent schickt Result zurück → bis <code style="font-family:monospace;color:var(--teal);font-size:12px">end_turn</code>.</p>
+      <div class="vs">→</div>
+      <p style="color:var(--text-3);font-size:12px">Ermöglicht echte Echtzeit-Websuche mit aktuellen Resultaten.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- Architektur -->
+<section id="architektur">
+  <div class="section-eyebrow">Systemdesign</div>
+  <h2 class="section-title">Vollständige Architektur</h2>
+  <p class="section-sub">Alle Komponenten auf einen Blick — von der Quelle bis zur Website.</p>
+
+  <div class="arch-flow">
+    <div class="arch-node">
+      <div class="arch-icon" style="background:rgba(41,151,255,0.1);border-color:rgba(41,151,255,0.25)">⏰</div>
+      <div class="arch-label">GitHub Actions</div>
+      <div class="arch-sub">Montag 08:00</div>
+    </div>
+    <div class="arch-arrow">→</div>
+    <div class="arch-node">
+      <div class="arch-icon" style="background:rgba(191,90,242,0.1);border-color:rgba(191,90,242,0.25)">📋</div>
+      <div class="arch-label">SKILL.md</div>
+      <div class="arch-sub">System-Prompt</div>
+    </div>
+    <div class="arch-arrow">→</div>
+    <div class="arch-node">
+      <div class="arch-icon" style="background:rgba(90,200,250,0.1);border-color:rgba(90,200,250,0.25)">🐍</div>
+      <div class="arch-label">Python Agent</div>
+      <div class="arch-sub">Agentic Loop</div>
+    </div>
+    <div class="arch-arrow">→</div>
+    <div class="arch-node">
+      <div class="arch-icon" style="background:rgba(48,209,88,0.1);border-color:rgba(48,209,88,0.25)">🌐</div>
+      <div class="arch-label">Web Search</div>
+      <div class="arch-sub">Anthropic API</div>
+    </div>
+    <div class="arch-arrow">→</div>
+    <div class="arch-node">
+      <div class="arch-icon" style="background:rgba(255,159,10,0.1);border-color:rgba(255,159,10,0.25)">📄</div>
+      <div class="arch-label">findings.json</div>
+      <div class="arch-sub">GitHub Repo</div>
+    </div>
+    <div class="arch-arrow">→</div>
+    <div class="arch-node">
+      <div class="arch-icon" style="background:rgba(255,69,58,0.1);border-color:rgba(255,69,58,0.25)">🔭</div>
+      <div class="arch-label">Website</div>
+      <div class="arch-sub">Auto-Load</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- Setup -->
+<section id="setup">
+  <div class="section-eyebrow">Einrichtung</div>
+  <h2 class="section-title">Setup Schritt für Schritt</h2>
+  <p class="section-sub">Einmalige Einrichtung — danach läuft alles vollautomatisch.</p>
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="step-num" style="background:rgba(41,151,255,0.15);color:var(--blue)">1</div>
+      <div class="step-body">
+        <h3>GitHub Repository erstellen</h3>
+        <p>Ein neues Repository auf github.com anlegen. Der Name wird Teil der Website-URL. Public Repository — GitHub Pages ist damit kostenlos verfügbar.</p>
+        <div class="step-code">github.com → <span class="string">New repository</span> → Name: <span class="string">"Tech-Scout"</span> → <span class="keyword">Public</span> → Create</div>
+        <div class="step-tags"><span class="step-tag">github.com</span><span class="step-tag">Public Repo</span></div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num" style="background:rgba(191,90,242,0.15);color:var(--purple)">2</div>
+      <div class="step-body">
+        <h3>Anthropic API Key erstellen</h3>
+        <p>Auf der Anthropic Console einen neuen API Key für den Tech Scout erstellen. Der Key wird nur einmal angezeigt — sofort kopieren.</p>
+        <div class="step-code">console.anthropic.com → <span class="string">API Keys</span> → <span class="keyword">+ Create Key</span>
+Name: <span class="string">"tech-scout"</span> → Key kopieren (<span class="comment">sk-ant-...</span>)</div>
+        <div class="step-tags"><span class="step-tag">console.anthropic.com</span><span class="step-tag">API Key</span><span class="step-tag">Credits kaufen</span></div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num" style="background:rgba(48,209,88,0.15);color:var(--green)">3</div>
+      <div class="step-body">
+        <h3>API Key als GitHub Secret hinterlegen</h3>
+        <p>Der API Key wird sicher als verschlüsseltes Secret im Repo gespeichert — nie im Code selbst. GitHub Actions kann ihn lesen, niemand sonst.</p>
+        <div class="step-code">Repo → <span class="string">Settings</span> → <span class="string">Secrets and variables</span> → <span class="string">Actions</span>
+→ <span class="keyword">New repository secret</span>
+Name:   <span class="string">ANTHROPIC_API_KEY</span>
+Secret: <span class="string">sk-ant-...</span> → <span class="keyword">Add secret</span></div>
+        <div class="step-tags"><span class="step-tag">Settings</span><span class="step-tag">Secrets</span><span class="step-tag">Encrypted</span></div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num" style="background:rgba(255,159,10,0.15);color:var(--orange)">4</div>
+      <div class="step-body">
+        <h3>Dateien ins Repository hochladen</h3>
+        <p>Die Repo-Struktur aufbauen. Alle 6 Dateien können per Drag & Drop in GitHub hochgeladen werden. Den Unterordner <code style="font-family:monospace;font-size:12px;color:var(--teal)">.github/workflows/</code> direkt in GitHub via "Create new file" anlegen.</p>
+        <div class="step-code"><span class="comment"># Repo-Struktur</span>
+Tech-Scout/
+├── <span class="string">tech_scout_agent.py</span>    <span class="comment"># Python Agent</span>
+├── <span class="string">SKILL.md</span>               <span class="comment"># Tech Scout Skill</span>
+├── <span class="string">index.html</span>             <span class="comment"># Website (GitHub Pages)</span>
+├── <span class="string">README.md</span>              <span class="comment"># Dokumentation</span>
+├── <span class="string">.gitignore</span>             <span class="comment"># Ausschlüsse</span>
+└── .github/workflows/
+    └── <span class="string">tech_scout.yml</span>     <span class="comment"># Automatisierung</span></div>
+        <div class="step-tags"><span class="step-tag">Upload</span><span class="step-tag">Drag & Drop</span><span class="step-tag">6 Dateien</span></div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num" style="background:rgba(90,200,250,0.15);color:var(--teal)">5</div>
+      <div class="step-body">
+        <h3>GitHub Pages aktivieren</h3>
+        <p>Mit einem Klick wird das Repository als Website veröffentlicht. Die URL basiert auf dem GitHub-Username und Repo-Namen.</p>
+        <div class="step-code">Repo → <span class="string">Settings</span> → <span class="string">Pages</span>
+Source: <span class="keyword">Deploy from a branch</span>
+Branch: <span class="string">main</span> / <span class="string">root</span> → <span class="keyword">Save</span>
+
+<span class="comment"># Website live unter:</span>
+<span class="string">https://username.github.io/Tech-Scout</span></div>
+        <div class="step-tags"><span class="step-tag">GitHub Pages</span><span class="step-tag">Kostenlos</span><span class="step-tag">Öffentliche URL</span></div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num" style="background:rgba(255,69,58,0.15);color:var(--red)">6</div>
+      <div class="step-body">
+        <h3>Einmalig manuell testen</h3>
+        <p>Vor dem ersten Montag einmal manuell triggern um sicherzustellen dass alles korrekt eingerichtet ist. Der Run dauert ca. 3-5 Minuten.</p>
+        <div class="step-code">Repo → <span class="string">Actions</span> → <span class="string">Tech Scout Weekly</span>
+→ <span class="keyword">Run workflow</span> → Limit: <span class="string">5</span> → <span class="keyword">Run workflow</span>
+
+<span class="comment"># Erwartetes Ergebnis im Log:</span>
+✓ SKILL.md geladen (7282 Zeichen)
+✓ Scout-Workflow abgeschlossen
+✓ 5 Findings strukturiert
+✓ findings.json erstellt</div>
+        <div class="step-tags"><span class="step-tag">Actions</span><span class="step-tag">Manueller Test</span><span class="step-tag">Log prüfen</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- Workflow -->
+<section id="workflow">
+  <div class="section-eyebrow">Betrieb</div>
+  <h2 class="section-title">Wöchentlicher Workflow</h2>
+  <p class="section-sub">
+    Nach dem einmaligen Setup läuft alles vollautomatisch. 
+    Die einzige Aktion: Website öffnen.
+  </p>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">Montag · 08:00 Uhr</div>
+      <div class="tl-title">GitHub Actions startet automatisch</div>
+      <div class="tl-desc">Der Cron-Job <code style="font-family:monospace;font-size:12px;color:var(--teal)">0 7 * * 1</code> (UTC = 08:00 CH) triggert den Workflow ohne manuellen Eingriff.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">08:00 – 08:01</div>
+      <div class="tl-title">Agent liest SKILL.md</div>
+      <div class="tl-desc">Das Python Script lädt <code style="font-family:monospace;font-size:12px;color:var(--teal)">SKILL.md</code> vom Repo und übergibt den Inhalt als System-Prompt — mit allen Quellen, Qualitätskriterien und dem 9-Schritt-Workflow.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">08:01 – 08:03</div>
+      <div class="tl-title">Web Search via Agentic Loop</div>
+      <div class="tl-desc">Claude Sonnet sucht auf arXiv, HuggingFace, GitHub Trending, Firmen-Blogs (Anthropic, OpenAI, DeepMind, Meta, Snowflake, dbt) und Community-Quellen nach den aktuellsten Findings.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">08:03 – 08:05</div>
+      <div class="tl-title">JSON Strukturierung & Speichern</div>
+      <div class="tl-desc">Ein zweiter API-Call (Claude Haiku) strukturiert die Findings als JSON. Deduplication via MD5-Hash verhindert Duplikate. Die Datei wird ins Repo committet.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Jederzeit danach</div>
+      <div class="tl-title">Website öffnen — fertig</div>
+      <div class="tl-desc">Die Website lädt <code style="font-family:monospace;font-size:12px;color:var(--teal)">tech_scout_findings.json</code> direkt von GitHub via Raw-URL. Keine Installation, kein Import — einfach den Browser-Favoriten öffnen.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- Dateien -->
+<section id="dateien">
+  <div style="display:flex;gap:12px;margin-bottom:48px;flex-wrap:wrap">
+    <a href="https://github.com/themanbetterknownasthemachine/Tech-Scout" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:10px 18px;color:var(--text);font-size:13px;font-weight:500;text-decoration:none;transition:border-color 0.2s" onmouseover="this.style.borderColor='rgba(255,255,255,0.25)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.12)'">
+      <span>⚙️</span> GitHub Repository
+    </a>
+    <a href="https://themanbetterknownasthemachine.github.io/Tech-Scout" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;gap:8px;background:rgba(41,151,255,0.1);border:1px solid rgba(41,151,255,0.3);border-radius:10px;padding:10px 18px;color:var(--blue);font-size:13px;font-weight:500;text-decoration:none;transition:border-color 0.2s" onmouseover="this.style.borderColor='rgba(41,151,255,0.5)'" onmouseout="this.style.borderColor='rgba(41,151,255,0.3)'">
+      <span>🔭</span> Tech Scout Website
+    </a>
+  </div>
+  <div class="section-eyebrow">Repository</div>
+  <h2 class="section-title">Alle Dateien erklärt</h2>
+  <p class="section-sub">Jede Datei hat eine klar definierte Rolle im System.</p>
+
+  <div class="file-grid">
+    <a class="file-card" href="https://github.com/themanbetterknownasthemachine/Tech-Scout/blob/main/tech_scout_agent.py" target="_blank" rel="noreferrer">
+      <div class="file-card-icon">🐍</div>
+      <div class="file-card-name">tech_scout_agent.py</div>
+      <div class="file-card-desc">Der Kern des Systems. Liest SKILL.md, führt den Agentic Loop mit Web Search aus, strukturiert die Findings als JSON und speichert sie. Läuft via GitHub Actions.</div>
+      <span class="file-card-badge" style="background:rgba(90,200,250,0.1);border:1px solid rgba(90,200,250,0.2);color:var(--teal)">Python · Anthropic SDK</span>
+    </a>
+    <a class="file-card" href="https://github.com/themanbetterknownasthemachine/Tech-Scout/blob/main/SKILL.md" target="_blank" rel="noreferrer">
+      <div class="file-card-icon">📋</div>
+      <div class="file-card-name">SKILL.md</div>
+      <div class="file-card-desc">Das "Gehirn" des Scouts. Definiert alle Quellen (arXiv, HuggingFace, GitHub, Blogs), Qualitätskriterien, Red Flags, Thought Leaders und den 9-Schritt-Workflow. Wird als System-Prompt übergeben.</div>
+      <span class="file-card-badge" style="background:rgba(191,90,242,0.1);border:1px solid rgba(191,90,242,0.2);color:var(--purple)">Markdown · System-Prompt</span>
+    </a>
+    <a class="file-card" href="https://themanbetterknownasthemachine.github.io/Tech-Scout" target="_blank" rel="noreferrer">
+      <div class="file-card-icon">🌐</div>
+      <div class="file-card-name">index.html</div>
+      <div class="file-card-desc">Die Tech Scout Website. Läuft auf GitHub Pages, lädt Findings automatisch von GitHub, bietet Feed-Ansicht, PoC Tracker, Filter und Detail-Drawer. Kein Backend, kein Build-Step.</div>
+      <span class="file-card-badge" style="background:rgba(41,151,255,0.1);border:1px solid rgba(41,151,255,0.2);color:var(--blue)">HTML · React (CDN)</span>
+    </a>
+    <a class="file-card" href="https://github.com/themanbetterknownasthemachine/Tech-Scout/blob/main/.github/workflows/tech_scout.yml" target="_blank" rel="noreferrer">
+      <div class="file-card-icon">⚙️</div>
+      <div class="file-card-name">.github/workflows/tech_scout.yml</div>
+      <div class="file-card-desc">Der Automatisierungs-Workflow. Startet jeden Montag 08:00, installiert Dependencies, führt den Agent aus, prüft den Output und committet die findings.json ins Repo.</div>
+      <span class="file-card-badge" style="background:rgba(48,209,88,0.1);border:1px solid rgba(48,209,88,0.2);color:var(--green)">YAML · Cron Schedule</span>
+    </a>
+    <a class="file-card" href="https://github.com/themanbetterknownasthemachine/Tech-Scout/blob/main/tech_scout_findings.json" target="_blank" rel="noreferrer">
+      <div class="file-card-icon">📄</div>
+      <div class="file-card-name">tech_scout_findings.json</div>
+      <div class="file-card-desc">Die Datenbasis. Wird automatisch vom Agent generiert und ins Repo committet. Die Website liest sie direkt per Raw-URL. Wächst wöchentlich um neue Findings.</div>
+      <span class="file-card-badge" style="background:rgba(255,159,10,0.1);border:1px solid rgba(255,159,10,0.2);color:var(--orange)">JSON · Auto-generiert</span>
+    </a>
+    <a class="file-card" href="https://github.com/themanbetterknownasthemachine/Tech-Scout/blob/main/README.md" target="_blank" rel="noreferrer">
+      <div class="file-card-icon">📖</div>
+      <div class="file-card-name">README.md</div>
+      <div class="file-card-desc">Projektdokumentation auf GitHub. Enthält Website-URL, Dateiübersicht, automatischen Workflow und Setup-Anleitung.</div>
+      <span class="file-card-badge" style="background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text-3)">Markdown · Doku</span>
+    </a>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- GitHub Actions -->
+<section id="actions">
+  <div class="section-eyebrow">Automatisierung</div>
+  <h2 class="section-title">Wie GitHub Actions funktioniert</h2>
+  <p class="section-sub">GitHub Actions ist ein kostenloser CI/CD-Dienst direkt in GitHub — kein externer Server nötig.</p>
+
+  <div class="concept-grid" style="margin-bottom:48px">
+    <div class="concept-card">
+      <h3>🖥️ Was ist GitHub Actions?</h3>
+      <p>Ein virtueller Ubuntu-Server der von GitHub bereitgestellt wird. Er startet auf Befehl, führt beliebige Befehle aus und wird danach wieder gelöscht. Kostenlos für Public Repositories.</p>
+      <div class="vs">Analogie</div>
+      <p style="color:var(--text-3);font-size:12px">Wie ein Mitarbeiter der jeden Montag morgen ins Büro kommt, eine Aufgabe erledigt und danach wieder geht.</p>
+    </div>
+    <div class="concept-card">
+      <h3>📅 Trigger: Wann startet es?</h3>
+      <p>Der Workflow wird durch einen <strong style="color:var(--text)">Cron-Schedule</strong> gestartet — eine Unix-Zeitangabe die definiert wann der Job läuft.</p>
+      <div class="vs">Unser Schedule</div>
+      <div style="font-family:monospace;font-size:13px;color:var(--teal);background:var(--bg-2);padding:10px 12px;border-radius:8px;margin-top:6px">
+        cron: "0 7 * * 1"<br/>
+        <span style="color:var(--text-3);font-size:11px"># Min Std Tag Monat Wochentag</span><br/>
+        <span style="color:var(--text-3);font-size:11px"># 0   7   *   *     1 = Montag 07:00 UTC = 08:00 CH</span>
+      </div>
+    </div>
+    <div class="concept-card">
+      <h3>🔐 Secrets: API Key sicher?</h3>
+      <p>Der API Key wird als <strong style="color:var(--text)">verschlüsseltes Secret</strong> gespeichert — nie im Code. GitHub entschlüsselt ihn erst beim Ausführen und gibt ihn als Umgebungsvariable weiter.</p>
+      <div class="vs">Sicherheit</div>
+      <p style="color:var(--text-3);font-size:12px">Niemand kann den Key lesen — auch nicht der Repo-Owner. Er wird nur zur Laufzeit injiziert.</p>
+    </div>
+  </div>
+
+  <!-- Actions Ablauf -->
+  <div style="background:var(--bg-1);border:1px solid var(--border);border-radius:20px;padding:32px;margin-bottom:48px">
+    <div style="font-size:13px;font-weight:600;color:var(--text-3);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:24px">Ablauf eines Runs — Schritt für Schritt</div>
+    <div style="display:flex;flex-direction:column;gap:3px">
+
+      <div style="display:grid;grid-template-columns:28px 1fr;gap:16px;align-items:start;padding:14px 16px;background:var(--bg-2);border-radius:10px 10px 3px 3px;border:1px solid var(--border)">
+        <span style="font-size:14px;margin-top:1px">⏰</span>
+        <div>
+          <div style="font-size:13px;font-weight:600;margin-bottom:3px">Trigger</div>
+          <div style="font-size:12px;color:var(--text-2)">Montag 08:00 Uhr (Schweizer Zeit) — GitHub startet automatisch einen frischen Ubuntu-Server.</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:28px 1fr;gap:16px;align-items:start;padding:14px 16px;background:var(--bg-2);border-radius:3px;border:1px solid var(--border)">
+        <span style="font-size:14px;margin-top:1px">📥</span>
+        <div>
+          <div style="font-size:13px;font-weight:600;margin-bottom:3px">Checkout Repository</div>
+          <div style="font-size:12px;color:var(--text-2)">Der Server lädt alle Repo-Dateien herunter — inkl. <code style="font-family:monospace;color:var(--teal);font-size:11px">tech_scout_agent.py</code> und <code style="font-family:monospace;color:var(--teal);font-size:11px">SKILL.md</code>.</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:28px 1fr;gap:16px;align-items:start;padding:14px 16px;background:var(--bg-2);border-radius:3px;border:1px solid var(--border)">
+        <span style="font-size:14px;margin-top:1px">🐍</span>
+        <div>
+          <div style="font-size:13px;font-weight:600;margin-bottom:3px">Python Setup & Dependencies</div>
+          <div style="font-size:12px;color:var(--text-2)">Python 3.12 wird installiert, dann <code style="font-family:monospace;color:var(--teal);font-size:11px">pip install anthropic</code> ausgeführt.</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:28px 1fr;gap:16px;align-items:start;padding:14px 16px;background:var(--bg-2);border-radius:3px;border:1px solid var(--border)">
+        <span style="font-size:14px;margin-top:1px">🔭</span>
+        <div>
+          <div style="font-size:13px;font-weight:600;margin-bottom:3px">Tech Scout ausführen</div>
+          <div style="font-size:12px;color:var(--text-2)">Der Agent liest SKILL.md, ruft die Anthropic API auf, führt Web Search durch und speichert <code style="font-family:monospace;color:var(--teal);font-size:11px">tech_scout_findings.json</code>. Der API Key wird aus den Secrets als Umgebungsvariable injiziert.</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:28px 1fr;gap:16px;align-items:start;padding:14px 16px;background:var(--bg-2);border-radius:3px;border:1px solid var(--border)">
+        <span style="font-size:14px;margin-top:1px">📊</span>
+        <div>
+          <div style="font-size:13px;font-weight:600;margin-bottom:3px">Output prüfen</div>
+          <div style="font-size:12px;color:var(--text-2)">Der Workflow prüft ob <code style="font-family:monospace;color:var(--teal);font-size:11px">findings.json</code> erstellt wurde. Falls nicht → Fehler-Meldung im Log, kein Commit.</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:28px 1fr;gap:16px;align-items:start;padding:14px 16px;background:var(--bg-2);border-radius:3px 3px 10px 10px;border:1px solid var(--border)">
+        <span style="font-size:14px;margin-top:1px">💾</span>
+        <div>
+          <div style="font-size:13px;font-weight:600;margin-bottom:3px">Commit & Push ins Repo</div>
+          <div style="font-size:12px;color:var(--text-2)">Die aktualisierte <code style="font-family:monospace;color:var(--teal);font-size:11px">findings.json</code> wird automatisch committet. Die Website liest sie beim nächsten Öffnen direkt von GitHub.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- YML Erklärung -->
+  <div style="background:var(--bg-1);border:1px solid var(--border);border-radius:20px;padding:32px">
+    <div style="font-size:13px;font-weight:600;color:var(--text-3);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:20px">Das YML File erklärt</div>
+    <div style="font-family:'SF Mono','Menlo',monospace;font-size:12px;line-height:1.9;color:var(--text-2)">
+      <div><span style="color:var(--text-3)"># Wann soll der Workflow starten?</span></div>
+      <div><span style="color:var(--purple)">on:</span></div>
+      <div>&nbsp;&nbsp;<span style="color:var(--purple)">schedule:</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;- <span style="color:var(--green)">cron: "0 7 * * 1"</span> &nbsp;<span style="color:var(--text-3)"># Jeden Montag 08:00 CH</span></div>
+      <div>&nbsp;&nbsp;<span style="color:var(--purple)">workflow_dispatch:</span> &nbsp;<span style="color:var(--text-3)"># Auch manuell startbar</span></div>
+      <br/>
+      <div><span style="color:var(--text-3)"># Was soll ausgeführt werden?</span></div>
+      <div><span style="color:var(--purple)">jobs:</span></div>
+      <div>&nbsp;&nbsp;<span style="color:var(--purple)">scout:</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--purple)">runs-on:</span> <span style="color:var(--green)">ubuntu-latest</span> &nbsp;<span style="color:var(--text-3)"># Frischer Ubuntu-Server</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--purple)">permissions:</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--purple)">contents:</span> <span style="color:var(--green)">write</span> &nbsp;<span style="color:var(--text-3)"># Darf ins Repo committen</span></div>
+      <br/>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--purple)">steps:</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span style="color:var(--purple)">name:</span> <span style="color:var(--green)">Python Setup</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--purple)">uses:</span> <span style="color:var(--teal)">actions/setup-python@v5</span></div>
+      <br/>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span style="color:var(--purple)">name:</span> <span style="color:var(--green)">Tech Scout ausführen</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--purple)">run:</span> <span style="color:var(--green)">python tech_scout_agent.py</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--purple)">env:</span></div>
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--purple)">ANTHROPIC_API_KEY:</span> <span style="color:var(--orange)">${{ secrets.ANTHROPIC_API_KEY }}</span> &nbsp;<span style="color:var(--text-3)"># Secret wird injiziert</span></div>
+    </div>
+  </div>
+
+</section>
+
+<hr class="divider"/>
+
+<!-- Kosten -->
+<section>
+  <div class="section-eyebrow">Kosten & Aufwand</div>
+  <h2 class="section-title">Was kostet das System?</h2>
+  <p class="section-sub">Einmalige Einrichtung, minimale laufende Kosten.</p>
+  <div class="cost-grid">
+    <div class="cost-card">
+      <div class="amount">~$0.10</div>
+      <div class="label">Pro wöchentlichem Run<br/>(Anthropic API)</div>
+    </div>
+    <div class="cost-card">
+      <div class="amount" style="color:var(--blue)">$0</div>
+      <div class="label">GitHub Actions<br/>(kostenlos für Public Repos)</div>
+    </div>
+    <div class="cost-card">
+      <div class="amount" style="color:var(--blue)">$0</div>
+      <div class="label">GitHub Pages<br/>(kostenlos für Public Repos)</div>
+    </div>
+    <div class="cost-card">
+      <div class="amount" style="color:var(--orange)">~2h</div>
+      <div class="label">Einmalige Einrichtung<br/>(Setup & Test)</div>
+    </div>
+    <div class="cost-card">
+      <div class="amount" style="color:var(--green)">0 min</div>
+      <div class="label">Wöchentlicher Aufwand<br/>(vollautomatisch)</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">🔭</div>
+  <p>
+    <strong>Tech Scout — Pistor BI & ML</strong><br/>
+    Gebaut von <strong>Toni Bühlmann</strong> mit <a href="https://www.anthropic.com">Anthropic Claude</a> · Deployed auf <a href="https://pages.github.com">GitHub Pages</a><br/>
+    <a href="https://github.com/themanbetterknownasthemachine/Tech-Scout" style="color:var(--text-3);font-size:12px;text-decoration:none" target="_blank">⚙️ GitHub Repository</a> &nbsp;·&nbsp; <a href="https://themanbetterknownasthemachine.github.io/Tech-Scout" style="color:var(--text-3);font-size:12px;text-decoration:none" target="_blank">🔭 Tech Scout Website</a>
+  </p>
+</footer>
+
+
+<script>
+  // Scroll Reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll(
+    '.file-card, .concept-card, .cost-card, .step, .tl-item'
+  ).forEach(el => {
+    el.classList.add('reveal');
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>

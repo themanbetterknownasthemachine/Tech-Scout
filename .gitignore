@@ -1,0 +1,13 @@
+# Kein API Key
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
