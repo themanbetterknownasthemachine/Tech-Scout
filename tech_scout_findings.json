@@ -1,5 +1,115 @@
 [
   {
+    "id": "64034a0c76c0",
+    "title": "Snowflake Semantic View Autopilot (SVA) — GA + Cortex Analyst mit Semantic Views",
+    "source": "https://www.snowflake.com/en/blog/semantic-view-autopilot/",
+    "type": "Tool",
+    "summary": "Snowflake hat die allgemeine Verfügbarkeit des Semantic View Autopilot angekündigt, das automatisch Semantic Views aus bestehenden Queries generiert und Natural-Language-Analytics durch Cortex Analyst verbessert. SVA nutzt Clustering-Algorithmen zur Identifikation konsistenter Business-Logik und ermöglicht es Geschäftsnutzern, per Natural Language auf KPIs wie Liefergenauigkeit und Lagerumschlag zuzugreifen.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Sofort auf bestehendem Snowflake Data Vault 2.0 einsetzbar; verbessert Accuracy von Cortex Analyst durch reichhaltige Metadaten und verifizierte Beispiele; Power BI-Integration ermöglicht konsistente Metriken.",
+    "category": "Business Intelligence",
+    "tags": [
+      "snowflake",
+      "semantic-layer",
+      "text-to-sql",
+      "cortex-analyst",
+      "natural-language-analytics"
+    ],
+    "codeUrl": "https://www.snowflake.com/en/developers/guides/snowflake-semantic-view/",
+    "source_org": "Snowflake",
+    "date": "2026-03-20",
+    "scouted_at": "2026-03-20T13:15:05.254972"
+  },
+  {
+    "id": "d7b278f7edf7",
+    "title": "Databricks Genie Code — Autonomer KI-Agent für Data Science, Data Engineering & Analytics",
+    "source": "https://www.databricks.com/blog/introducing-genie-code",
+    "type": "Tool",
+    "summary": "Genie Code ist ein spezialisierter KI-Agent für Datenarbeit, der die Erfolgsrate bei Data-Science-Aufgaben verdoppelt und autonom Data-Pipelines wartet, Fehler triagiert und Anomalien untersucht. Der Agent kann vollständige Forecasting-Pipelines durchlaufen: Modelltraining, Vergleich und Hyperparameter-Optimierung über Metriken wie RMSE.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Paradigma-Verschiebung zu Agentic Data Work beobachten; Architektur-Muster (Semantic-Context als Schlüssel zu Accuracy) direkt auf Snowflake Cortex Code übertragbar; Verdopplung der Erfolgsrate auf realen Tasks (32.1% auf 77.1%).",
+    "category": "Data Engineering",
+    "tags": [
+      "agentic-data-work",
+      "data-science-agent",
+      "databricks",
+      "mlops",
+      "forecasting-automation"
+    ],
+    "codeUrl": "https://docs.databricks.com/aws/en/notebooks/ds-agent",
+    "source_org": "Databricks",
+    "date": "2026-03-20",
+    "scouted_at": "2026-03-20T13:15:05.254990"
+  },
+  {
+    "id": "9dfef22bc4e7",
+    "title": "Both Ends Count! Just How Good are LLM Agents at Text-to-Big SQL?",
+    "source": "https://arxiv.org/abs/2602.21480",
+    "type": "Paper",
+    "summary": "Das Paper adressiert die Lücke zwischen Text-to-SQL- und Big-Data-Benchmarking, indem es neue Metriken (VES, VCES) einführt, die Execution-Effizienz und Kosten bei skalierter Datenabfrage berücksichtigen. Syntaktisch korrektes SQL kann bei Big Data trotzdem unpraktikabel sein, wenn es unnötige Shuffles oder Full-Table-Scans auslöst.",
+    "relevance": "Mittel",
+    "poc": false,
+    "pocNote": "Methodisch wichtig für Evaluation von Cortex-Analyst-Deployments; neue Metriken sollten als Evaluationsframework für Semantic-Views-PoCs dienen; Kosten- und Performance-Optimierung durch spezialisierte Modelle.",
+    "category": "Data Engineering",
+    "tags": [
+      "text-to-sql",
+      "big-data",
+      "evaluation-metrics",
+      "llm-agents",
+      "cost-optimization"
+    ],
+    "codeUrl": null,
+    "source_org": "Universität (arXiv)",
+    "date": "2026-03-20",
+    "scouted_at": "2026-03-20T13:15:05.254996"
+  },
+  {
+    "id": "7925c9a75a1e",
+    "title": "Project SnowWork — Powering the Era of the Agentic Enterprise",
+    "source": "https://www.snowflake.com/en/blog/agentic-enterprise-control-plane/",
+    "type": "Blog",
+    "summary": "Snowflake präsentiert eine koordinierende Control-Plane für Enterprise-KI-Agents, die über verschiedene Abteilungen hinweg mit geteiltem Kontext und Governance operieren. Die Architektur integriert Enterprise Data, AI Models als Reasoning Engines und eine zentrale Koordinationsschicht für Governance und Orchestration.",
+    "relevance": "Mittel",
+    "poc": false,
+    "pocNote": "Strategisch wichtig, aber noch in Research Preview; Logistik-Szenario: Agent erkennt Forecast-Abweichungen, analysiert Ursachen in DV-2.0-Satellites und gibt automatische Empfehlungen an Disposition.",
+    "category": "Emerging Tech",
+    "tags": [
+      "snowflake",
+      "agentic-enterprise",
+      "control-plane",
+      "governance",
+      "orchestration"
+    ],
+    "codeUrl": null,
+    "source_org": "Snowflake",
+    "date": "2026-03-20",
+    "scouted_at": "2026-03-20T13:15:05.255002"
+  },
+  {
+    "id": "a016d3af16ff",
+    "title": "Analyzing Shapley Additive Explanations to Understand Anomaly Detection Algorithm Behaviors and Their Complementarity",
+    "source": "https://arxiv.org/list/cs.LG/recent",
+    "type": "Paper",
+    "summary": "Das Paper analysiert SHAP-Werte zur Erklärung von Anomaly-Detection-Algorithmen und deren Komplementarität. Es bietet methodische Erkenntnisse für die Interpretierbarkeit von Anomaly-Modellen im Logistik- und Forecasting-Kontext.",
+    "relevance": "Mittel",
+    "poc": false,
+    "pocNote": "Erkenntnisse anwendbar auf Anomaly-Detection in Supply-Chain-Daten; SHAP-basierte Explainability verbessert Transparenz von LightGBM- und NeuralForecast-Modellen.",
+    "category": "Data Engineering",
+    "tags": [
+      "shap",
+      "anomaly-detection",
+      "explainability",
+      "interpretability",
+      "machine-learning"
+    ],
+    "codeUrl": null,
+    "source_org": "ISAE-SUPAERO Toulouse (Peer-reviewed — IDA 2026)",
+    "date": "2026-03-20",
+    "scouted_at": "2026-03-20T13:15:05.255006"
+  },
+  {
     "id": "34b7d5504c9b",
     "title": "Cortex Code CLI — AI-Coding-Agent mit Expansion auf dbt & Airflow",
     "source": "https://www.snowflake.com/en/blog/cortex-code-cli-expands-support/",
