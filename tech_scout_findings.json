@@ -1,5 +1,118 @@
 [
   {
+    "id": "ee96b589a705",
+    "title": "DUET: Dual Clustering Enhanced Multivariate Time Series Forecasting",
+    "source": "https://arxiv.org/abs/2412.10859",
+    "type": "Paper",
+    "summary": "DUET ist ein Framework für multivariate Zeitreihenprognosen mit Dual-Clustering auf temporalen und Channel-Dimensionen. Es nutzt Temporal Clustering Module (TCM) für heterogene temporale Muster und Channel Clustering Module (CCM) für Inter-Channel-Beziehungen im Frequenzbereich. DUET wurde als Most Influential Paper bei KDD 2025 ausgezeichnet und zeigt State-of-the-Art-Performance auf 25 realen Datensätzen.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Adressiert exakt heterogene temporale Muster (Saisonalität, Aktionspeaks, Feiertage) und multi-dimensionale Abhängigkeiten in Lebensmittellogistik. Python-basiert, reproduzierbar auf GitHub, evaluierbar als Ensemble-Modell neben NeuralForecast und LightGBM.",
+    "category": "Operative Effizienz",
+    "tags": [
+      "time-series",
+      "forecasting",
+      "clustering",
+      "multivariate",
+      "KDD",
+      "SOTA"
+    ],
+    "codeUrl": "https://github.com/decisionintelligence/DUET",
+    "source_org": "Aalborg University / East China Normal University",
+    "date": "2026-03-20",
+    "scouted_at": "2026-03-20T13:43:32.816482"
+  },
+  {
+    "id": "14f4aa3bbd47",
+    "title": "Snowflake ML Experiments + ArcticTraining: Integriertes ML-Lifecycle-Management",
+    "source": "https://docs.snowflake.com/en/release-notes/2026/other/2026-02-19-ml-experiments-ga",
+    "type": "Tool",
+    "summary": "Snowflake ML Experiments (GA seit 19. Februar 2026) ermöglicht organisierte Evaluierungen von Modelltrainings-Ergebnissen direkt auf Snowflake-Daten. ArcticTraining bietet Framework zum vereinfachten Post-Training von LLMs mit modularen Designs und integrierten Pipelines. Zusammen bilden sie End-to-End-ML-Lifecycle ohne Datenbewegung.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "No-Brainer für bestehendes Snowflake-Haus: Experiments, ML Jobs, Model Registry, ML Observability und ML Lineage direkt auf govvernten Daten. LightGBM/scikit-learn-Modelle können ohne Daten-Extraktion trainiert, versioniert und verglichen werden mit voller Data-Vault-2.0-Lineage.",
+    "category": "Data Engineering",
+    "tags": [
+      "snowflake",
+      "MLOps",
+      "experiment-tracking",
+      "model-registry",
+      "fine-tuning",
+      "LLM"
+    ],
+    "codeUrl": "https://github.com/snowflakedb/ArcticTraining",
+    "source_org": "Snowflake",
+    "date": "2026-03-20",
+    "scouted_at": "2026-03-20T13:43:32.816498"
+  },
+  {
+    "id": "be28e4042ba6",
+    "title": "Claude Code Updates: MCP-Elicitation, Hooks-System & Opus 4.6 mit 1M Context",
+    "source": "https://releasebot.io/updates/anthropic/claude-code",
+    "type": "Tool",
+    "summary": "Anthropic hat Claude Code im März 2026 mit MCP-Elicitation-Support, neuen Hooks, Startup-Name-Flag und PostCompact-Hook aktualisiert. Opus 4.6 bietet standardmäßig 1M Context Window, Memory-Freshness-Timestamps und verbesserte Coding-Fähigkeiten sowie 14,5-Stunden-Aufgaben-Fertigstellung — das längste aller AI-Modelle.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "MCP-Hooks ermöglichen Integration von Snowflake, Airflow und Power BI als Tool-Schnittstellen. 1M-Context-Window erlaubt Analyse kompletter Data-Vault-Schemata und Forecasting-Pipelines in einer Session. Memory-Timestamps verbessern Kontextstabilität bei langfristigen Projekten.",
+    "category": "Business Intelligence",
+    "tags": [
+      "claude-code",
+      "agentic-coding",
+      "MCP",
+      "hooks",
+      "context-window",
+      "productivity"
+    ],
+    "codeUrl": "https://www.npmjs.com/package/claude",
+    "source_org": "Anthropic",
+    "date": "2026-03-20",
+    "scouted_at": "2026-03-20T13:43:32.816520"
+  },
+  {
+    "id": "897a72f371a5",
+    "title": "DS-STAR: Googles State-of-the-Art Data Science Agent",
+    "source": "https://research.google/blog/ds-star-a-state-of-the-art-versatile-data-science-agent/",
+    "type": "Blog",
+    "summary": "Google Research hat DS-STAR vorgestellt, einen Agenten der autonom Data-Science-Probleme löst. Das Framework kombiniert automatische Analyse diverser Dateiformate mit iterativem sequenziellem Planen und LLM-basiertem Verifikationssystem. DS-STAR etabliert State-of-the-Art auf DABStep, KramaBench und DA-Code Benchmarks.",
+    "relevance": "Mittel",
+    "poc": true,
+    "pocNote": "Kombiniert mit Claude Code könnten Data-Science-Agents repetitive EDA-, Feature-Engineering- und Modellselektionsaufgaben automatisieren. TML-bench validiert praktischen Wert für tabellarische Daten wie Logistikdaten, aber Code nicht öffentlich verfügbar.",
+    "category": "Emerging Tech",
+    "tags": [
+      "data-science-agent",
+      "LLM",
+      "automation",
+      "benchmark",
+      "agentic-AI"
+    ],
+    "codeUrl": null,
+    "source_org": "Google Research",
+    "date": "2026-03-20",
+    "scouted_at": "2026-03-20T13:43:32.816504"
+  },
+  {
+    "id": "b693cbcadb7e",
+    "title": "StaTS: Spectral Diffusion für probabilistisches Time-Series-Forecasting",
+    "source": "https://arxiv.org/abs/2603.00037",
+    "type": "Paper",
+    "summary": "StaTS ist ein Diffusionsmodell für probabilistisches Zeitreihen-Forecasting mit Spectral Trajectory Scheduler (STS) für datenadaptive Noise-Schedules und Frequency Guided Denoiser (FGD) für spektrale Verzerrungen. Das Modell zeigt konsistente Verbesserungen auf realen Benchmarks mit weniger Sampling-Schritten.",
+    "relevance": "Mittel",
+    "poc": false,
+    "pocNote": "Probabilistisches Forecasting ist hochrelevant für Lebensmittellogistik, aber Diffusionsmodelle sind rechenintensiver und noch nicht produktionsreif in Snowflake. Geeignet als Forschungs-PoC für High-Impact-SKUs.",
+    "category": "Operative Effizienz",
+    "tags": [
+      "diffusion-model",
+      "time-series",
+      "probabilistic-forecasting",
+      "spectral",
+      "frequency-domain"
+    ],
+    "codeUrl": null,
+    "source_org": "University of Science and Technology of China",
+    "date": "2026-03-20",
+    "scouted_at": "2026-03-20T13:43:32.816513"
+  },
+  {
     "id": "64034a0c76c0",
     "title": "Snowflake Semantic View Autopilot (SVA) — GA + Cortex Analyst mit Semantic Views",
     "source": "https://www.snowflake.com/en/blog/semantic-view-autopilot/",
