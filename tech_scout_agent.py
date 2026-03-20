@@ -34,8 +34,10 @@ import anthropic
 
 # ── Konfiguration ──────────────────────────────────────────────────────────────
 MODEL          = "claude-opus-4-6"
+MODEL_FORMAT   = "claude-haiku-4-5-20251001"  # Leichteres Modell für JSON-Konvertierung
 DEFAULT_OUTPUT = Path("tech_scout_findings.json")
 MAX_TURNS      = 12
+MAX_FINDINGS_CHARS = 10000  # Zeichenlimit für Findings-Text an Formatter
 
 # ── Vollständiger Skill-Prompt ─────────────────────────────────────────────────
 def build_skill_prompt(focus: str, kategorie: str, limit: int, today: str) -> str:
@@ -339,19 +341,38 @@ def main():
 
     # ── SCHRITT 6-9: JSON strukturieren ───────────────────────────────────────
     print("── Schritt 6-9: Filtern, Formatieren, Priorisieren ──")
-    fmt_prompt = FORMAT_PROMPT.format(findings_text=search_result)
 
-    try:
-        fmt_res = client.messages.create(
-            model=MODEL, max_tokens=2000,
-            messages=[{"role": "user", "content": fmt_prompt}]
-        )
-        json_text = "".join(
-            b.text for b in fmt_res.content if hasattr(b, "text")
-        ).strip()
-        raw = parse_json_array(json_text)
-    except Exception as e:
-        print(f"❌ JSON-Parsing Fehler: {e}")
+    # Findings-Text kürzen um Rate-Limit zu vermeiden
+    findings_text = search_result
+    if len(findings_text) > MAX_FINDINGS_CHARS:
+        findings_text = findings_text[:MAX_FINDINGS_CHARS] + "\n\n[Text gekürzt]"
+        print(f"  ℹ️  Findings-Text gekürzt auf {MAX_FINDINGS_CHARS} Zeichen")
+
+    fmt_prompt = FORMAT_PROMPT.format(findings_text=findings_text)
+
+    # Retry mit exponential backoff bei Rate-Limit
+    raw = None
+    for attempt in range(4):
+        try:
+            fmt_res = client.messages.create(
+                model=MODEL_FORMAT, max_tokens=3000,
+                messages=[{"role": "user", "content": fmt_prompt}]
+            )
+            json_text = "".join(
+                b.text for b in fmt_res.content if hasattr(b, "text")
+            ).strip()
+            raw = parse_json_array(json_text)
+            break
+        except anthropic.RateLimitError as e:
+            wait = 30 * (attempt + 1)
+            print(f"  ⏳ Rate-Limit — warte {wait}s (Versuch {attempt+1}/4)...")
+            time.sleep(wait)
+        except Exception as e:
+            print(f"❌ JSON-Parsing Fehler: {e}")
+            return
+
+    if raw is None:
+        print("❌ Rate-Limit nach 4 Versuchen — bitte später erneut versuchen")
         return
 
     new_findings = [normalize(f, today) for f in raw]
