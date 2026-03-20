@@ -1,0 +1,116 @@
+[
+  {
+    "id": "34b7d5504c9b",
+    "title": "Cortex Code CLI — AI-Coding-Agent mit Expansion auf dbt & Airflow",
+    "source": "https://www.snowflake.com/en/blog/cortex-code-cli-expands-support/",
+    "type": "Tool",
+    "summary": "Snowflake kündigte am 23. Februar 2026 die GA von Cortex Code CLI an, einem AI-Coding-Agent, der nun dbt und Apache Airflow nativ unterstützt. Der Agent ermöglicht es Entwicklern, Transformationen und Orchestrierungs-Workflows schneller zu bauen und mit vollem Kontext zu debuggen. Ein neues eigenständiges Subscription-Modell funktioniert unabhängig vom Snowflake-Compute-Verbrauch.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Direkt auf bestehende Airflow-DAGs und Data Vault 2.0 dbt-Modelle anwendbar. Debugging-Zyklen und Pipeline-Optimierung gegen Claude Code benchmarkbar.",
+    "category": "Data Engineering",
+    "tags": [
+      "snowflake",
+      "cortex-code",
+      "airflow",
+      "dbt",
+      "ai-coding-agent",
+      "data-engineering"
+    ],
+    "codeUrl": null,
+    "source_org": "Snowflake",
+    "date": "2026-03-20",
+    "scouted_at": "2026-03-20T12:51:49.156540"
+  },
+  {
+    "id": "11a4cb0a2232",
+    "title": "StaTS: Spectral Trajectory Schedule Learning for Adaptive Time Series Forecasting",
+    "source": "https://arxiv.org/abs/2603.00037",
+    "type": "Paper",
+    "summary": "StaTS präsentiert ein Diffusion-Modell mit lernbarem Noise-Schedule für probabilistisches Time-Series-Forecasting. Das Modell adressiert die Probleme fester Noise-Schedules durch einen Spectral Trajectory Scheduler (STS) und Frequency Guided Denoiser (FGD), die spektrale Degradation berücksichtigen. Experimente zeigen konsistente Verbesserungen bei weniger Sampling-Schritten mit verfügbarem Code.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Hochrelevant für Demand Forecasting verderblicher Ware. Probabilistische Forecasts liefern Unsicherheitsintervalle für Bestandsplanung. Vergleich gegen NeuralForecast und LightGBM erforderlich. Preprint-Status und höherer Implementierungsaufwand beachten.",
+    "category": "Business Intelligence",
+    "tags": [
+      "diffusion-models",
+      "time-series",
+      "probabilistic-forecasting",
+      "noise-schedule",
+      "spectral"
+    ],
+    "codeUrl": "https://arxiv.org/abs/2603.00037",
+    "source_org": "Universität (Jintao Zhang et al.)",
+    "date": "2026-03-20",
+    "scouted_at": "2026-03-20T12:51:49.156556"
+  },
+  {
+    "id": "3c797f0e1e40",
+    "title": "Cortex Agent Evaluations — Monitor, Measure and Improve Your AI Agents",
+    "source": "https://www.snowflake.com/en/engineering-blog/cortex-agent-evaluations/",
+    "type": "Tool",
+    "summary": "Snowflake veröffentlichte am 13. März 2026 Cortex Agent Evaluations (GA), ein Framework zur systematischen Bewertung von AI Agents basierend auf dem Agent GPA (Goal-Plan-Action) Framework. Spezialisierte LLM-Richter identifizieren Fehler mit 95% Genauigkeit und erreichen 82% Übereinstimmung mit menschlicher Bewertung. Das Framework integriert fünf Evaluationsmetriken und bleibt vollständig innerhalb der Snowflake-Sicherheitsgrenze.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Direkt einsetzbar für Evaluation von Snowflake Intelligence Agents für Natural-Language-BI. Systematic Debugging von Text-to-SQL-Agenten für Power-BI-ähnliche Self-Service-Analytics.",
+    "category": "Business Intelligence",
+    "tags": [
+      "agent-evaluation",
+      "snowflake",
+      "gpa-framework",
+      "llm-judge",
+      "observability",
+      "mlops"
+    ],
+    "codeUrl": null,
+    "source_org": "Snowflake AI Research",
+    "date": "2026-03-20",
+    "scouted_at": "2026-03-20T12:51:49.156563"
+  },
+  {
+    "id": "a2084155ca14",
+    "title": "Unsloth Studio — Local No-Code Interface für High-Performance LLM Fine-Tuning",
+    "source": "https://github.com/unslothai/unsloth",
+    "type": "Tool",
+    "summary": "Unsloth AI veröffentlichte Unsloth Studio, eine Open-Source No-Code-Oberfläche für lokales LLM Fine-Tuning mit speziellen Triton-Kerneln für 2x schnelleres Training und 70% weniger VRAM-Verbrauch. Das Februar-2026-Release brachte 12x schnelleres MoE-Training und Embedding-Model-Support. Mit 53.9K GitHub Stars positioniert sich Unsloth als führende Lösung für Speed- und VRAM-Optimierung.",
+    "relevance": "Mittel",
+    "poc": true,
+    "pocNote": "Local-First-Ansatz erfüllt Datenschutzanforderungen für Schweizer Regulierung. Einsatz für Fine-Tuning spezialisierter Text-to-SQL oder Klassifizierungs-Modelle auf Logistik-Daten. Embedding-Modell-Training kann RAG-Performance 1.8-3.3x verbessern.",
+    "category": "Emerging Tech",
+    "tags": [
+      "llm-finetuning",
+      "local-first",
+      "no-code",
+      "lora",
+      "qlora",
+      "vram-optimization",
+      "open-source"
+    ],
+    "codeUrl": "https://github.com/unslothai/unsloth",
+    "source_org": "Unsloth AI (Y Combinator)",
+    "date": "2026-03-20",
+    "scouted_at": "2026-03-20T12:51:49.156571"
+  },
+  {
+    "id": "5bfc14aeee88",
+    "title": "Semantic-Enhanced Time-Series Forecasting via Large Language Models (SE-LLM)",
+    "source": "https://arxiv.org/abs/2508.07697",
+    "type": "Paper",
+    "summary": "SE-LLM adressiert die Modalitätslücke zwischen linguistischen Wissensstrukturen und Zeitreihendaten durch Einbettung von Periodizität und anomalen Charakteristiken in den semantischen Raum. Das Modell wurde für ICLR 2026 akzeptiert und zeigt verbesserte Generalisierung durch semantische Alignment auf mehreren Forecasting-Benchmarks.",
+    "relevance": "Mittel",
+    "poc": false,
+    "pocNote": "",
+    "category": "Business Intelligence",
+    "tags": [
+      "llm-forecasting",
+      "time-series",
+      "semantic-alignment",
+      "iclr-2026",
+      "foundation-models"
+    ],
+    "codeUrl": "https://arxiv.org/abs/2508.07697",
+    "source_org": "Universität (Hao Liu et al.)",
+    "date": "2026-03-20",
+    "scouted_at": "2026-03-20T12:51:49.156575"
+  }
+]
