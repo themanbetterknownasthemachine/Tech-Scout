@@ -1,5 +1,113 @@
 [
   {
+    "id": "a7e3f7b158a7",
+    "title": "Snowflake Cortex Code CLI — AI Coding Agent mit dbt & Airflow Support",
+    "source": "https://www.snowflake.com/en/news/press-releases/snowflake-cortex-code-expands-towards-supporting-any-data-anywhere/",
+    "type": "Tool",
+    "summary": "Snowflake hat Cortex Code CLI erweitert und unterstützt nun dbt sowie Apache Airflow nativ (GA). Der AI-Coding-Agent bietet kontextbewusste Assistenz für Data-Engineering-Systeme mit über 500 Stunden Zeitersparnis in nur 20 Tagen. Passt perfekt auf den bestehenden Stack und kann Data Vault 2.0-Pipelines debuggen, Airflow-DAGs optimieren und SQL-Queries für BI-Reports generieren.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Extrem hoch — direkte Integration mit Snowflake, Airflow und dbt. Kann Data Vault 2.0-Pipelines debuggen, Airflow-DAGs verwalten und SQL-Queries für BI-Reports generieren.",
+    "category": "Data Engineering",
+    "tags": [
+      "Snowflake",
+      "Airflow",
+      "dbt",
+      "CodingAgent",
+      "DataEngineering"
+    ],
+    "codeUrl": null,
+    "source_org": "Snowflake Inc.",
+    "date": "2026-03-23",
+    "scouted_at": "2026-03-23T08:04:45.066181"
+  },
+  {
+    "id": "b4e39456a345",
+    "title": "TimeGPT-2 / TimeGPT-2.1 — Modulare Foundation-Model-Familie für Zeitreihen",
+    "source": "https://www.nixtla.io/blog/timegpt-2-announcement",
+    "type": "Tool",
+    "summary": "Nixtla präsentiert TimeGPT-2 mit modularer Modellfamilie (Mini, Standard, Pro) für Enterprise-Forecasting mit bis zu 60% Genauigkeitsverbesserung. TimeGPT 2.1 unterstützt multivariate Vorhersagen, On-Premise und Self-Hosted-Deployments mit MCP-Integration und Snowflake-Support. Zero-Shot-Forecasting für neue Produktreihen ohne Training möglich.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Sehr hoch — direkte Anwendung auf Demand Forecasting. Zero-Shot-Forecasting für neue Produkte/Standorte, Integration mit Snowflake, Benchmark gegen bestehende LightGBM/NeuralForecast-Modelle möglich.",
+    "category": "Operative Effizienz",
+    "tags": [
+      "TimeSeriesForecasting",
+      "FoundationModel",
+      "DemandPlanning",
+      "Snowflake"
+    ],
+    "codeUrl": "https://github.com/Nixtla/nixtla",
+    "source_org": "Nixtla",
+    "date": "2026-03-23",
+    "scouted_at": "2026-03-23T08:04:45.066199"
+  },
+  {
+    "id": "63caa0812069",
+    "title": "Rethinking the Role of LLMs in Time Series Forecasting",
+    "source": "https://arxiv.org/abs/2602.14744",
+    "type": "Paper",
+    "summary": "Umfassendste LLM4TSF-Studie mit 8 Milliarden Beobachtungen zeigt, dass LLMs tatsächlich die Forecasting-Leistung verbessern. Pre-Alignment-Methoden übertreffen Post-Alignment in über 90% der Aufgaben. Pretraining wertvoll bei Verteilungsverschiebungen, Architektur stärker bei komplexen temporalen Dynamiken.",
+    "relevance": "Hoch",
+    "poc": false,
+    "pocNote": "Strategisch relevant für Entscheidung, ob LLMs (Claude) als Ergänzung zu bestehenden Forecasting-Modellen sinnvoll sind. Zeigt wann LLMs für TSF Mehrwert bringen.",
+    "category": "Emerging Tech",
+    "tags": [
+      "LLM4TSF",
+      "TimeSeries",
+      "PreAlignment",
+      "Research",
+      "Benchmarking"
+    ],
+    "codeUrl": "https://github.com/EIT-NLP/LLM4TSF",
+    "source_org": "Eastern Institute of Technology / Zhejiang University / LMU München",
+    "date": "2026-03-23",
+    "scouted_at": "2026-03-23T08:04:45.066208"
+  },
+  {
+    "id": "74605a9378f4",
+    "title": "MCP: Industriestandard für AI-Agent-Integrationen",
+    "source": "https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation",
+    "type": "Tool",
+    "summary": "Model Context Protocol (MCP) ist ein offener Standard zur standardisierten Integration von AI-Systemen mit externen Tools und Datenquellen. Nach Spende an die Agentic AI Foundation unter der Linux Foundation wurde MCP von OpenAI und Google adoptiert. Claude hat über 75 MCP-Konnektoren mit 97M monatlichen SDK-Downloads.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Sehr hoch — MCP-Server für Snowflake und Airflow aufbauen, Claude Code erhält direkten Kontext über Data Vault 2.0. Cortex Code CLI unterstützt MCP mit Claude Opus 4.6.",
+    "category": "Emerging Tech",
+    "tags": [
+      "MCP",
+      "AgenticAI",
+      "ClaudeCode",
+      "StandardProtocol"
+    ],
+    "codeUrl": "https://github.com/modelcontextprotocol",
+    "source_org": "Anthropic / Linux Foundation",
+    "date": "2026-03-23",
+    "scouted_at": "2026-03-23T08:04:45.066213"
+  },
+  {
+    "id": "d2d5c7d62c04",
+    "title": "MinerU: VLM-basierte PDF-zu-Markdown/JSON-Konvertierung",
+    "source": "https://github.com/opendatalab/MinerU",
+    "type": "Tool",
+    "summary": "MinerU 2.5/2.7 ist ein 1.2B-Parameter Vision-Language-Modell für Document Parsing mit State-of-the-Art-Genauigkeit und Recheneffizienz. Version 2.7 nutzt Hybrid-Backend, reduziert Parsing-Halluzinationen und unterstützt OCR für 109 Sprachen. Zweistufige Parsing-Strategie für Text, Formeln und Tabellen.",
+    "relevance": "Hoch",
+    "poc": false,
+    "pocNote": "Mittel — automatisierte Extraktion von Lieferscheinen, Zolldokumenten, Qualitätszertifikaten. Integration in Airflow-Pipelines möglich, Tabellenextraktion aus komplexen Logistik-Dokumenten.",
+    "category": "Data Engineering",
+    "tags": [
+      "DocumentAI",
+      "VLM",
+      "OCR",
+      "DataExtraction",
+      "OpenSource"
+    ],
+    "codeUrl": "https://github.com/opendatalab/MinerU",
+    "source_org": "OpenDataLab / Shanghai AI Lab",
+    "date": "2026-03-23",
+    "scouted_at": "2026-03-23T08:04:45.066217"
+  },
+  {
     "id": "ee96b589a705",
     "title": "DUET: Dual Clustering Enhanced Multivariate Time Series Forecasting",
     "source": "https://arxiv.org/abs/2412.10859",
