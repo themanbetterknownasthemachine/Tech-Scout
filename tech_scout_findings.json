@@ -1,5 +1,96 @@
 [
   {
+    "id": "568f8d888390",
+    "title": "Qwen2.5-VL: Open-Source Vision-Language Modell für Video-Analyse, Dokumenten-OCR und Agentic Workflows",
+    "source": "https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct",
+    "type": "Paper",
+    "summary": "Qwen2.5-VL erzielt Fortschritte bei Objekt-Lokalisierung, Dokument-Parsing und Langvideo-Verständnis bis über 1 Stunde. Das Modell generiert strukturierte Outputs für Rechnungen, Formulare und Tabellen, besonders relevant für Finanzen und Logistik. Verfügbar in 3B, 7B und 72B Varianten mit dynamischem Frame-Rate-Training.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "7B-Modell auf einzelner GPU lauffähig für Warehouse-CCTV-Analyse, Lieferschein-OCR und PPE-Compliance direkt einsetzbar",
+    "category": "Operative Effizienz",
+    "tags": [
+      "video-understanding",
+      "VLM",
+      "document-OCR",
+      "edge-AI",
+      "open-source",
+      "logistics"
+    ],
+    "codeUrl": "https://github.com/QwenLM/Qwen2.5-VL",
+    "source_org": "Alibaba / Qwen Team",
+    "date": "2026-03-29",
+    "scouted_at": "2026-03-29T16:34:19.852661"
+  },
+  {
+    "id": "0fafa3e58778",
+    "title": "Roboflow Vision AI Trends 2026 Report",
+    "source": "https://trends.roboflow.com/",
+    "type": "Blog",
+    "summary": "Analyse von 200'000 CV-Projekten zeigt Inventar- und Item-Tracking (30%) als führenden Logistik-Workflow und PPE-Überwachung (25%). YOLO26 als neue Multi-Task-Modellfamilie für Object Detection und Segmentation veröffentlicht. Logistik-Unternehmen sparen 90% Zeit beim manuellen Inventar-Tracking.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "YOLO26 edge-optimiert für Palettenerfassung und PPE-Monitoring auf bestehender Hardware; direkter Fahrplan mit schnellem ROI",
+    "category": "Business Intelligence",
+    "tags": [
+      "computer-vision",
+      "logistics",
+      "warehouse",
+      "edge-AI",
+      "YOLO26",
+      "industry-benchmark"
+    ],
+    "codeUrl": "https://github.com/ultralytics/yolo",
+    "source_org": "Roboflow",
+    "date": "2026-03-29",
+    "scouted_at": "2026-03-29T16:34:19.852677"
+  },
+  {
+    "id": "148534a7c502",
+    "title": "Video Intelligence in Logistics: Safety, Efficiency & Damage Prevention",
+    "source": "https://www.dhl.com/us-en/home/innovation-in-logistics/logistics-trend-radar/computer-vision-logistics.html",
+    "type": "Blog",
+    "summary": "DHL, Vimaan und OneTrack.ai validieren Video-AI im Produktiveinsatz für Lager-Heatmaps, Schadenserfassung und PPE-Überwachung. CJ Logistics nutzt KI-Kameras auf Gabelstaplern in 40+ nordamerikanischen Standorten. Video dokumentiert Warenzustand und reduziert betrügerische Claims um Millionen.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Direkt auf Schweizer Lebensmittellogistik übertragbar: Damage Documentation, PPE-Compliance, Truck-Fill-Rate-Analyse, Lageroptimierung via Heatmaps",
+    "category": "Operative Effizienz",
+    "tags": [
+      "warehouse",
+      "video-analytics",
+      "safety",
+      "PPE",
+      "damage-detection",
+      "logistics"
+    ],
+    "codeUrl": null,
+    "source_org": "DHL, Vimaan, OneTrack.ai, CJ Logistics",
+    "date": "2026-03-29",
+    "scouted_at": "2026-03-29T16:34:19.852687"
+  },
+  {
+    "id": "8fd89964aa72",
+    "title": "Mobile-VideoGPT: Fast and Accurate Video Understanding Language Model",
+    "source": "https://arxiv.org/abs/2503.21782",
+    "type": "Paper",
+    "summary": "Mobile-VideoGPT-0.5B generiert 46 Tokens pro Sekunde und übertrifft State-of-the-art mit 6 Punkten Vorsprung bei 40% weniger Parametern. Nutzt Frame-Scoring-Strategie für effizientes Video-Verständnis. Ideal für Edge-Deployment mit begrenzter Konnektivität.",
+    "relevance": "Mittel",
+    "poc": true,
+    "pocNote": "0.5B Paramter für Edge-Deployment auf lokalen Geräten; Echtzeit-Zustandserfassung ohne Cloud-Latenz für Datenschutz-sensitive Umgebungen",
+    "category": "Emerging Tech",
+    "tags": [
+      "edge-AI",
+      "video-understanding",
+      "lightweight",
+      "real-time",
+      "open-source"
+    ],
+    "codeUrl": "https://github.com/Amshaker/Mobile-VideoGPT",
+    "source_org": "Mohamed bin Zayed University of AI (MBZUAI)",
+    "date": "2026-03-29",
+    "scouted_at": "2026-03-29T16:34:19.852683"
+  },
+  {
     "id": "a7e3f7b158a7",
     "title": "Snowflake Cortex Code CLI — AI Coding Agent mit dbt & Airflow Support",
     "source": "https://www.snowflake.com/en/news/press-releases/snowflake-cortex-code-expands-towards-supporting-any-data-anywhere/",
