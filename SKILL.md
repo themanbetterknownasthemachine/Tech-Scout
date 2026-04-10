@@ -326,7 +326,7 @@ Nutze diesen Skill für:
 1. **Trend-Übersichten** – Wöchentliche/monatliche Zusammenfassungen
 2. **PoC-Bewertung** – Technologien mit der PoC-Scorecard systematisch bewerten
 3. **Paper-Reviews** – Neue arXiv-Paper einordnen und bewerten
-4. **Konferenz-Empfehlungen** – Relevante Events finden
+4. **Konferenz-Insights** – Neueste Erkenntnisse aus Top-Konferenzen einordnen
 5. **Experten-Recherche** – Thought Leader und Spezialisten entdecken
 6. **Frühindikatoren** – Emerging Trends frühzeitig erkennen
 7. **Reporting** – Wöchentliche, monatliche oder Quartals-Reports für Team und ICT erstellen
