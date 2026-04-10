@@ -159,9 +159,9 @@ Direkte Suche nach Accounts und Threads von:
 
 ## Output-Format
 
+### Einzelne Findings
 Für jeden Fund folgendes Format verwenden:
 
-```
 ### [Titel]
 **Quelle**: [Link]
 **Typ**: Paper / Blog / Video / Tool / Code
@@ -170,6 +170,9 @@ Für jeden Fund folgendes Format verwenden:
 **PoC-Potenzial**: Ja / Nein – [Kurze Begründung]
 **Kategorie**: [Tag aus Kategorien]
 **Code verfügbar**: Ja [Link] / Nein
+
+### Gesammelte Reports
+Für wöchentliche, monatliche oder Quartals-Zusammenfassungen das passende Report-Template verwenden (siehe Report-Templates Abschnitt).
 ```
 
 ## PoC-Scorecard
