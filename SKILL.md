@@ -112,10 +112,6 @@ Direkte Suche nach Accounts und Threads von:
 | Jim Fan | Embodied AI, Agents | X |
 | Sebastian Raschka | Practical DL, LLMs | Newsletter, X |
 
-### DACH-Region
-
-Suche nach relevanten deutschsprachigen Experten auf LinkedIn und bei lokalen Konferenzen.
-
 ## Konferenzen & Events 2026
 
 ### International – ML Research
@@ -334,15 +330,16 @@ Nutze diesen Skill für:
 7. **Reporting** – Wöchentliche, monatliche oder Quartals-Reports für Team und ICT erstellen
 
 ## Workflow
-
 1. Definiere Suchfokus (Kategorie, Zeitraum, Spezifität)
 2. Starte mit HuggingFace Trending Papers + arXiv cs.CL/cs.LG für aktuelle Paper
 3. Prüfe Firmen-Blogs der relevanten Labs (Anthropic, DeepMind, Meta AI etc.)
 4. Ergänze mit Twitter/X für Breaking News und Community-Reaktionen
-5. YouTube-Kanäle (Two Minute Papers, Yannic Kilcher) für Video-Zusammenfassungen
+5. YouTube-Kanäle (Two Minute Papers, Andrej Karpathy) für Video-Zusammenfassungen
 6. Filtere nach Qualitätskriterien
 7. Formatiere Ergebnisse nach Output-Format
 8. Priorisiere nach Relevanz-Matrix
 9. Identifiziere PoC-Kandidaten mit verlinktem Code
 10. Bewerte PoC-Kandidaten mit der PoC-Scorecard (Score ≥ 18 → vertiefen)
 11. Erstelle Report im passenden Format (Weekly/Monthly/Quarterly) falls angefragt
+
+> **Automatisierung:** Für wiederkehrende Weekly-Runs existiert ein automatisierter Tech Scout Agent (Python, Anthropic API, GitHub Actions). Dieser führt Schritte 1–8 automatisch aus und committet strukturierte JSON-Reports ins GitHub-Repo. Dashboard unter GitHub Pages verfügbar.
