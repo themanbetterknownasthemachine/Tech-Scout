@@ -141,6 +141,22 @@ Suche nach relevanten deutschsprachigen Experten auf LinkedIn und bei lokalen Ko
 
 ### DACH
 
+**DACH-Region**
+
+| Name | Bereich | Plattform |
+|------|---------|-----------|
+| Andreas Krause | ML, Bayesian Optimization, Chair ETH AI Center | LinkedIn, Konferenzen |
+| Sebastian Raschka | Practical DL, LLMs, "Build an LLM from Scratch" | Newsletter (Ahead of AI), X, Blog |
+| Martin Jaggi | Distributed ML, NLP, EPFL MLO Lab | Konferenzen, Papers |
+| Marcel Salathé | Digital Epidemiology, EPFL AI Center | LinkedIn, X |
+| Bernhard Schölkopf | Causality, ML (MPI Tübingen) | Papers, Konferenzen |
+
+**Institutionen zum Tracken:**
+- ETH AI Center / Swiss National AI Institute (SNAI) – https://www.swiss-ai.org
+- EPFL AI Center
+- Swiss Data Science Center (SDSC) – https://www.datascience.ch
+- Aleph Alpha (Heidelberg) – Europäisches LLM-Unternehmen
+
 - **Swiss AI Forum** – Schweizer AI Community
 - **Data Festival München** – Data Science
 - **Analytics Summit** – Business Analytics
