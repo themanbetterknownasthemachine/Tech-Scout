@@ -82,8 +82,9 @@ Direkte Suche nach Accounts und Threads von:
 
 #### YouTube – Theoretisch
 - **Two Minute Papers** – Paper-Zusammenfassungen: https://www.youtube.com/@TwoMinutePapers
-- **Yannic Kilcher** – Technische Paper-Deep-Dives: https://www.youtube.com/@YannicKilcher
+- **Yannic Kilcher** – Technische Paper-Deep-Dives (Upload-Frequenz reduziert): https://www.youtube.com/@YannicKilcher
 - **Andrej Karpathy** – Deep Learning Fundamentals: https://www.youtube.com/@AndrejKarpathy
+- **AI Explained** – Einordnung neuer Modelle und Releases: - https://www.youtube.com/@aiexplained-official
 
 #### YouTube – Praktisch / Implementierung
 - **Google Developers** – https://www.youtube.com/@GoogleDevelopers
