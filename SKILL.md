@@ -110,7 +110,6 @@ Direkte Suche nach Accounts und Threads von:
 | Eugene Yan | Applied ML, RecSys | Blog |
 | Yannic Kilcher | Paper-Reviews, NLP | YouTube, X |
 | Jim Fan | Embodied AI, Agents | X |
-| Sebastian Raschka | Practical DL, LLMs | Newsletter, X |
 
 ## Konferenzen & Events 2026
 
