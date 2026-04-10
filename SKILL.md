@@ -80,7 +80,7 @@ Direkte Suche nach Accounts und Threads von:
 - Industry Leaders: @karpathy, @ylecun, @sama, @EMostaque, @DrJimFan, @ilyasut
 - Listen nutzen: z.B. "AI Researchers" Listen von bekannten Accounts folgen
 
-#### YouTube – Theoretisch
+#### YouTube – Research & Trend-Tracking
 - **Two Minute Papers** – Paper-Zusammenfassungen: https://www.youtube.com/@TwoMinutePapers
 - **Yannic Kilcher** – Technische Paper-Deep-Dives (Upload-Frequenz reduziert): https://www.youtube.com/@YannicKilcher
 - **Andrej Karpathy** – Deep Learning Fundamentals: https://www.youtube.com/@AndrejKarpathy
