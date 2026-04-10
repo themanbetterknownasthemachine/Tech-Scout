@@ -89,7 +89,7 @@ Direkte Suche nach Accounts und Threads von:
 #### YouTube – Praktisch / Implementierung
 - **Google Developers** – https://www.youtube.com/@GoogleDevelopers
 - **Hugging Face** – https://www.youtube.com/@HuggingFace
-- **Sentdex**, **StatQuest with Josh Starmer** – ML-Grundlagen praxisnah
+- **DeepLearning.AI** – Short Courses zu RAG, Agents, Fine-Tuning, MLOps: https://www.youtube.com/@Deeplearningai
 
 #### Community
 - **Reddit**: r/MachineLearning, r/datascience, r/LocalLLaMA
