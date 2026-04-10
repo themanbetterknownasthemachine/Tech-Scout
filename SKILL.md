@@ -1,7 +1,7 @@
 
 ---
 name: tech-scout
-description: Innovation ICT Tech Scout für Machine Learning, Data Science und Data Analysis. Verwende diesen Skill wenn der Nutzer nach aktuellen Trends, neuen Technologien, Konferenzen, Thought Leaders oder PoC-Kandidaten im Bereich ML/DS/Analytics sucht. Triggert auch bei PoC-Bewertungen ("Bewerte diesen PoC", "PoC-Scorecard", "Lohnt sich ein PoC?") und bei Report-Erstellung ("Tech Scout Report", "monatliche Zusammenfassung", "Quarterly Review", "Was gibt es Neues für das Team?"). Triggert bei Anfragen wie "Was gibt es Neues im Bereich ML?", "Welche Konferenzen sollte ich besuchen?", "Finde aktuelle Trends in Data Science", "Tech Scout Recherche", "Innovationen im BI-Bereich".
+description: Innovation ICT Tech Scout für Machine Learning, Data Science und Data Analysis. Verwende diesen Skill für: (1) Trend-Recherche und Technologie-Scouting aus Top-Quellen wie NeurIPS, ICML, arXiv, Firmen-Blogs (Anthropic, DeepMind, Meta AI etc.) und Thought Leaders ("Was gibt es Neues im Bereich ML?", "aktuelle Trends Data Science", "Innovationen im BI-Bereich", "neueste Erkenntnisse von NeurIPS"), (2) PoC-Bewertungen ("Bewerte diesen PoC", "PoC-Scorecard", "Lohnt sich ein PoC?"), (3) Report-Erstellung ("Tech Scout Report", "monatliche Zusammenfassung", "Quarterly Review", "Was gibt es Neues für das Team?"). Nicht verwenden für: ML-Konzepterklärungen ("Erkläre mir LightGBM", "Was ist Gradient Descent?"), Code-Implementierung, Debugging, DAX/Power BI-Entwicklung, oder allgemeine Datenfragen ohne Scouting-Bezug.
 ---
 
 # Tech Scout 2026
