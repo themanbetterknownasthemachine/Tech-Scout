@@ -1,5 +1,98 @@
 [
   {
+    "id": "dbf1771535e5",
+    "title": "Snowflake Managed MCP Server — AI-Agents mit Governance direkt auf dem Data Warehouse",
+    "source": "https://www.snowflake.com/en/blog/managed-mcp-servers-secure-data-agents/",
+    "type": "Tool",
+    "summary": "Snowflake hat managed MCP-Server in Public Preview veröffentlicht, die AI-Agents über ein standardisiertes Interface mit AI-ready Data in Snowflake verbinden. Die managed Server eliminieren Integrationskomplexität und ermöglichen es Cortex Analyst, Cortex Search und Custom Tools sicher Daten abzurufen, ohne separate Infrastruktur zu deployen. Dies bietet konsistente Governance über Enterprise-Daten, AI-Tools und den MCP-Server innerhalb der Snowflake-Perimeter.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Claude Code verbindet sich direkt mit Snowflake Data Vault für Natural-Language-Queries auf Logistik-KPIs, Setup in ~20 Min ohne Custom-Connectors",
+    "category": "Data Engineering",
+    "tags": [
+      "MCP",
+      "Snowflake",
+      "Claude",
+      "Data Governance",
+      "Agentic AI",
+      "Cortex"
+    ],
+    "codeUrl": "https://github.com/Snowflake-Labs/mcp",
+    "source_org": "Snowflake + Anthropic",
+    "date": "2026-04-14",
+    "scouted_at": "2026-04-14T06:32:24.626377"
+  },
+  {
+    "id": "8b81faafdd57",
+    "title": "pbir.tools CLI + pbi-cli: Agentic Power BI Report Development",
+    "source": "https://github.com/maxanatsko/pbir.tools",
+    "type": "Tool",
+    "summary": "pbir.tools ist ein CLI-Tool zum Browsen, Editieren und Publizieren von PBIR-Reports, das es Claude Code und anderen Agents erlaubt, Reports programmatisch zu erstellen und zu verwalten. pbi-cli bietet direkte In-Process-.NET-Interop von Python zu Power BI Desktop via TOM/ADOMD mit Sub-Sekunden-Ausführung. Mit PBIR als Standard-Format ab Januar 2026 können Agents Reports via Plain-English-Befehle bearbeiten.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Power BI Reports für Logistik-Dashboards und Forecast-Ergebnisse programmatisch via Claude Code erstellen und aktualisieren, Beta-Stadium erfordert Backups",
+    "category": "Business Intelligence",
+    "tags": [
+      "PBIR",
+      "Power BI",
+      "Claude Code",
+      "CLI",
+      "Agentic BI",
+      "Report Automation"
+    ],
+    "codeUrl": "https://github.com/maxanatsko/pbir.tools",
+    "source_org": "Community (Data Goblins / Maxanatsko / MinaSaad1)",
+    "date": "2026-04-14",
+    "scouted_at": "2026-04-14T06:32:24.626395"
+  },
+  {
+    "id": "444a7eda0a2e",
+    "title": "Astronomer Agents — MCP Server für Airflow + Data Warehouse Skills",
+    "source": "https://github.com/astronomer/agents",
+    "type": "Tool",
+    "summary": "Astronomer Agents ist ein AI-Agent-Tooling für Data-Engineering-Workflows mit einem MCP Server für Airflow, einem CLI Tool und Skills, die AI Coding Agents mit spezialisierten Fähigkeiten für Airflow und Data Warehouses erweitern. Das Tooling funktioniert mit Claude Code, Cursor und anderen agentic Coding Tools und ist Apache 2.0 lizenziert. Der MCP Server funktioniert mit jeder Airflow 2.x/3.x REST API.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Euer Apache Airflow wird direkt via MCP mit Claude Code verbunden — DAGs erstellen, debuggen, triggern und monitoren per Natural Language, kein Plugin-Overhead",
+    "category": "Data Engineering",
+    "tags": [
+      "Airflow",
+      "MCP",
+      "Claude Code",
+      "Snowflake",
+      "DAG",
+      "Data Engineering",
+      "Skills"
+    ],
+    "codeUrl": "https://github.com/astronomer/agents",
+    "source_org": "Astronomer",
+    "date": "2026-04-14",
+    "scouted_at": "2026-04-14T06:32:24.626403"
+  },
+  {
+    "id": "6f16b5953345",
+    "title": "MCP 2026 Roadmap — Enterprise Readiness, Transport Scalability & Agent Communication",
+    "source": "https://blog.modelcontextprotocol.io/posts/2026-mcp-roadmap/",
+    "type": "Paper",
+    "summary": "Die MCP Roadmap für 2026 fokussiert auf Transport-Skalierbarkeit, Agent-Kommunikation, Governance-Reife und Enterprise-Readiness. Enterprises stossen bei MCP-Deployments auf Audit Trails, SSO-integrierte Auth und Gateway-Verhalten. Die zweite Priorität ist Agent Communication — wie MCP länger laufende Arbeiten handhabt, die von AI-Agents ausgelöst werden, inklusive Retry-Strategien und Result-Verfügbarkeit.",
+    "relevance": "Mittel",
+    "poc": false,
+    "pocNote": "Strategische Planung für Enterprise-Readiness des MCP-basierten Agent-Setups; Audit-Trail-Gaps und fehlende Rate-Limiting müssen bei Produktivierung bedacht werden",
+    "category": "Emerging Tech",
+    "tags": [
+      "MCP",
+      "Protocol",
+      "Enterprise",
+      "Agentic AI",
+      "Governance",
+      "Roadmap 2026"
+    ],
+    "codeUrl": "https://github.com/modelcontextprotocol/modelcontextprotocol",
+    "source_org": "MCP Foundation / Anthropic",
+    "date": "2026-04-14",
+    "scouted_at": "2026-04-14T06:32:24.626408"
+  },
+  {
     "id": "89ae1fcd5f99",
     "title": "Snowflake Cortex Code: Agentic ML mit nativer dbt- und Airflow-Unterstützung",
     "source": "https://www.snowflake.com/en/blog/agentic-ml-snowflake-predictive-insights/",
