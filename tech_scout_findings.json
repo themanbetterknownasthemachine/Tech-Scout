@@ -1,5 +1,95 @@
 [
   {
+    "id": "53b797e84833",
+    "title": "Chronos-2: From Univariate to Universal Forecasting",
+    "source": "https://arxiv.org/abs/2510.15821",
+    "type": "Paper",
+    "summary": "Chronos-2 ist ein 120M-Parameter Foundation Model für univariates, multivariates und covariate-informiertes Forecasting mit Zero-Shot-Fähigkeiten. Der Group-Attention-Mechanismus ermöglicht In-Context-Learning über mehrere Zeitreihen und unterstützt Past-Only sowie Known-Future Covariates wie Promotionen und Wettervorhersagen. State-of-the-Art-Performance über fev-bench, GIFT-Eval und Chronos Benchmark II mit substantiellen Verbesserungen bei Covariate-Tasks.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Direkte Anwendung für Demand Forecasting mit Promotionen, Feiertagen und Wetterdaten als Known-Future-Covariates in der Lebensmittellogistik. Zero-Shot oder Fine-Tuned Vergleich gegen LightGBM/NeuralForecast-Baseline. Open Source (Apache 2.0), 120M Parameter auf Single A10G GPU, >300 Forecasts/Sekunde.",
+    "category": "Operative Effizienz",
+    "tags": [
+      "time-series",
+      "foundation-model",
+      "forecasting",
+      "covariates",
+      "zero-shot",
+      "multivariate"
+    ],
+    "codeUrl": "https://github.com/amazon-science/chronos-forecasting",
+    "source_org": "Amazon Science / AWS",
+    "date": "2026-04-20",
+    "scouted_at": "2026-04-20T09:10:07.957490"
+  },
+  {
+    "id": "252e1b8c937b",
+    "title": "Snowflake Cortex Code CLI Expands Towards Supporting Any Data, Anywhere",
+    "source": "https://www.snowflake.com/en/blog/cortex-code-cli-expands-support/",
+    "type": "Tool",
+    "summary": "Snowflake Cortex Code CLI ist ab 23. Februar 2026 Generally Available und erweitert AI-Coding-Agent-Support über Snowflake-native Workflows auf dbt und Apache Airflow. Entwickler erhalten sichere, kontextbewusste AI-Assistenz für dbt-Modellgenerierung und Airflow-DAG-Erstellung mit Task-Debugging. Kunden können zwischen Claude Opus 4.6 und OpenAI GPT-5.2 wählen.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Exakter Stack-Match für Snowflake + Airflow + dbt. Produktivitätsgewinne durch natives Schema- und Dependency-Verständnis. Sofort einsetzbar, $20/Monat Subscription ohne grosser Implementierungsaufwand.",
+    "category": "Data Engineering",
+    "tags": [
+      "snowflake",
+      "cortex-code",
+      "airflow",
+      "dbt",
+      "ai-coding-agent",
+      "data-engineering"
+    ],
+    "codeUrl": "https://www.snowflake.com/en/products/cortex/code/",
+    "source_org": "Snowflake",
+    "date": "2026-04-20",
+    "scouted_at": "2026-04-20T09:10:07.957507"
+  },
+  {
+    "id": "ca3f44ca2dea",
+    "title": "Evaluating AGENTS.md: Are Repository-Level Context Files Helpful for Coding Agents?",
+    "source": "https://arxiv.org/abs/2511.12884",
+    "type": "Paper",
+    "summary": "Empirische Studie von ETH Zürich prüft, ob Kontextdateien wie AGENTS.md/CLAUDE.md die Task-Erfolgsrate von Coding Agents tatsächlich verbessern. Ergebnis: Kontextdateien bringen keine signifikanten Verbesserungen, erhöhen aber Inferenzkosten um über 20%. Empfehlung: LLM-generierte Kontextdateien weglassen und nur menschengeschriebene, hochspezifische Instruktionen verwenden.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Direkter Anwendungswert für Claude Code tägliche Nutzung im Team. Optimierung bestehender CLAUDE.md-Dateien nach Forschungsergebnissen senkt Kosten und verbessert Antwortqualität. Null Implementierungsaufwand, nur Review und Kürzung notwendig.",
+    "category": "Operative Effizienz",
+    "tags": [
+      "claude-code",
+      "agents-md",
+      "context-engineering",
+      "coding-agents",
+      "empirical-study"
+    ],
+    "codeUrl": "https://github.com/eth-ds-thesis-projects/agent-context-files",
+    "source_org": "ETH Zürich / Carnegie Mellon",
+    "date": "2026-04-20",
+    "scouted_at": "2026-04-20T09:10:07.957513"
+  },
+  {
+    "id": "7b536f67e15d",
+    "title": "RAG-Anything: All-in-One RAG Framework",
+    "source": "https://arxiv.org/abs/2510.12323",
+    "type": "Paper",
+    "summary": "RAG-Anything ist ein einheitliches Framework für umfassenden multimodalen Wissensabruf, das strukturelle Wissensentitäten als vernetzte Graphen modelliert. Das Cross-Modal Hybrid Retrieval kombiniert strukturelle Wissensnavigation mit semantischem Matching und ermöglicht Reasoning über heterogene Inhalte. Eliminiert Bedarf für mehrere spezialisierte Tools durch nahtlose Verarbeitung aller Inhaltsmodalitäten.",
+    "relevance": "Mittel",
+    "poc": true,
+    "pocNote": "Anwendung für interne Wissensbasis über Logistik-Dokumentation (PDFs mit Tabellen, Grafiken, Lieferscheine). Integration als Python-Framework mit Snowflake Cortex Search. Weniger direkt forecasting-relevant, aber hoher Wert für operative Dokumenten-Analyse und BI-Self-Service.",
+    "category": "Business Intelligence",
+    "tags": [
+      "rag",
+      "multimodal",
+      "knowledge-graph",
+      "document-qa",
+      "open-source"
+    ],
+    "codeUrl": "https://github.com/HKUDS/RAG-Anything",
+    "source_org": "The University of Hong Kong (HKUDS)",
+    "date": "2026-04-20",
+    "scouted_at": "2026-04-20T09:10:07.957517"
+  },
+  {
     "id": "dbf1771535e5",
     "title": "Snowflake Managed MCP Server — AI-Agents mit Governance direkt auf dem Data Warehouse",
     "source": "https://www.snowflake.com/en/blog/managed-mcp-servers-secure-data-agents/",
