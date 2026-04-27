@@ -1,5 +1,97 @@
 [
   {
+    "id": "ebf533d558e3",
+    "title": "Chronos-2: Universal Zero-Shot Time Series Foundation Model",
+    "source": "https://arxiv.org/abs/2510.15821",
+    "type": "Paper",
+    "summary": "Chronos-2 ist ein vortrainiertes Foundation Model für univariate, multivariate und kovariatgestützte Zeitreihenprognosen im Zero-Shot-Verfahren. Es nutzt Group-Attention-Mechanismen für In-Context-Learning und erreicht State-of-the-Art-Performance auf fev-bench, GIFT-Eval und Chronos Benchmark II. Das Modell unterstützt externe Faktoren wie Verkehrsaufkommen, Promotionen und Saisonalitäten ideal für Demand-Forecasting.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Direkt anwendbar für kovariatgestützte Demand-Forecasting mit Promotions-Kalender und Feiertagen. Kann als Zero-Shot-Baseline neben LightGBM/NeuralForecast evaluiert werden. 600M+ Downloads, SageMaker-ready.",
+    "category": "Operative Effizienz",
+    "tags": [
+      "time-series",
+      "foundation-model",
+      "zero-shot",
+      "multivariate",
+      "forecasting",
+      "covariates"
+    ],
+    "codeUrl": "https://github.com/amazon-science/chronos-forecasting",
+    "source_org": "Amazon Web Services",
+    "date": "2026-04-27",
+    "scouted_at": "2026-04-27T09:22:34.791542"
+  },
+  {
+    "id": "fee33b0ca5b6",
+    "title": "Snowflake Cortex Code: AI-Coding-Agent mit Airflow-, dbt- und MCP-Integration",
+    "source": "https://www.snowflake.com/en/blog/cortex-code-governed-agent-data-stack/",
+    "type": "Tool",
+    "summary": "Snowflake Cortex Code ist ein AI-Coding-Agent, der den gesamten Data Stack verstehen kann (Snowflake, dbt, Apache Airflow). Verfügbar als VS Code Extension, MCP-Server und Claude Code Plugin. Unterstützt 50%+ aktive Kundennutzung seit November 2025 und vereinfacht die Erstellung komplexer Datenworkflows.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Perfekt für bestehenden Stack (Snowflake + Airflow + Claude Code). Ideal für Auto-Generierung von dbt-Modellen und Airflow-DAGs. Minimaler Setup-Aufwand via CLI.",
+    "category": "Data Engineering",
+    "tags": [
+      "snowflake",
+      "cortex-code",
+      "airflow",
+      "dbt",
+      "claude-code",
+      "MCP",
+      "AI-agent"
+    ],
+    "codeUrl": null,
+    "source_org": "Snowflake",
+    "date": "2026-04-27",
+    "scouted_at": "2026-04-27T09:22:34.791558"
+  },
+  {
+    "id": "5e070c7599d3",
+    "title": "MinerU 2.5-Pro: Dokumenten-Parsing für LLM-Pipelines & RAG",
+    "source": "https://arxiv.org/abs/2509.22186",
+    "type": "Paper",
+    "summary": "MinerU2.5-Pro ist ein 1.2B-Parameter Document-Parsing Vision-Language Model mit SOTA-Erkennungsgenauigkeit (95.69 auf OmniDocBench v1.6). Nutzt zweistufige Coarse-to-Fine-Parsing und übertrifft massive Frontier-VLMs. Transformiert komplexe PDFs und Office-Dokumente in LLM-ready Markdown/JSON für agentische Workflows.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Ideal für Digitalisierung von Logistik-Dokumenten (Lieferscheine, Zertifikate, Zollpapiere). Docker-Deploy, MCP-Integration ermöglicht direkte Verbindung zu Claude Code für automatisierten Dokumenten-zu-Snowflake-Workflow.",
+    "category": "Data Engineering",
+    "tags": [
+      "document-parsing",
+      "OCR",
+      "VLM",
+      "PDF-to-markdown",
+      "RAG",
+      "MCP"
+    ],
+    "codeUrl": "https://github.com/opendatalab/MinerU",
+    "source_org": "OpenDataLab / Shanghai AI Lab",
+    "date": "2026-04-27",
+    "scouted_at": "2026-04-27T09:22:34.791565"
+  },
+  {
+    "id": "e4b35bb8c9dc",
+    "title": "WaveMoE: Mixture-of-Experts Foundation Model mit Wavelet-Frequenzfeatures",
+    "source": "https://arxiv.org/abs/2604.10544",
+    "type": "Paper",
+    "summary": "WaveMoE ist ein decoder-only MoE Foundation Model, das Wavelet-basierte Frequenzfeatures mit Zeitdomänen-Features über koordinierte duale Pfade integriert. Workshop-Paper zur ICLR 2026, gibt Überblick über TSFM-Landscape 2026 (Chronos-2, Moirai 2.0, TimesFM 2.5, Sundial).",
+    "relevance": "Mittel",
+    "poc": false,
+    "pocNote": "Noch kein Code/Modell veröffentlicht. Relevant für Frequenzbasierte Saisonalitäts-Modellierung aber zu früh für praktische Evaluierung.",
+    "category": "Emerging Tech",
+    "tags": [
+      "time-series",
+      "foundation-model",
+      "mixture-of-experts",
+      "wavelet",
+      "frequency-domain"
+    ],
+    "codeUrl": null,
+    "source_org": "ICLR 2026 Workshop TSALM",
+    "date": "2026-04-27",
+    "scouted_at": "2026-04-27T09:22:34.791570"
+  },
+  {
     "id": "53b797e84833",
     "title": "Chronos-2: From Univariate to Universal Forecasting",
     "source": "https://arxiv.org/abs/2510.15821",
