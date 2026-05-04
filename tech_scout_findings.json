@@ -1,5 +1,76 @@
 [
   {
+    "id": "704bcb41ad14",
+    "title": "Cortex Code CLI Expands: dbt & Apache Airflow Support",
+    "source": "https://www.snowflake.com/en/news/press-releases/snowflake-cortex-code-expands-towards-supporting-any-data-anywhere/",
+    "type": "Tool",
+    "summary": "Cortex Code CLI erweitert sich auf dbt und Apache Airflow und ermöglicht AI-gesteuerte Generierung von dbt-Modellen und Airflow-DAGs. Entwickler können Outputs vergleichen, kontextbewusst debuggen und produktionsreife Pipelines mit Dependency-Awareness erstellen. Mit VS Code Extension und MCP-Server.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Direkter Stack-Match für bestehende Snowflake+Airflow-Infrastruktur. Early Adopter berichten über 500 Stunden Zeitersparnis in 20 Tagen. Sofort testbar als Produktivitäts-Booster.",
+    "category": "Data Engineering",
+    "tags": [
+      "snowflake",
+      "cortex-code",
+      "dbt",
+      "airflow",
+      "ai-agent",
+      "pipeline-automation",
+      "data-engineering"
+    ],
+    "codeUrl": null,
+    "source_org": "Snowflake",
+    "date": "2026-05-04",
+    "scouted_at": "2026-05-04T09:23:27.963756"
+  },
+  {
+    "id": "3598932d5d74",
+    "title": "Production ML Workflows: Agentic ML, Online Feature Store & Model Serving",
+    "source": "https://www.snowflake.com/en/blog/production-ml-workflows/",
+    "type": "Tool",
+    "summary": "Snowflake ML-Plattform bietet GA-Paket mit Cortex Code, Experiment Tracking, Online Feature Store (30ms Latenz) und Online ML Inference. Integrierte Lösung für Feature-Management, Modell-Versionierung und Low-Latency-Serving unter nativer RBAC und Data-Governance.",
+    "relevance": "Hoch",
+    "poc": false,
+    "pocNote": "Feature Store eliminiert Training-Serving-Skew. Model Registry ermöglicht versionierte LightGBM-Modelle direkt in Snowflake unter RBAC.",
+    "category": "Data Engineering",
+    "tags": [
+      "snowflake",
+      "feature-store",
+      "experiment-tracking",
+      "model-registry",
+      "model-serving",
+      "mlops",
+      "online-inference"
+    ],
+    "codeUrl": null,
+    "source_org": "Snowflake",
+    "date": "2026-05-04",
+    "scouted_at": "2026-05-04T09:23:27.963768"
+  },
+  {
+    "id": "f67ad5c52014",
+    "title": "Agent-Native Research Artifact (ARA)",
+    "source": "https://huggingface.co/papers/trending",
+    "type": "Paper",
+    "summary": "ARA ersetzt narrative Paper durch maschinenausführbare Forschungspakete mit vier Schichten: wissenschaftliche Logik, Code, Explorationsgraph und Evidenz-Grounding. Steigert Frage-Antwort-Genauigkeit auf 93,7% und Reproduktionserfolg auf 64,4%. Unterstützt durch Live Research Manager, ARA Compiler und natives Review-System.",
+    "relevance": "Mittel",
+    "poc": false,
+    "pocNote": "Relevant als Methodik-Upgrade für ML-Experiment-Dokumentation. Reduziert Knowledge-Loss bei Mitarbeiter-Fluktuation. Kombinierbar mit Claude Code als Agentic Workflow.",
+    "category": "Emerging Tech",
+    "tags": [
+      "agentic-ai",
+      "research-automation",
+      "reproducibility",
+      "claude-code",
+      "llm-agents",
+      "research-workflow"
+    ],
+    "codeUrl": null,
+    "source_org": "Community/Forschung",
+    "date": "2026-05-04",
+    "scouted_at": "2026-05-04T09:23:27.963772"
+  },
+  {
     "id": "ebf533d558e3",
     "title": "Chronos-2: Universal Zero-Shot Time Series Foundation Model",
     "source": "https://arxiv.org/abs/2510.15821",
