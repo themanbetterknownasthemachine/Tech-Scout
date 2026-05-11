@@ -1,5 +1,77 @@
 [
   {
+    "id": "bc0e54d0d432",
+    "title": "Snowflake Cortex Code CLI: Native Support für dbt & Apache Airflow",
+    "source": "https://www.snowflake.com/en/blog/cortex-code-cli-expands-support/",
+    "type": "Tool",
+    "summary": "Cortex Code CLI erweitert Snowflakes AI-Coding-Agent für dbt und Apache Airflow (GA seit 23. Februar 2026) und ermöglicht natürlichsprachige Generierung von dbt-Modellen und Airflow-DAGs. Das Tool nutzt reale Snowflake-Metadaten für präzisere Code-Generierung und benötigte 50% weniger Gesamtaufrufe für korrekte Lösungen. Unterstützt Claude Opus 4.6 und OpenAI GPT-5.2.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Exakte Stack-Kompatibilität: Snowflake + Airflow + dbt. Beschleunigte Erstellung von Data-Vault-2.0-Modellen (Hubs, Links, Satellites). Enterprise-ready mit RBAC-Respekt.",
+    "category": "Data Engineering",
+    "tags": [
+      "snowflake",
+      "cortex-code",
+      "dbt",
+      "airflow",
+      "ai-agent",
+      "data-engineering",
+      "mlops"
+    ],
+    "codeUrl": null,
+    "source_org": "Snowflake",
+    "date": "2026-05-11",
+    "scouted_at": "2026-05-11T10:41:33.839868"
+  },
+  {
+    "id": "872106ebf555",
+    "title": "FreshRetailNet-50K: A Stockout-Annotated Censored Demand Dataset for Latent Demand Recovery and Forecasting in Fresh Retail",
+    "source": "https://arxiv.org/abs/2505.16319",
+    "type": "Paper",
+    "summary": "FreshRetailNet-50K ist der erste Large-Scale-Benchmark für zensierte Nachfrageschätzung mit 50.000 Store-Produkt-Zeitreihen aus 898 Geschäften und 863 verderblichen SKUs mit stündlichen Daten und Stockout-Annotationen. Der Two-Stage-Ansatz (Demand Recovery + Forecasting) reduziert Nachfrage-Unterschätzung von 7,37% auf nahezu Null und verbessert Prognosegenauigkeit um 2,73%. Daten verfügbar auf HuggingFace mit Baseline-Code.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Adressiert Kernproblem: Stockout-induzierte Datenverzerrung in Lebensmittellogistik. Two-Stage-Methodik direkt auf LightGBM/NeuralForecast-Pipeline anwendbar. Reiche kontextuelle Kovariaten (Promotions, Wetter, Feiertage) pro Store verfügbar.",
+    "category": "Operative Effizienz",
+    "tags": [
+      "demand-forecasting",
+      "stockout",
+      "censored-data",
+      "perishable",
+      "retail",
+      "benchmark",
+      "dataset",
+      "latent-demand"
+    ],
+    "codeUrl": "https://github.com/Dingdong-Inc/frn-50k-baseline",
+    "source_org": "Dingdong Inc.",
+    "date": "2026-05-11",
+    "scouted_at": "2026-05-11T10:41:33.839874"
+  },
+  {
+    "id": "de2c5935c697",
+    "title": "andrej-karpathy-skills: Verhaltensrichtlinien für AI Coding Agents",
+    "source": "https://github.com/forrestchang/andrej-karpathy-skills",
+    "type": "Code",
+    "summary": "Populäres GitHub-Repository (30.000+ Stars) mit CLAUDE.md-Richtlinien für AI-Coding-Agents basierend auf Andrej Karpathys Best Practices. Implementiert vier Kernprinzipien: explizites Reasoning, minimaler Code, keine Extra-Features, keine unnötige Abstraktion. Direkt in Claude Code für bessere Code-Qualität einsetzbar.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Stack-Kompatibilität mit Claude Code. Verbessert direkt Qualität von ML-Pipeline-Entwicklung, dbt-Modell-Generierung und Airflow-DAG-Erstellung. Einfache Integration in Repo-Root.",
+    "category": "Emerging Tech",
+    "tags": [
+      "claude-code",
+      "agent-skills",
+      "best-practices",
+      "coding-agent",
+      "karpathy",
+      "llm"
+    ],
+    "codeUrl": "https://github.com/forrestchang/andrej-karpathy-skills",
+    "source_org": "Community (Forrest Chang)",
+    "date": "2026-05-11",
+    "scouted_at": "2026-05-11T10:41:33.839883"
+  },
+  {
     "id": "704bcb41ad14",
     "title": "Cortex Code CLI Expands: dbt & Apache Airflow Support",
     "source": "https://www.snowflake.com/en/news/press-releases/snowflake-cortex-code-expands-towards-supporting-any-data-anywhere/",
