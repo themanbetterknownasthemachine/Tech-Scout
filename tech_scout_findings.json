@@ -1,5 +1,96 @@
 [
   {
+    "id": "29a99e2454d7",
+    "title": "Cortex Code: Snowflake-nativer AI Coding Agent (GA in Snowsight)",
+    "source": "https://www.snowflake.com/en/blog/cortex-code-snowsight/",
+    "type": "Tool",
+    "summary": "Snowflake Cortex Code ist ein Snowflake-nativer AI-Agent, der Enterprise-Datenkontext, Governance-Anforderungen und den gesamten Daten-Lifecycle versteht. Das Tool ist jetzt generally available in Snowsight und bietet integrierte Skills für dbt-Workflows, ML-Lifecycle-Management und SQL-Optimierung auf Basis von Claude. Es nutzt Anthropic's Claude als Grundlage und erweitert es mit Snowflake-spezifischer Intelligenz.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Direkt im bestehenden Snowflake-Stack einsetzbar. PoC: Automatisierte dbt-Model-Generierung und SQL-Optimierung im Data Vault sowie ML-Pipeline-Prototyping via Natural Language.",
+    "category": "Data Engineering",
+    "tags": [
+      "snowflake",
+      "cortex",
+      "ai-coding-agent",
+      "dbt",
+      "ml-lifecycle",
+      "data-engineering"
+    ],
+    "codeUrl": null,
+    "source_org": "Snowflake",
+    "date": "2026-05-25",
+    "scouted_at": "2026-05-25T11:14:06.106267"
+  },
+  {
+    "id": "dbfc9885e176",
+    "title": "New in Claude Managed Agents: Dreaming, Outcomes, and Multiagent Orchestration",
+    "source": "https://claude.com/blog/new-in-claude-managed-agents",
+    "type": "Blog",
+    "summary": "Anthropic hat Dreaming als Research Preview gelauncht — einen scheduleiten Prozess, der vergangene Sessions reviewt, um Muster zu finden und Agenten zur Selbstverbesserung zu befähigen. Zusätzlich werden Outcomes, Multiagent-Orchestrierung und Webhooks für Managed Agents verfügbar. Dreaming erkennt wiederkehrende Fehler und Workflows, Outcomes ermöglichen Erfolgs-Rubrics, und Multiagent-Orchestrierung ermöglicht parallele Spezialistenarbeit.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Dreaming kann repetitive Data-Engineering-Tasks optimieren (Pipeline-Debugging, Code-Reviews). PoC: Claude Code Agent mit Dreaming für Airflow-DAG-Debugging oder dbt-Model-Reviews mit Outcomes-Rubrik für SQL-Qualitätsstandards.",
+    "category": "Emerging Tech",
+    "tags": [
+      "claude-code",
+      "agentic-ai",
+      "dreaming",
+      "multi-agent",
+      "self-improving",
+      "memory"
+    ],
+    "codeUrl": null,
+    "source_org": "Anthropic",
+    "date": "2026-05-25",
+    "scouted_at": "2026-05-25T11:14:06.106289"
+  },
+  {
+    "id": "f130aebe15c7",
+    "title": "Nexus: An Agentic Framework for Time Series Forecasting",
+    "source": "https://arxiv.org/abs/2605.14389",
+    "type": "Paper",
+    "summary": "Nexus ist ein Multi-Agent-Forecasting-Framework, das numerische Extrapolation mit Reasoning über unstrukturierte Kontextdaten (Nachrichten, Events) kombiniert. Das Framework zerlegt die Vorhersage in spezialisierte Stufen und integriert Makro/Mikro-Fluktuationen mit kontextuellen Informationen. Es zeigt, dass LLMs substanziell stärkere Forecasting-Fähigkeiten besitzen und produziert hochqualitative Reasoning-Traces, die fundamentale Treiber jeder Prognose explizit zeigen.",
+    "relevance": "Mittel",
+    "poc": true,
+    "pocNote": "Konzeptionell hochrelevant für kontextbewusstes Demand-Forecasting (Events, Feiertage, Wetter als Kontext). PoC: Multi-Agent-Reasoning für Produkte mit starker Event-Abhängigkeit (Saisonware, Promotionen) als Ergänzung zu LightGBM.",
+    "category": "Emerging Tech",
+    "tags": [
+      "agentic-forecasting",
+      "LLM",
+      "multi-agent",
+      "context-aware",
+      "time-series"
+    ],
+    "codeUrl": null,
+    "source_org": "Akademisch",
+    "date": "2026-05-25",
+    "scouted_at": "2026-05-25T11:14:06.106294"
+  },
+  {
+    "id": "47f10585404c",
+    "title": "Cortex Agent Evaluations: Monitor, Measure and Improve Your AI Agents",
+    "source": "https://www.snowflake.com/en/engineering-blog/cortex-agent-evaluations/",
+    "type": "Blog",
+    "summary": "Cortex Agent Evaluations bieten ein GPA-Framework zur Überwachung, Messung und Verbesserung von AI-Agents in Produktion. Das Tool ermöglicht Organisationen, die von Prototyping zu Produktion mit Cortex Agents wechseln, Governance und Qualitätskontrolle über Agent-Performance. Es integriert sich nativ in die Snowflake-Plattform und unterstützt kontinuierliches Monitoring und Optimierung.",
+    "relevance": "Mittel",
+    "poc": false,
+    "pocNote": "Nachgelagertes Tool für Agent-Governance nach initialen PoCs mit Cortex Code und Claude Agents.",
+    "category": "Business Intelligence",
+    "tags": [
+      "snowflake",
+      "cortex-agents",
+      "evaluation",
+      "monitoring",
+      "GPA-framework",
+      "governance"
+    ],
+    "codeUrl": null,
+    "source_org": "Snowflake",
+    "date": "2026-05-25",
+    "scouted_at": "2026-05-25T11:14:06.106298"
+  },
+  {
     "id": "d255e3f052b5",
     "title": "Snowflake Cortex Code: AI-Agent für dbt & Apache Airflow (GA seit Feb 2026)",
     "source": "https://www.snowflake.com/en/product/features/cortex-code/",
