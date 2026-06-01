@@ -1,5 +1,96 @@
 [
   {
+    "id": "10a08a15e926",
+    "title": "Retrieval Augmented Time Series Forecasting (RAF / TS-RAG)",
+    "source": "https://arxiv.org/abs/2411.08249",
+    "type": "Paper",
+    "summary": "RAF überträgt das RAG-Prinzip auf Zeitreihen-Forecasting durch Abrufen ähnlicher historischer Zeitreihen als zusätzlicher Kontext. TS-RAG erreicht MSE von 0.1940 vs. RAFs 0.2320 und verbessert Zero-Shot-Performance bei Out-of-Domain-Datensätzen erheblich.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Ideal für neue saisonale Produkte: Ähnliche historische Profile aus Snowflake-Datenbank retrieven und Prognosen von Chronos-2 verbessern. Kombinierbar mit bestehendem Data Vault.",
+    "category": "Emerging Tech",
+    "tags": [
+      "RAG",
+      "time-series",
+      "retrieval-augmented",
+      "foundation-model",
+      "zero-shot"
+    ],
+    "codeUrl": null,
+    "source_org": "UT Austin / University of Michigan",
+    "date": "2026-06-01",
+    "scouted_at": "2026-06-01T12:41:15.471548"
+  },
+  {
+    "id": "8844815a0362",
+    "title": "Snowflake Feature Store Online Serving (GA) + ML Runtime",
+    "source": "https://www.snowflake.com/en/blog/production-ml-workflows/",
+    "type": "Blog",
+    "summary": "Snowflake hat Online Feature Serving im Feature Store mit 30ms Latenz und ML Container Runtime eingeführt. Das Runtime zeigt 2.5x schnelleres PyTorch und 1.8x schnelleres XGBoost-Training bei 8x niedrigeren Infrastrukturkosten im Vergleich zu Databricks.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Direkt einsetzbar in bestehendem Snowflake-Stack. Automatische Feature-Berechnung und Tracking von Upstream-Änderungen. Vereinfacht Airflow-Pipelines und bietet vollständigen ML-Lifecycle ohne externe Tools.",
+    "category": "Data Engineering",
+    "tags": [
+      "feature-store",
+      "online-serving",
+      "snowflake",
+      "mlops",
+      "low-latency",
+      "LightGBM"
+    ],
+    "codeUrl": "https://www.snowflake.com/en/developers/guides/intro-to-online-feature-store-in-snowflake/",
+    "source_org": "Snowflake",
+    "date": "2026-06-01",
+    "scouted_at": "2026-06-01T12:41:15.471555"
+  },
+  {
+    "id": "80fa027a9f10",
+    "title": "Dynamic Workflows in Claude Code (Research Preview)",
+    "source": "https://claude.com/blog/introducing-dynamic-workflows-in-claude-code",
+    "type": "Blog",
+    "summary": "Anthropic führte am 28. Mai 2026 Dynamic Workflows in Claude Code ein, die zehn bis hunderte paralleler Subagents orchestrieren. Agenten bearbeiten Probleme aus unabhängigen Blickwinkeln und iterieren bis zur Konvergenz über Stunden und Tage.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Einsetzbar für codebase-weite Refactorings von Airflow DAGs, paralleles Code-Review von Forecasting-Modellen und Data-Vault-Migrationen. Max. 16 Agents gleichzeitig, 1.000 insgesamt pro Run.",
+    "category": "Operative Effizienz",
+    "tags": [
+      "claude-code",
+      "agentic-ai",
+      "multi-agent",
+      "orchestration",
+      "parallel",
+      "code-migration"
+    ],
+    "codeUrl": "https://code.claude.com/docs/en/workflows",
+    "source_org": "Anthropic",
+    "date": "2026-06-01",
+    "scouted_at": "2026-06-01T12:41:15.471558"
+  },
+  {
+    "id": "64f5193d5564",
+    "title": "ICLR 2026: Time Series in the Age of Large Models Workshop (TSALM) + Learning Recursive Multi-Scale Representations",
+    "source": "https://arxiv.org/abs/2604.10544",
+    "type": "Paper",
+    "summary": "ICLR 2026 Workshop zu Time Series Foundation Models und akzeptiertes Paper über Recursive Multi-Scale Representations für unregelmäßige multivariate Zeitreihen. Zeigt State-of-the-Art für Anomalieerkennung und Forecasting mit irregulären Datenmustern.",
+    "relevance": "Mittel",
+    "poc": false,
+    "pocNote": "",
+    "category": "Emerging Tech",
+    "tags": [
+      "ICLR-2026",
+      "time-series",
+      "foundation-models",
+      "irregular-data",
+      "multi-scale",
+      "anomaly-detection"
+    ],
+    "codeUrl": null,
+    "source_org": "ICLR 2026 Community",
+    "date": "2026-06-01",
+    "scouted_at": "2026-06-01T12:41:15.471563"
+  },
+  {
     "id": "29a99e2454d7",
     "title": "Cortex Code: Snowflake-nativer AI Coding Agent (GA in Snowsight)",
     "source": "https://www.snowflake.com/en/blog/cortex-code-snowsight/",
