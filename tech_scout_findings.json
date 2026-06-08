@@ -1,5 +1,97 @@
 [
   {
+    "id": "48ab45c9d22a",
+    "title": "Amazon Chronos-2: Universelles Time Series Foundation Model mit Covariates-Support",
+    "source": "https://huggingface.co/amazon/chronos-2",
+    "type": "Paper",
+    "summary": "Chronos-2 ist ein 120M-ParameterEncoder-only Time-Series Foundation Model für Zero-Shot-Forecasting, das univariate, multivariate und kovariaten-gestützte Aufgaben unterstützt. Es kann externe Faktoren wie Promotionen, Wetter und Feiertage einbeziehen und erreicht State-of-the-Art Zero-Shot-Genauigkeit bei über 300 Zeitreihen-Prognosen pro Sekunde auf einer A10G-GPU. Direkt anwendbar auf SKU-Level-Nachfrageprognosen mit Promotions-Kalendern und ideal für Long-Tail-Produkte mit wenig Historie.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "LoRA-Fine-Tuning auf historischen Logistik-Daten als Vergleich zu LightGBM. Snowflake-Daten → PyIceberg/Snowpark → Chronos-2 Inference.",
+    "category": "Operative Effizienz",
+    "tags": [
+      "forecasting",
+      "foundation-model",
+      "zero-shot",
+      "covariates",
+      "time-series",
+      "ml"
+    ],
+    "codeUrl": "https://github.com/amazon-science/chronos-forecasting",
+    "source_org": "Amazon Web Services (AWS)",
+    "date": "2026-06-08",
+    "scouted_at": "2026-06-08T12:01:28.677402"
+  },
+  {
+    "id": "12a76ce7f1bc",
+    "title": "Snowflake CoCo (Cortex Code): Agentic ML Pipeline Builder mit Airflow- & dbt-Integration",
+    "source": "https://www.snowflake.com/en/blog/cortex-code-governed-agent-data-stack/",
+    "type": "Tool",
+    "summary": "CoCo generiert SQL, Python, dbt-Models, Airflow-DAGs und ML-Pipelines aus natürlicher Sprache mit 72.1% Pass-Rate bei realen Analytics-Engineering-Aufgaben. Das Tool bietet ML-spezifische Skills für Modelltraining, Deployment und Hyperparameter-Tuning und integriert sich direkt mit dem bestehenden Snowflake + Airflow + dbt Stack. Automatisierte Workflows können zeitplan-, ereignis- oder schwellwertgesteuert werden.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Sofort testbar auf dem bestehenden Snowflake-Account. Quick Win: bestehende dbt-Models dokumentieren und ML-Pipeline für Forecasting automatisch generieren.",
+    "category": "Data Engineering",
+    "tags": [
+      "snowflake",
+      "agentic-ml",
+      "airflow",
+      "dbt",
+      "code-generation",
+      "mlops"
+    ],
+    "codeUrl": "https://github.com/snowflakedb/snowflake-cli",
+    "source_org": "Snowflake",
+    "date": "2026-06-08",
+    "scouted_at": "2026-06-08T12:01:28.677420"
+  },
+  {
+    "id": "43434f4e6ec5",
+    "title": "Retrieval Augmented Forecasting (RAF): RAG für Time Series Foundation Models",
+    "source": "https://arxiv.org/abs/2411.08249",
+    "type": "Paper",
+    "summary": "RAF überträgt das RAG-Prinzip aus NLP auf Zeitreihenprognosen und verbessert die Prognosegenauigkeit besonders bei Out-of-Domain-Szenarien durch Blending mit Nachbar-basierten Analogen. Das Framework ist modellagnostisch, erfordert keine Modellarchitektur-Änderungen und lässt sich nahtlos in bestehende Pipelines integrieren. Ideal für Retrieval ähnlicher historischer Muster aus der eigenen Logistik-Datenbank.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Als Phase-2-Erweiterung auf Chronos-2: Aufbau einer historischen Muster-Datenbank in Snowflake und Retrieval ähnlicher Demand-Patterns zur Augmentierung von Zero-Shot-Prognosen.",
+    "category": "Operative Effizienz",
+    "tags": [
+      "rag",
+      "time-series",
+      "forecasting",
+      "retrieval-augmented",
+      "foundation-model",
+      "ml"
+    ],
+    "codeUrl": null,
+    "source_org": "UT Austin / University of Michigan",
+    "date": "2026-06-08",
+    "scouted_at": "2026-06-08T12:01:28.677427"
+  },
+  {
+    "id": "79440c9020df",
+    "title": "Apache Iceberg V4: Column Families für ML Feature Engineering",
+    "source": "https://www.snowflake.com/en/blog/engineering/iceberg-summit-2026-recap-v4-spec/",
+    "type": "Paper",
+    "summary": "Apache Iceberg V4 führt Column Families ein, die Spaltengruppen unabhängig speichern und entwickeln, was bei ML Feature Stores mit Tausenden Spalten kritisch ist. Dies ermöglicht gezielte Updates auf isolierten Spalten ohne Berührung des restlichen Tabellenstands. PyIceberg erreicht 500.000 tägliche Downloads und wird produktiv ohne Spark eingesetzt.",
+    "relevance": "Mittel",
+    "poc": false,
+    "pocNote": "Architektonisch relevant für den Feature Store des Forecasting-Stacks in Kombination mit Data Vault 2.0.",
+    "category": "Data Engineering",
+    "tags": [
+      "iceberg",
+      "feature-store",
+      "data-vault",
+      "snowflake",
+      "schema-evolution",
+      "ml"
+    ],
+    "codeUrl": "https://github.com/apache/iceberg",
+    "source_org": "Apache Foundation / Snowflake / Google / Databricks",
+    "date": "2026-06-08",
+    "scouted_at": "2026-06-08T12:01:28.677432"
+  },
+  {
     "id": "10a08a15e926",
     "title": "Retrieval Augmented Time Series Forecasting (RAF / TS-RAG)",
     "source": "https://arxiv.org/abs/2411.08249",
