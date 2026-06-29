@@ -1,5 +1,118 @@
 [
   {
+    "id": "c2bfe9291512",
+    "title": "Snowflake Cortex Sense + Horizon Context + Semantic Views",
+    "source": "https://www.snowflake.com/en/blog/ai-smart-pipelines-whats-new/",
+    "type": "Tool",
+    "summary": "Cortex Sense verbessert die Genauigkeit von AI Agents durch automatische Kontextanreicherung aus Query-History, Metadaten und BI-Dashboards von 47% auf 83%. Semantic View Autopilot reduziert die Erstellung von Semantic Models von Tagen auf Minuten und macht Business-Wissen automatisch für Agents verfügbar.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Ideale Basis für bestehenden Snowflake Data Vault 2.0. Semantic Views auf Logistik-KPIs (Lieferpünktlichkeit, Lagerumschlag) direkt anwendbar. Minimaler Aufwand durch Autopilot.",
+    "category": "Business Intelligence",
+    "tags": [
+      "Snowflake",
+      "Semantic Layer",
+      "AI Agents",
+      "Cortex Sense",
+      "BI"
+    ],
+    "codeUrl": null,
+    "source_org": "Snowflake",
+    "date": "2026-06-29",
+    "scouted_at": "2026-06-29T12:02:55.245646"
+  },
+  {
+    "id": "169986b18a6b",
+    "title": "dbt Core v2.0 Alpha (Fusion Engine) + Fivetran/dbt Labs Merger",
+    "source": "https://www.fivetran.com/press/fivetran-dbt-labs-complete-merger-to-create-the-data-infrastructure-for-trusted-ai-agents",
+    "type": "Tool",
+    "summary": "dbt Core v2.0 mit Fusion Engine unter Apache 2.0 Lizenz kombiniert Fivetran und dbt Labs. dbt State reduziert Infrastrukturkosten um 30% durch intelligentes Caching, dbt Wizard bringt autonome Assistenz für Model-Authoring.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Direkt mit bestehender Airflow + dbt Data Vault 2.0 Integration einsetzbar. dbt State senkt Warehouse-Compute-Kosten signifikant. Migration von v1.x moderat.",
+    "category": "Data Engineering",
+    "tags": [
+      "dbt",
+      "Fusion Engine",
+      "Apache 2.0",
+      "Fivetran",
+      "Data Pipelines",
+      "Orchestrierung"
+    ],
+    "codeUrl": "https://github.com/dbt-labs/dbt-core",
+    "source_org": "Fivetran + dbt Labs",
+    "date": "2026-06-29",
+    "scouted_at": "2026-06-29T12:02:55.245662"
+  },
+  {
+    "id": "e10e4b2c0a02",
+    "title": "Cast-R1: Learning Tool-Augmented Sequential Decision Policies for Time Series Forecasting",
+    "source": "https://arxiv.org/abs/2602.13802",
+    "type": "Paper",
+    "summary": "Cast-R1 reformuliert Zeitreihen-Forecasting als sequenzielles Entscheidungsproblem mit Memory-Management und tool-augmentiertem Workflow (Datenqualität, Statistik, Events, Residual-Diagnostik). Nutzt multi-turn Reinforcement Learning (GRPO) und integriert verschiedene Modelle als Tools.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Agentic Ansatz ideal für Logistik-Forecasting mit Promotions, Wetter, Events als Kontextfaktoren. Open Source, GPU-effizient (1x RTX 4090). Integration bestehender LightGBM/NeuralForecast-Pipelines als Tools möglich.",
+    "category": "Operative Effizienz",
+    "tags": [
+      "Time-Series",
+      "Forecasting",
+      "Agentic AI",
+      "LLM",
+      "Tool-Use",
+      "GRPO"
+    ],
+    "codeUrl": "https://github.com/Xiaoyu-Tao/Cast-R1-TS",
+    "source_org": "Unabhängige Forschung",
+    "date": "2026-06-29",
+    "scouted_at": "2026-06-29T12:02:55.245667"
+  },
+  {
+    "id": "a90f06787a19",
+    "title": "DeepSpec: Open-Source Speculative Decoding Training Stack (DSpark, DFlash, Eagle3)",
+    "source": "https://github.com/deepseek-ai/DeepSpec",
+    "type": "Code",
+    "summary": "DeepSeek veröffentlichte DSpark Speculative Decoding Drafter und DeepSpec MIT-lizenzierte Codebasis. DSpark kombiniert parallelen Draft-Backbone mit sequenziellem Head, erreicht 60–85% schnellere Generation als Baseline auf DeepSeek-V4.",
+    "relevance": "Mittel",
+    "poc": false,
+    "pocNote": "Relevant für zukünftige lokale LLM-Deployments. Nicht sofort für Snowflake-zentrierten Stack einsetzbar. 38TB Speicher-Requirement, unverifizierte Hersteller-Benchmarks.",
+    "category": "Emerging Tech",
+    "tags": [
+      "Speculative Decoding",
+      "LLM Inference",
+      "DeepSeek",
+      "MIT License",
+      "Cost Optimization"
+    ],
+    "codeUrl": "https://github.com/deepseek-ai/DeepSpec",
+    "source_org": "DeepSeek",
+    "date": "2026-06-29",
+    "scouted_at": "2026-06-29T12:02:55.245672"
+  },
+  {
+    "id": "4187eb5d1097",
+    "title": "Seeking SOTA: Time-Series Forecasting Must Adopt Taxonomy-Specific Evaluation to Dispel Illusory Gains",
+    "source": "https://arxiv.org/abs/2603.15506",
+    "type": "Paper",
+    "summary": "Position Paper kritisiert aktuelle Benchmark-Praxis in Time-Series Forecasting, die Leistung klassischer Methoden überschätzt. Fordert taxonomy-spezifische Evaluation für Non-Stationarity, Concept Drift und variable Periodizitäten.",
+    "relevance": "Mittel",
+    "poc": false,
+    "pocNote": "Wichtig für Methodologie-Review bestehender Forecasting-Modelle. Warnt vor illusionären Gewinnen durch suboptimale Benchmarks. Sollte Evaluierungs-Strategie für Cast-R1 und andere neue Modelle leiten.",
+    "category": "Operative Effizienz",
+    "tags": [
+      "Benchmarking",
+      "Time-Series",
+      "Evaluation",
+      "Classical ML",
+      "Deep Learning",
+      "Concept Drift"
+    ],
+    "codeUrl": null,
+    "source_org": "U of Toronto, Monash University",
+    "date": "2026-06-29",
+    "scouted_at": "2026-06-29T12:02:55.245676"
+  },
+  {
     "id": "a7f11816ecf2",
     "title": "Bridging the Last Mile of Time Series Forecasting with LLM Agents",
     "source": "https://arxiv.org/abs/2606.02497",
