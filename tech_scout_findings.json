@@ -1,5 +1,97 @@
 [
   {
+    "id": "1425ce1d468a",
+    "title": "Snowflake Feature Store mit Online Serving (GA) & Cortex AISQL",
+    "source": "https://www.snowflake.com/en/blog/production-ml-workflows/",
+    "type": "Tool",
+    "summary": "Snowflake Feature Store erreicht General Availability mit Online Serving für 30ms Feature-Bereitstellung. Cortex AISQL integriert semantische Operationen direkt in SQL für deklarative Queries mit semantischem Reasoning. Benchmarks zeigen 2,5x niedrigere Latenz und 7x höhere QPS als konkurrierende Lösungen.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Perfekt für bestehenden Stack (Snowflake DV2.0): Online Feature Serving für Real-Time-Dispositionsentscheidungen, Cortex AISQL für Klassifikation unstrukturierter Daten (Lieferscheine, Reklamationen). Keine zusätzlichen Tools erforderlich.",
+    "category": "Data Engineering",
+    "tags": [
+      "snowflake",
+      "feature-store",
+      "online-serving",
+      "AISQL",
+      "MLOps",
+      "real-time"
+    ],
+    "codeUrl": "https://docs.snowflake.com/en/developer-guide/snowflake-ml/feature-store/online-feature-store",
+    "source_org": "Snowflake",
+    "date": "2026-08-17",
+    "scouted_at": "2026-08-17T07:56:07.403417"
+  },
+  {
+    "id": "aa666bc239a1",
+    "title": "Claude Code v2.1 mit Self-Hosted Environments und MCP-Ökosystem für Data Engineering",
+    "source": "https://releasebot.io/updates/anthropic/claude-code",
+    "type": "Tool",
+    "summary": "Claude Code v2.1 bietet Self-Hosted Environments, Cross-Session Messaging und Plugin-Kontrollen. Die MCP-Server-Registry umfasst über 9.400 Server und wird von der Linux Foundation verwaltet. AI-Assistenten inspizieren 2026 Pipelines, triggern Syncs und bauen Daten-Workflows aus Natural-Language-Prompts.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "MCP-Server für Snowflake und Airflow einrichten: Claude Code kann bestehende DAGs inspizieren, Data-Quality-Checks vorschlagen und Satellite-Tabellen per Natural Language generieren. Self-Hosted Runner für Schweizer Datenschutz-Compliance.",
+    "category": "Data Engineering",
+    "tags": [
+      "claude-code",
+      "MCP",
+      "data-engineering",
+      "agentic-AI",
+      "pipeline-automation",
+      "airflow"
+    ],
+    "codeUrl": null,
+    "source_org": "Anthropic",
+    "date": "2026-08-17",
+    "scouted_at": "2026-08-17T07:56:07.403425"
+  },
+  {
+    "id": "a44d0cff4fdd",
+    "title": "Snowflake Summit 2026: Agentic AI Platform & Interoperable Lakehouse mit Iceberg v3",
+    "source": "https://www.snowflake.com/en/blog/ai-smart-pipelines-whats-new/",
+    "type": "Blog",
+    "summary": "Snowflake Interoperable Lakehouse auf Apache Iceberg und Polaris ermöglicht vollen Lese-/Schreibzugriff ohne Duplizierung. Managed dbt und Cortex Agents automatisieren Datenpipelines nativ in Snowflake. Iceberg v3 bringt VARIANT, Row Lineage, Deletion Vectors und Nanosecond Timestamps in Produktion.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Migration zu managed dbt eliminiert dbt-Cloud-Hosting. Iceberg v3-Support reduziert Lock-in durch interoperable Engine-Zugriffe. Cortex Agents für automatisierte DQ-Checks im Data Vault evaluieren.",
+    "category": "Data Engineering",
+    "tags": [
+      "snowflake",
+      "agentic-AI",
+      "cortex-agents",
+      "iceberg-v3",
+      "smart-pipelines",
+      "dbt-managed"
+    ],
+    "codeUrl": null,
+    "source_org": "Snowflake",
+    "date": "2026-08-17",
+    "scouted_at": "2026-08-17T07:56:07.403429"
+  },
+  {
+    "id": "7de7a18296c7",
+    "title": "Anthropic Interpretability Research: SAE-Mechanistik und Feature Attribution in Large Language Models",
+    "source": "https://www.anthropic.com/research/scaling-monosemanticity",
+    "type": "Paper",
+    "summary": "Anthropic publiziert Forschung zu Sparse Autoencoders (SAEs) und mechanistischer Interpretabilität von Large Language Models. Die Arbeit demonstriert, wie einzelne Neuronen spezifische Konzepte kodieren und wie Attribution-Methoden die Entscheidungsfindung transparenter machen. Diese Mechanismen sind für Enterprise-AI-Compliance und Fehlerdiagnose relevant.",
+    "relevance": "Mittel",
+    "poc": true,
+    "pocNote": "Für LightGBM/NeuralForecast-Modelle: SAE-inspirierte Feature-Extraktion könnte Modell-Entscheidungen transparenter machen. Relevant für Compliance und Fehleranalyse in Logistik-Prognosen.",
+    "category": "Emerging Tech",
+    "tags": [
+      "interpretability",
+      "SAE",
+      "mechanistic-interpretability",
+      "LLM",
+      "feature-attribution",
+      "transparency"
+    ],
+    "codeUrl": null,
+    "source_org": "Anthropic",
+    "date": "2026-08-17",
+    "scouted_at": "2026-08-17T07:56:07.403433"
+  },
+  {
     "id": "513c667c3389",
     "title": "RhyMix: A Lightweight Adaptive Multi-Rhythm Network for Long-Term Time Series Forecasting",
     "source": "https://arxiv.org/abs/2607.08234",
