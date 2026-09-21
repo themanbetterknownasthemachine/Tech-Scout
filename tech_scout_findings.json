@@ -1,5 +1,52 @@
 [
   {
+    "id": "d3b9c9ba84ec",
+    "title": "Snowflake Cortex AI Gateway & Managed MCP Server",
+    "source": "https://www.snowflake.com/en/blog/enterprise-ai-security-agentic-mcp-governance/",
+    "type": "Blog",
+    "summary": "Snowflake lanciert den Cortex AI Gateway als zentrale Control-Schicht für AI-Agent-Zugriff auf Enterprise-Daten. Der Managed MCP Server exponiert Cortex Analyst, Cortex Search und SQL-Ausführung mit OAuth und RBAC-Governance. Cortex AI_SUMMARIZE ermöglicht Text- und multimodale Zusammenfassungen.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Claude Code kann via MCP direkt auf Snowflake Data Vault zugreifen für Ad-hoc-Analysen und automatisierte Reports. Gateway löst Governance-Problem bei Agent-Zugriff auf sensible Logistikdaten.",
+    "category": "Data Engineering",
+    "tags": [
+      "snowflake",
+      "MCP",
+      "governance",
+      "agents",
+      "Claude-Code",
+      "cost-control",
+      "security"
+    ],
+    "codeUrl": "https://github.com/Snowflake-Labs/mcp",
+    "source_org": "Snowflake",
+    "date": "2026-09-21",
+    "scouted_at": "2026-09-21T13:44:30.850173"
+  },
+  {
+    "id": "54b79f0ed014",
+    "title": "MCP 2026-07-28 Spec: Stateless Core & Standardized Extensions",
+    "source": "https://claude.com/blog/bringing-mcp-2026-07-28-to-claude",
+    "type": "Tool",
+    "summary": "MCP 2026-07-28 verschiebt zu Stateless Core und ermöglicht Deployment auf Serverless-Infrastruktur. Mit 400 Millionen monatlichen SDK-Downloads hat MCP sich als Industriestandard für AI-Agent-Konnektivität etabliert. Request/Response-Modell vereinfacht MCP-Server-Entwicklung.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Claude Code + MCP + Snowflake ermöglichen AI-gestützten Datenanalyse-Workflow: Natural-Language-to-SQL, semantische Suche und SQL-Ausführung mit centralisierter Governance für Logistik-Pipelines.",
+    "category": "Data Engineering",
+    "tags": [
+      "MCP",
+      "Claude-Code",
+      "agent-interoperability",
+      "Snowflake",
+      "serverless",
+      "protocol"
+    ],
+    "codeUrl": "https://github.com/modelcontextprotocol",
+    "source_org": "Anthropic / Linux Foundation (Agentic AI Foundation)",
+    "date": "2026-09-21",
+    "scouted_at": "2026-09-21T13:44:30.850186"
+  },
+  {
     "id": "47740563391c",
     "title": "Snowflake CoCo: Agentic AI Coding Agent für Data-Engineering-Pipelines",
     "source": "https://www.snowflake.com/en/blog/snowflake-coco-data-engineering/",
