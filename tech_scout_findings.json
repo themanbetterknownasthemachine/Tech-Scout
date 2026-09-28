@@ -1,5 +1,74 @@
 [
   {
+    "id": "f9c31c545c84",
+    "title": "Cortex AI Gateway: Unified Governance for AI Agents",
+    "source": "https://docs.snowflake.com/en/release-notes/2026/other/2026-09-15-cortex-ai-gateway",
+    "type": "Tool",
+    "summary": "Snowflake Cortex AI Gateway ist eine zentrale Steuerungsebene, die regelt, wie AI-Anwendungen und Third-Party-Agents auf Modelle zugreifen. Das Gateway kontrolliert den Zugriff auf über 100 MCP-Server und erfasst Spans mit Modellen, Timing, Token-Counts und Fehlern pro Request in einer Gateway-Trace-Table.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Strategisch hoch relevant für Snowflake-Bestandskunden. Löst Kostenkontrolle und Compliance bei Claude Code und anderen Agents. AI_GATEWAY_USAGE_HISTORY View erfasst Gateway, User, Modell und Token-Verbrauch pro Request.",
+    "category": "Data Engineering",
+    "tags": [
+      "snowflake",
+      "ai-governance",
+      "MCP",
+      "agents",
+      "cost-control",
+      "cortex"
+    ],
+    "codeUrl": null,
+    "source_org": "Snowflake",
+    "date": "2026-09-28",
+    "scouted_at": "2026-09-28T15:04:01.857863"
+  },
+  {
+    "id": "4e810ab4ccec",
+    "title": "Snowflake Summit 2026 — Agentic AI Platform, Iceberg v3, CoCo & Semantic Studio",
+    "source": "https://www.snowflake.com/en/blog/ai-smart-pipelines-whats-new/",
+    "type": "Blog",
+    "summary": "Snowflakes Interoperable Lakehouse basiert auf Apache Iceberg v3 und Polaris mit einheitlicher governierter Datengrundlage. Die Agentic AI Platform bündelt CoWork, Cortex Agents, Cortex Search, Semantic Models und Governance. Snowflake expandiert systematisch in alle Schichten des Data-Engineering-Stacks.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Drei Quick Wins: CoCo für Pipeline-Generierung via natürliche Sprache, Semantic Studio zur Vereinheitlichung von KPI-Definitionen, Iceberg v3 für Cross-Engine Change Tracking und Row Lineage.",
+    "category": "Data Engineering",
+    "tags": [
+      "snowflake",
+      "iceberg-v3",
+      "CoCo",
+      "semantic-layer",
+      "data-engineering",
+      "agentic-ai"
+    ],
+    "codeUrl": null,
+    "source_org": "Snowflake",
+    "date": "2026-09-28",
+    "scouted_at": "2026-09-28T15:04:01.857875"
+  },
+  {
+    "id": "8c855b616e06",
+    "title": "Hindsight: Agent Memory That Learns",
+    "source": "https://github.com/vectorize-io/hindsight",
+    "type": "Code",
+    "summary": "Hindsight ist das genaueste Agent-Memory-System mit State-of-the-Art-Ergebnissen auf dem LongMemEval-Benchmark. Das System nutzt «Mental Models» als stehende Antworten auf Fragen über eine Wissensbasis, die im Hintergrund laufend aktualisiert werden ohne Retrieval oder LLM-Call.",
+    "relevance": "Mittel",
+    "poc": true,
+    "pocNote": "Direkte Integration mit Claude Code möglich. Anwendungsfall: Claude-Code-gestützte Data-Engineering-Workflows bekommen ein Projektgedächtnis über Schema-Konventionen und Architektur-Entscheidungen. Ideal für Agents mit offenen, sich wiederholenden Aufgaben.",
+    "category": "Emerging Tech",
+    "tags": [
+      "agent-memory",
+      "claude-code",
+      "langchain",
+      "long-term-memory",
+      "open-source",
+      "python"
+    ],
+    "codeUrl": "https://github.com/vectorize-io/hindsight",
+    "source_org": "Vectorize.io",
+    "date": "2026-09-28",
+    "scouted_at": "2026-09-28T15:04:01.857867"
+  },
+  {
     "id": "d3b9c9ba84ec",
     "title": "Snowflake Cortex AI Gateway & Managed MCP Server",
     "source": "https://www.snowflake.com/en/blog/enterprise-ai-security-agentic-mcp-governance/",
