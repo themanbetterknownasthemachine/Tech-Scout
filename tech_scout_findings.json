@@ -1,5 +1,74 @@
 [
   {
+    "id": "05a3e1a59588",
+    "title": "Snowflake Semantic View Autopilot: Power BI Ingestion now GA",
+    "source": "https://docs.snowflake.com/en/release-notes/2026/other/2026-08-18-semantic-views-power-bi-ingestion-ga",
+    "type": "Tool",
+    "summary": "Power BI Ingestion für Semantic View Autopilot ist jetzt allgemein verfügbar und erstellt automatisch Semantic Views aus bestehenden Power-BI-Datenmodellen inklusive DAX-Measures und Beziehungen. Dies reduziert die Entwicklungszeit für semantische Modellierung von Wochen auf Minuten. Bestehende Power-BI-Dashboards können direkt für Cortex Analyst und Conversational BI genutzt werden.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Direkter Treffer auf Stack (Snowflake + Power BI). Logistik-Dashboards in Minuten als Semantic Views aufsetzbar. Ermöglicht Conversational BI ohne Neubau des Datenmodells.",
+    "category": "Business Intelligence",
+    "tags": [
+      "snowflake",
+      "power-bi",
+      "semantic-layer",
+      "cortex-analyst",
+      "governance",
+      "autopilot"
+    ],
+    "codeUrl": null,
+    "source_org": "Snowflake",
+    "date": "2026-10-05",
+    "scouted_at": "2026-10-05T15:40:19.763416"
+  },
+  {
+    "id": "2aece1847454",
+    "title": "Snowflake External Lineage (OpenLineage) reaches GA — Apache Airflow Connector",
+    "source": "https://docs.snowflake.com/en/release-notes/2026/other/2026-09-03-external-lineage-ga",
+    "type": "Tool",
+    "summary": "External Lineage ist nun GA und erweitert Snowflakes native Lineage um externe Quellen via OpenLineage-Standard. Tools wie dbt und Apache Airflow können Lineage-Events an Snowflake senden und in den Lineage-Graphen integriert werden. Ermöglicht End-to-End-Sichtbarkeit von Airflow-DAGs bis zum Power-BI-Dashboard.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Perfekt für bestehenden Stack (Airflow + Snowflake + Data Vault 2.0). Minimales Setup via pip install und Umgebungsvariable. End-to-End-Sichtbarkeit für Logistik-Pipelines.",
+    "category": "Data Engineering",
+    "tags": [
+      "snowflake",
+      "airflow",
+      "openlineage",
+      "lineage",
+      "data-governance",
+      "horizon"
+    ],
+    "codeUrl": "https://github.com/OpenLineage/OpenLineage",
+    "source_org": "Snowflake",
+    "date": "2026-10-05",
+    "scouted_at": "2026-10-05T15:40:19.763436"
+  },
+  {
+    "id": "14bdb9c0cc36",
+    "title": "Jeff: Lokales 0.8B Decision Model für Zero-Shot-Klassifikation in 22ms",
+    "source": "https://github.com/firelex/jeff",
+    "type": "Tool",
+    "summary": "Jeff ist ein 0.8B Open-Source Decision Model für Zero-Shot-Klassifikation mit lokaler Inference in ~30ms. Multiple-Choice-Fragen werden in einem Forward-Pass mit kalibrierten Wahrscheinlichkeiten beantwortet. Training auf lokaler Hardware (RTX PRO 6000) in etwa 2 Stunden möglich.",
+    "relevance": "Mittel",
+    "poc": false,
+    "pocNote": "",
+    "category": "Operative Effizienz",
+    "tags": [
+      "small-language-model",
+      "zero-shot-classification",
+      "local-inference",
+      "decision-api",
+      "open-source",
+      "lora"
+    ],
+    "codeUrl": "https://github.com/firelex/jeff",
+    "source_org": "Unabhängiges Open-Source-Projekt",
+    "date": "2026-10-05",
+    "scouted_at": "2026-10-05T15:40:19.763450"
+  },
+  {
     "id": "f9c31c545c84",
     "title": "Cortex AI Gateway: Unified Governance for AI Agents",
     "source": "https://docs.snowflake.com/en/release-notes/2026/other/2026-09-15-cortex-ai-gateway",
