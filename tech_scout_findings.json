@@ -1,5 +1,98 @@
 [
   {
+    "id": "d05caa45bd2d",
+    "title": "OpenTSLM TeeMoE: Unified Time-Series Language Model für Forecasting, kontextbasierte Vorhersage und Reasoning",
+    "source": "https://arxiv.org/abs/2609.40265",
+    "type": "Paper",
+    "summary": "OpenTSLM TeeMoE ist ein generalistisches Time-Series Language Model auf Qwen3.6-27B Basis, das direkt aus beobachteten Zeitreihen forecasen, über textuellen Kontext reasoning betreiben und Vorhersagen externer Forecasting-Spezialisten synthetisieren kann. Drei unabhängig trainierte Low-Rank-Experten werden über einen gelernten LoRA-MoE-Controller kombiniert. Das Modell wurde im September 2026 am FMTS Workshop der NeurIPS 2026 akzeptiert und rangiert unter den Top 3 auf mehreren Benchmarks.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Kontextbasiertes Forecasting ermöglicht Nachfrageprognosen unter Berücksichtigung von Promotionen, Feiertagen und Wetterevents. Kann als Meta-Learner über bestehende LightGBM/NeuralForecast-Modelle fungieren. Python-API ist einfach zu nutzen, Code und Checkpoints sind öffentlich verfügbar.",
+    "category": "Emerging Tech",
+    "tags": [
+      "time-series",
+      "foundation-model",
+      "MoE",
+      "forecasting",
+      "contextual-prediction",
+      "NeurIPS-2026"
+    ],
+    "codeUrl": "https://github.com/OpenTSLM/OpenTSLM-TeeMoE",
+    "source_org": "OpenTSLM Project (Multi-Uni-Kollaboration)",
+    "date": "2026-10-12",
+    "scouted_at": "2026-10-12T16:43:55.526010"
+  },
+  {
+    "id": "808a7a6c7e0b",
+    "title": "Snowflake Model Monitoring, Gateway A/B Testing & Auto-Capture",
+    "source": "https://www.snowflake.com/en/blog/engineering/operationalizing-model-serving-snowflake/",
+    "type": "Blog",
+    "summary": "Snowflake ML bietet durchgängige Inferenz-Infrastruktur mit automatischer Erfassung von Vorhersage-Outputs und Modellversionstracking. Gateway Monitoring & A/B Testing ist seit August 2026 GA und ermöglicht Drift-Detection, Performance-Vergleich von Baseline- und Challenger-Services sowie Live-Traffic-Splits. Ergänzend: Snowflake Decision (Private Preview seit Oktober 2026) evaluiert Text und strukturierte Daten gegen benutzerdefinierte Fragen.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Direkt im bestehenden Snowflake-Stack integrierbar. LightGBM Demand-Forecasting-Modelle können registriert, geloggt und via A/B-Testing gegen neue Versionen verglichen werden. Auto-Capture schafft Audit-Trail für Data Vault 2.0-Ansatz. Monitoring umfasst Covariate Shift, Distribution Drift und Modell-Degradation.",
+    "category": "Operative Effizienz",
+    "tags": [
+      "snowflake",
+      "mlops",
+      "model-monitoring",
+      "drift-detection",
+      "ab-testing",
+      "production-ml"
+    ],
+    "codeUrl": null,
+    "source_org": "Snowflake",
+    "date": "2026-10-12",
+    "scouted_at": "2026-10-12T16:43:55.526029"
+  },
+  {
+    "id": "bd4fa4c478fa",
+    "title": "Agentic Self-Healing für Data & AI Pipelines — Open-Source Referenzarchitektur",
+    "source": "https://arxiv.org/abs/2608.01955",
+    "type": "Paper",
+    "summary": "Das Paper beschreibt eine Referenzarchitektur für selbstheilende Data-Pipelines, die Monitoring, Pipeline-Metadaten, Incident-History, KI-gestützte Diagnose, Genehmigungsworkflows und kontrollierte Remediation kombiniert. Die Architektur sitzt als Layer über Orchestratoren wie Airflow, Transformations-Layern wie dbt und ML-Workflows, um Pipeline-Probleme mit weniger manuellem Aufwand zu erkennen und zu reparieren.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Direkt auf Apache Airflow-Stack zugeschnitten. Airflow 3.1 bringt Common AI Provider und Human-in-the-Loop-Primitives. Konkrete Implementierungsbeispiele mit Ollama/LLaMA 3.2 existieren bereits. Claude Code könnte als Diagnose-Agent eingebunden werden, um Logs zu analysieren und Fixes vorzuschlagen.",
+    "category": "Data Engineering",
+    "tags": [
+      "self-healing",
+      "airflow",
+      "dbt",
+      "data-pipelines",
+      "agentic-ai",
+      "mlops",
+      "open-source"
+    ],
+    "codeUrl": "https://github.com/pavan2131/self-healing-data-pipeline",
+    "source_org": "Unabhängige Forschung",
+    "date": "2026-10-12",
+    "scouted_at": "2026-10-12T16:43:55.526037"
+  },
+  {
+    "id": "4e7eeca7f205",
+    "title": "MACTS-EM: Multi-Agent Collaborative Time Series Forecasting mit Emergent Memory",
+    "source": "https://arxiv.org/abs/2610.02255",
+    "type": "Paper",
+    "summary": "MACTS-EM führt ein Multi-Agent Collaborative Framework für Time Series Forecasting ein, bei dem spezialisierte Agenten (N-BEATS, TCN, BlockRNN und LightGBM) zusammenarbeiten. Das System umfasst domänenspezifische Forecasting-Agenten, meta-kognitive Allokation, emergentes Gedächtnis für Cross-Domain-Transfer und adversariale Robustheit. Evaluationen zeigen 8–12% Genauigkeitsverbesserung und 22–27% bessere Zero-Shot-Transferfähigkeit.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "LightGBM ist explizit einer der Agenten — direkt kompatibel mit bestehendem Stack. Regime-Shift-Resilienz ist für Logistik kritisch (saisonale Umbrüche). 16–21% bessere Resilienz bei Regime-Shifts und 15–18% schnellere Recovery nach Distribution-Shifts sind für volatile Lebensmittellogistik wertvoll.",
+    "category": "Emerging Tech",
+    "tags": [
+      "time-series",
+      "multi-agent",
+      "LightGBM",
+      "ensemble",
+      "regime-shift",
+      "forecasting"
+    ],
+    "codeUrl": null,
+    "source_org": "Unabhängige Forschung",
+    "date": "2026-10-12",
+    "scouted_at": "2026-10-12T16:43:55.526042"
+  },
+  {
     "id": "05a3e1a59588",
     "title": "Snowflake Semantic View Autopilot: Power BI Ingestion now GA",
     "source": "https://docs.snowflake.com/en/release-notes/2026/other/2026-08-18-semantic-views-power-bi-ingestion-ga",
