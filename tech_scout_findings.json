@@ -1,5 +1,98 @@
 [
   {
+    "id": "cebab05c3cc3",
+    "title": "Timestral: Mistral's erste Time-Series Foundation Model Familie",
+    "source": "https://github.com/mistralai/timestral",
+    "type": "Tool",
+    "summary": "Mistral hat Timestral veröffentlicht, eine Familie von Time-Series Foundation Models für akkurate probabilistische und multivariate Forecasts mit geringem Rechenaufwand. Das grösste Modell mit nur 209 Mio. Parametern führt laut Mistral drei grosse öffentliche Forecasting-Benchmarks an. Die Inferenz benötigt lediglich PyTorch und läuft auf CPU oder GPU mit 10-140ms Latenz.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Zero-Shot auf CPU, probabilistische Quantile für Safety-Stock-Berechnung, Known-Future-Kovariaten für Promotionen/Feiertage, multivariate Forecasts für Produktgruppen, kommerzielle Nutzung bis $20M Umsatz",
+    "category": "Operative Effizienz",
+    "tags": [
+      "time-series",
+      "foundation-model",
+      "forecasting",
+      "zero-shot",
+      "probabilistic",
+      "CPU-inference"
+    ],
+    "codeUrl": "https://github.com/mistralai/timestral",
+    "source_org": "Mistral AI",
+    "date": "2026-10-19",
+    "scouted_at": "2026-10-19T14:27:45.849296"
+  },
+  {
+    "id": "38ca281259de",
+    "title": "TimeRSI: Self-Improved Agentic Deployment für Time-Series Foundation Models",
+    "source": "https://arxiv.org/abs/2610.19725",
+    "type": "Paper",
+    "summary": "TimeRSI ist ein agentisches System, das iterativ Forecasting-Pipelines durch fehlergesteuerte Code-Revisionen und adaptive Selektion verbessert. Der Agent entwickelt taskspezifische Pipelines für TimesFM 3.0, erkennt Muster wie Wochentags-Zyklen und Feiertagseffekte automatisch und reduziert MASE um 2,86–6,70% ohne gefrorenes Modell zu verändern.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Agent erkennt automatisch domänenspezifische Muster, frozen Model ohne Re-Training, Backtesting-Loop via Airflow orchestrierbar, Supply-Chain-Demand explizit erwähnt, Claude Code für Pipeline-Generierung einsetzbar",
+    "category": "Operative Effizienz",
+    "tags": [
+      "agentic-AI",
+      "time-series",
+      "self-improving",
+      "MLOps",
+      "pipeline-automation",
+      "TimesFM"
+    ],
+    "codeUrl": "https://github.com/haoxin1998/TimeRSI",
+    "source_org": "Georgia Tech",
+    "date": "2026-10-19",
+    "scouted_at": "2026-10-19T14:27:45.849313"
+  },
+  {
+    "id": "c8610534854b",
+    "title": "Snowflake Adaptive Warehouses + Cortex Agent SDK",
+    "source": "https://www.snowflake.com/en/blog/engineering/adaptive-warehouses-dml-performance/",
+    "type": "Tool",
+    "summary": "Snowflake Adaptive Warehouses beschleunigen DML-lastige ETL-Pipelines und führen MERGE-Statements bis zu 13,7x schneller aus. Das Cortex Agent SDK in Public Preview ermöglicht Python/TypeScript-Integration und Orchestrierung von Cortex Agents mit langläufiger Arbeit und duralen Turns.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Direkt in bestehenden DV 2.0 Stack integrierbar, MERGE/UPDATE-Operationen dramatisch schneller, Python-Integration in Airflow-DAGs, Cortex AI Gateway für governed Access zu Claude Code, minimaler Upgrade-Aufwand",
+    "category": "Data Engineering",
+    "tags": [
+      "snowflake",
+      "adaptive-compute",
+      "ETL",
+      "MERGE",
+      "DML",
+      "agent-SDK",
+      "cortex"
+    ],
+    "codeUrl": "https://pypi.org/project/snowflake-cortex-agent-sdk/",
+    "source_org": "Snowflake",
+    "date": "2026-10-19",
+    "scouted_at": "2026-10-19T14:27:45.849318"
+  },
+  {
+    "id": "41bcd86256fa",
+    "title": "Graphify: Codebase, Docs und SQL-Schemas als queryable Knowledge Graph",
+    "source": "https://github.com/Graphify-Labs/graphify",
+    "type": "Tool",
+    "summary": "Graphify ist ein Open-Source-Tool, das eine Codebase, Docs, SQL-Schemas, Config-Dateien, PDFs und Videos in einen abfragbaren Knowledge Graph umwandelt. Durch AST-Parsing statt LLM-Extraktion garantiert es Determinismus und dient als queryable Index für Claude Code.",
+    "relevance": "Mittel",
+    "poc": true,
+    "pocNote": "Deterministische Knowledge Graph statt Vektor-Index, direkt mit Claude Code nutzbar für Codebase/SQL-Schema-Navigation, Airflow-DAG-Dokumentation automatisierbar",
+    "category": "Data Engineering",
+    "tags": [
+      "knowledge-graph",
+      "claude-code",
+      "SQL-schema",
+      "AST",
+      "code-understanding",
+      "GraphRAG"
+    ],
+    "codeUrl": "https://github.com/Graphify-Labs/graphify",
+    "source_org": "Graphify Labs",
+    "date": "2026-10-19",
+    "scouted_at": "2026-10-19T14:27:45.849321"
+  },
+  {
     "id": "d05caa45bd2d",
     "title": "OpenTSLM TeeMoE: Unified Time-Series Language Model für Forecasting, kontextbasierte Vorhersage und Reasoning",
     "source": "https://arxiv.org/abs/2609.40265",
