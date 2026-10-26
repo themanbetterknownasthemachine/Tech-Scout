@@ -1,5 +1,118 @@
 [
   {
+    "id": "6ce148e7e09b",
+    "title": "FairAMO: Agentic Model Orchestration für Time Series Foundation Models",
+    "source": "https://arxiv.org/abs/2610.29504",
+    "type": "Paper",
+    "summary": "FairAMO ist ein kontrolliertes Evaluierungsprotokoll, das Agentic Model Orchestration für Time Series Foundation Models fair bewertet, indem es die Effekte des Orchestrators von den Eigenschaften des Kandidaten-Pools trennt. Die Methode nutzt eine Frozen Forecast Bank und GIFT-Eval-Benchmarks, um zu zeigen, dass AMO zwar die Genauigkeit verbessert, die Gewinne aber durch die Kandidaten-TSFMs begrenzt sind. Direkt anwendbar auf bestehende LightGBM- und NeuralForecast-Stacks zur Validierung von Ensemble- und Agent-basierten Selektoren.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Methodisch sauberes Framework zur Evaluierung von Forecaster-Ensembles und Foundation Models; direkt auf Lebensmittel-Nachfrage-Forecasting adaptierbar; verhindert PoC-Fehlentscheidungen.",
+    "category": "Operative Effizienz",
+    "tags": [
+      "time-series-forecasting",
+      "foundation-models",
+      "agentic-orchestration",
+      "model-selection",
+      "ensemble"
+    ],
+    "codeUrl": null,
+    "source_org": "Monash University / Griffith University",
+    "date": "2026-10-26",
+    "scouted_at": "2026-10-26T14:00:22.605782"
+  },
+  {
+    "id": "de015d1f1b6f",
+    "title": "CRC: Robust Residual Correction via Selective Deployment (NeurIPS 2026)",
+    "source": "https://arxiv.org/abs/2512.22428",
+    "type": "Paper",
+    "summary": "CRC ist eine Post-hoc Residual Correction Methode mit validierungskalibrierter Selective-Deployment-Regel, die entscheidet, wann ein Forecast korrigiert werden soll. Ein hybrider Korrektor (konservativer Ridge-Floor plus bedingte nichtlineare Verfeinerung) wird nur bei hohem Vertrauen angewendet. Über Benchmarks zeigt CRC bis zu 20% relative MSE-Reduktion ohne Retraining des Basis-Forecasters.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Sofort einsetzbar als Post-Processing-Layer auf bestehende LightGBM/NeuralForecast-Pipelines in Airflow; keine Retraining nötig; optimiert automatisch pro SKU-Volatilität.",
+    "category": "Operative Effizienz",
+    "tags": [
+      "time-series-forecasting",
+      "residual-correction",
+      "post-hoc",
+      "deployment-rule",
+      "NeurIPS-2026"
+    ],
+    "codeUrl": null,
+    "source_org": "UNSW Sydney / USTC / HKUST(GZ)",
+    "date": "2026-10-26",
+    "scouted_at": "2026-10-26T14:00:22.605798"
+  },
+  {
+    "id": "fcd13cff67d6",
+    "title": "Snowflake Cortex Agent SDK + AI Gateway Full-Stack Tracing (Public Preview)",
+    "source": "https://www.snowflake.com/en/blog/engineering/cortex-ai-gateway-agent-tracing/",
+    "type": "Tool",
+    "summary": "Das Cortex Agent SDK (Python/TypeScript, Public Preview seit Oktober 2026) ermöglicht den Bau von Applikationen mit Cortex Agents und Cortex Code, inklusive Konversations- und Thread-Management sowie OpenTelemetry-basierter Observability über den AI Gateway. Der Agent Code Execution Tool (GA seit Oktober 2026) ermöglicht dem Agent, Python-Code selbstständig zu generieren und auszuführen.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Direkt im bestehenden Snowflake-Stack einsetzbar; Use Cases: Agentic Analytics für Power-BI, automatisierte Datenqualitätsprüfung in Airflow, Full-Stack Observability für LLM-Kosten-Tracking.",
+    "category": "Data Engineering",
+    "tags": [
+      "snowflake",
+      "cortex-agents",
+      "observability",
+      "MCP",
+      "OpenTelemetry",
+      "SDK",
+      "Python"
+    ],
+    "codeUrl": "https://pypi.org/project/cortex-agent-sdk/",
+    "source_org": "Snowflake",
+    "date": "2026-10-26",
+    "scouted_at": "2026-10-26T14:00:22.605803"
+  },
+  {
+    "id": "ec0e6321dccb",
+    "title": "OliO: ODE-basierter Self-Supervised Pretraining für Time Series (NeurIPS 2026)",
+    "source": "https://arxiv.org/abs/2610.23345",
+    "type": "Paper",
+    "summary": "OliO ist eine Plug-and-Play Self-Supervised-Methode, die bidirektionale temporale Flüsse als kontinuierliche dynamische Systeme mit linearen ODEs lernt. Ein Transition Operator mit strikter oberer Dreiecksstruktur sichert numerische Stabilität und erfasst Langzeitabhängigkeiten. Experimente zeigen MSE-Reduktionen bis 5,75% gegenüber SOTA-Baselines über verschiedene Backbone-Architekturen.",
+    "relevance": "Mittel",
+    "poc": true,
+    "pocNote": "Plug-and-Play auf NeuralForecast-Backbones; nutzt ungelabelte historische Bestelldaten zur Verbesserung der Downstream-Forecasting-Qualität; mittelfristiger PoC (2–3 Monate).",
+    "category": "Emerging Tech",
+    "tags": [
+      "self-supervised-learning",
+      "time-series",
+      "ODE",
+      "pretraining",
+      "plug-and-play",
+      "NeurIPS-2026"
+    ],
+    "codeUrl": "https://github.com/eai-lab/OliO",
+    "source_org": "Konkuk University, Seoul",
+    "date": "2026-10-26",
+    "scouted_at": "2026-10-26T14:00:22.605807"
+  },
+  {
+    "id": "f970f112fb15",
+    "title": "Snowflake Observe: Domain-APIs steigern AI-Agent-Investigation auf 69%",
+    "source": "https://www.snowflake.com/en/blog/engineering/observability-apis-agent-investigation-success/",
+    "type": "Blog",
+    "summary": "Snowflake Observe demonstriert, dass Domain-spezifische APIs für AI-Agents die Investigation-Erfolgsrate von 7,8% auf 69% steigern. Strukturierte Observability-APIs ermöglichen es Agenten, komplexe Root-Cause-Analysis auf Datenebene durchzuführen und operative Probleme automatisiert zu diagnostizieren.",
+    "relevance": "Mittel",
+    "poc": false,
+    "pocNote": "",
+    "category": "Data Engineering",
+    "tags": [
+      "snowflake",
+      "observability",
+      "AI-agents",
+      "domain-apis",
+      "root-cause-analysis"
+    ],
+    "codeUrl": null,
+    "source_org": "Observe by Snowflake",
+    "date": "2026-10-26",
+    "scouted_at": "2026-10-26T14:00:22.605810"
+  },
+  {
     "id": "cebab05c3cc3",
     "title": "Timestral: Mistral's erste Time-Series Foundation Model Familie",
     "source": "https://github.com/mistralai/timestral",
