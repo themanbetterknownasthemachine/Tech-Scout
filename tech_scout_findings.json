@@ -1,5 +1,97 @@
 [
   {
+    "id": "4d693071907e",
+    "title": "MORA: Correcting Time Series Forecasts with Coarse Future Signals",
+    "source": "https://arxiv.org/abs/2611.15413",
+    "type": "Paper",
+    "summary": "MORA ist ein model-agnostischer Residual-Adapter, der Forecasting-Outputs durch segmentweise Mittelwert-Extrapolation verfeinert, ohne das Backbone-Modell umtrainieren zu müssen. Das Verfahren nutzt prädiktive Information aus historischen Inputs zur Fehlerkorrektur und zeigt konsistente Verbesserungen über diverse Time-Series-Architekturen hinweg.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Plug-and-Play-Modul für bestehende LightGBM/NeuralForecast-Modelle; Demand-Forecasting-Pipeline ohne Architekturänderung erweiterbar; geringer Implementierungsaufwand.",
+    "category": "Operative Effizienz",
+    "tags": [
+      "time-series",
+      "forecasting",
+      "model-agnostic",
+      "residual-adapter",
+      "plug-and-play"
+    ],
+    "codeUrl": null,
+    "source_org": "Unabhängige Forschung",
+    "date": "2026-11-23",
+    "scouted_at": "2026-11-23T19:03:37.997622"
+  },
+  {
+    "id": "2482a76b71ea",
+    "title": "Cortex AI Function Studio — General Availability",
+    "source": "https://docs.snowflake.com/en/release-notes/2026/other/2026-11-16-cortex-ai-function-studio-ga",
+    "type": "Tool",
+    "summary": "Snowflake Cortex AI Function Studio (GA seit 16.11.2026) automatisiert Prompt-Engineering, Modellauswahl und Optimierung für unstrukturierte Datenworkflows. Teams können Modell-Kandidaten über verschiedene Kosten- und Fähigkeitsstufen evaluieren und kostengünstigere Alternativen validieren.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Direkt im bestehenden Snowflake-Stack einsetzbar; Anwendungen: Lieferschein-Klassifikation, Rechnungs-Extraktion, Sentiment-Analyse; FinOps-Relevanz durch Modell-Kostenvergleich.",
+    "category": "Business Intelligence",
+    "tags": [
+      "snowflake",
+      "cortex-ai",
+      "ai-functions",
+      "prompt-engineering",
+      "cost-optimization",
+      "no-code"
+    ],
+    "codeUrl": null,
+    "source_org": "Snowflake",
+    "date": "2026-11-23",
+    "scouted_at": "2026-11-23T19:03:37.997641"
+  },
+  {
+    "id": "4ad17131af90",
+    "title": "Learning Temporal Dynamics with Derivative Representations for Time Series Forecasting",
+    "source": "https://arxiv.org/abs/2611.16514",
+    "type": "Paper",
+    "summary": "DeltaTSF lernt Zeitreihen und ihre diskreten zeitlichen Ableitungen in einem vereinheitlichten, model-agnostischen Framework. Durch Kopplung dieser Repräsentationen wird zeitliche Konsistenz induziert, was zu stabileren und physikalisch kohärenteren Vorhersagen führt ohne zusätzlichen Rechenaufwand bei der Inferenz.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Konsistente Performance-Verbesserungen über diverse Benchmarks; Traffic-Benchmarks direkt relevant für Logistik-Routen; als Trainings-Paradigma auf bestehende NeuralForecast-Modelle anwendbar.",
+    "category": "Operative Effizienz",
+    "tags": [
+      "time-series",
+      "forecasting",
+      "model-agnostic",
+      "derivative-representations",
+      "dynamics-aware",
+      "plug-and-play"
+    ],
+    "codeUrl": null,
+    "source_org": "Unabhängige Forschung",
+    "date": "2026-11-23",
+    "scouted_at": "2026-11-23T19:03:37.997645"
+  },
+  {
+    "id": "1cbced0d396c",
+    "title": "Adaptive Warehouses: 13.7× Faster DML for ETL Pipelines",
+    "source": "https://www.snowflake.com/en/blog/engineering/adaptive-warehouses-dml-performance/",
+    "type": "Blog",
+    "summary": "Snowflake Adaptive Warehouses beschleunigen DML-lastige ETL-Pipelines, insbesondere MERGE-Statements bis 13.7× schneller durch Elimination von Write-Amplification. Sie nutzen einen gemeinsamen Compute-Pool und passen Ressourcen dynamisch pro Query an.",
+    "relevance": "Hoch",
+    "poc": true,
+    "pocNote": "Direkt für Data-Vault-2.0-Pipelines einsetzbar; keine Code-Änderung erforderlich, nur Warehouse-Typ-Umstellung; signifikante Kostensenkung bei SCD-Wartung und ELT-Pipelines.",
+    "category": "Data Engineering",
+    "tags": [
+      "snowflake",
+      "adaptive-compute",
+      "etl",
+      "dml",
+      "data-vault",
+      "performance",
+      "cost-optimization"
+    ],
+    "codeUrl": null,
+    "source_org": "Snowflake",
+    "date": "2026-11-23",
+    "scouted_at": "2026-11-23T19:03:37.997648"
+  },
+  {
     "id": "988d0a2b2994",
     "title": "Snowflake Adaptive Warehouses (GA) + Model Registry Batch-Inference Optimierung",
     "source": "https://www.snowflake.com/en/blog/engineering/adaptive-warehouses-dml-performance/",
